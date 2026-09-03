@@ -1,6 +1,10 @@
 ---
 name: ai-job-search-os
-description: Human-in-the-loop job-search operating system for onboarding, job discovery, fit review, application preparation, tracking, recruiter research, recruitment-stage support, and durable career context.
+description: Human-in-the-loop job-search operating system for onboarding, job discovery, fit review, application preparation, tracking, recruiter research, recruitment-stage support, and durable career context. Use for structured job-search workflows where AI should execute reversible work while the human keeps consequential decisions.
+license: MIT
+metadata:
+  author: argytbh
+  version: "1.6.0-dev"
 ---
 
 # AI Job Search OS
