@@ -2,17 +2,15 @@
 
 This file is for the repository maintainer.
 
-## 1. Create the repository
+## 1. Repository
 
 Recommended repository name:
 
 `ai-job-search-os`
 
-Make it public.
+Keep the public repository as the auditable source of truth.
 
-Upload the contents of this folder to the repository root.
-
-## 2. Enable GitHub Pages
+## 2. GitHub Pages
 
 In the repository:
 
@@ -25,48 +23,49 @@ In the repository:
 
 The landing page is `docs/index.html`.
 
-On a standard project site, it will normally be available at:
+On a standard project site:
 
 `https://YOUR-USERNAME.github.io/ai-job-search-os/`
 
-The landing page automatically infers the GitHub repository link when hosted on a standard `github.io` project URL.
+During pre-publication testing, GitHub Pages distributes the two current starter files directly:
 
-## 3. Create GitHub Release v1.5.0
+- `docs/downloads/SYSTEM.md`
+- `docs/downloads/JOB_TRACKER.xlsx`
 
-Create a new release:
+This avoids serving a stale packaged ZIP while `SYSTEM.md` is still being hardened through user testing.
 
-- Tag: `v1.5.0`
-- Title: `AI Job Search OS v1.5.0`
+## 3. Pre-publication testing
 
-Use:
+Before freezing a tagged release:
 
-`release/RELEASE_NOTES_v1.5.md`
+1. test onboarding with a fresh Project/workspace;
+2. test a batch job-search request;
+3. test PURSUE / HOLD / DROP reconciliation;
+4. test application preparation;
+5. confirm default CV output is editable DOCX, ATS-safe, single-column, and follows the page-length rules;
+6. confirm the AI does not repeatedly ask non-blocking menu questions;
+7. test submission confirmation and tracker updates;
+8. test recruiter enrichment timing;
+9. test recruitment-stage updates;
+10. inspect the final files for privacy/security regressions.
 
-as the basis for the release description.
+## 4. Freeze and publish a stable release
 
-Attach:
+Only after the starter is frozen:
 
-`release/AI-Job-Search-OS-Starter-v1.5.zip`
+1. update canonical files under `/starter`;
+2. copy the final `SYSTEM.md` to `/docs/downloads/`;
+3. rebuild the starter ZIP from the frozen files;
+4. place the matching ZIP under `/release/` and optionally `/docs/downloads/`;
+5. calculate fresh SHA-256 checksums from the exact frozen files;
+6. update `CHANGELOG.md` and release notes;
+7. tag the release, for example `v1.5.0`;
+8. attach the matching ZIP to the GitHub Release.
 
-as the release asset.
+Do not silently replace a published release asset without changing the version or documenting the change.
 
-The GitHub Pages download button does not depend on the Release being configured; it serves the same starter ZIP directly from `/docs/downloads/`.
-
-## 4. Public link
+## 5. Public links
 
 For nontechnical users, share the GitHub Pages URL.
 
-For people who want to audit the files, share the GitHub repository URL.
-
-## 5. Updating later
-
-For a future version:
-
-1. update canonical files under `/starter`;
-2. rebuild the starter ZIP;
-3. update `/docs/downloads`;
-4. update `CHANGELOG.md`;
-5. update checksums;
-6. publish a new tagged GitHub Release.
-
-Do not silently replace a published release asset without changing the version.
+For people who want to inspect how the system works, share the GitHub repository or direct `SYSTEM.md` link.
