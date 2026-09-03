@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AI Job Search OS — human-in-the-loop AI workflow for job discovery, tracking, recruiter enrichment, and career context." />
+  <title>AI Job Search OS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">AI Job Search OS</a>
+      <div class="nav-actions">
+        <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language">EN</button>
+        <a class="ghost" id="repoLink" href="#" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Human-in-the-loop job search</div>
+
+          <div data-lang="id">
+            <h1>Bikin AI jadi partner job search, bukan pengganti keputusan lo.</h1>
+            <p class="lead">Sistem file-based yang membantu AI mencari lowongan, menilai fit, menjaga tracker, mengecek link yang lo temukan sendiri, dan mencari recruiter — sementara keputusan APPLY / DROP / HOLD tetap di tangan lo.</p>
+          </div>
+
+          <div data-lang="en" hidden>
+            <h1>Make AI your job-search partner, not your decision-maker.</h1>
+            <p class="lead">A file-based workflow that helps AI discover jobs, evaluate fit, maintain a tracker, verify links you find yourself, and identify recruiters — while you keep final APPLY / DROP / HOLD control.</p>
+          </div>
+
+          <div class="cta-row">
+            <a class="primary" href="downloads/AI-Job-Search-OS-Starter-v1.5.zip" download>
+              <span data-lang="id">Download Starter Pack</span>
+              <span data-lang="en" hidden>Download Starter Pack</span>
+            </a>
+            <a class="secondary" href="downloads/SYSTEM.md">
+              <span data-lang="id">Audit SYSTEM.md</span>
+              <span data-lang="en" hidden>Audit SYSTEM.md</span>
+            </a>
+          </div>
+
+          <div class="trust-row">
+            <span>No executable</span>
+            <span>No API key</span>
+            <span>No plugin</span>
+            <span>No telemetry</span>
+          </div>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-title" data-lang="id">Flow sederhananya</div>
+          <div class="flow-title" data-lang="en" hidden>Simple flow</div>
+          <div class="flow">
+            <div class="node">AI discovers</div>
+            <div class="arrow">↓</div>
+            <div class="node">AI verifies & reviews</div>
+            <div class="arrow">↓</div>
+            <div class="node human">YOU decide</div>
+            <div class="arrow">↓</div>
+            <div class="node">AI tracks & learns</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div data-lang="id">
+          <div class="eyebrow">Mulai dalam 3 langkah</div>
+          <h2>Setup-nya sengaja dibuat sesingkat mungkin.</h2>
+        </div>
+        <div data-lang="en" hidden>
+          <div class="eyebrow">Start in 3 steps</div>
+          <h2>The setup is intentionally minimal.</h2>
+        </div>
+
+        <div class="steps">
+          <article class="card">
+            <div class="step-num">1</div>
+            <h3 data-lang="id">Download starter</h3>
+            <h3 data-lang="en" hidden>Download the starter</h3>
+            <p data-lang="id">Starter pack cuma berisi <code>SYSTEM.md</code> dan <code>JOB_TRACKER.xlsx</code>.</p>
+            <p data-lang="en" hidden>The starter pack only contains <code>SYSTEM.md</code> and <code>JOB_TRACKER.xlsx</code>.</p>
+          </article>
+
+          <article class="card">
+            <div class="step-num">2</div>
+            <h3 data-lang="id">Upload ke AI Project</h3>
+            <h3 data-lang="en" hidden>Upload to an AI Project</h3>
+            <p data-lang="id">Tambahkan dua file tadi + salinan CV terbaru yang sudah disanitasi.</p>
+            <p data-lang="en" hidden>Add both files plus a sanitized copy of your latest CV.</p>
+          </article>
+
+          <article class="card">
+            <div class="step-num">3</div>
+            <h3 data-lang="id">Mulai ngobrol</h3>
+            <h3 data-lang="en" hidden>Start chatting</h3>
+            <p data-lang="id">AI akan onboarding, minta approval, lalu membuat <code>USER_CONTEXT.md</code> untuk lo upload balik.</p>
+            <p data-lang="en" hidden>The AI will onboard you, ask for approval, then generate <code>USER_CONTEXT.md</code> for you to add back.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section muted">
+      <div class="wrap two-col">
+        <div>
+          <div data-lang="id">
+            <div class="eyebrow">Setelah setup</div>
+            <h2>Cukup ngobrol natural.</h2>
+            <p class="body">Lo nggak perlu ngerti file routing atau spreadsheet. Sistemnya yang urus itu.</p>
+          </div>
+          <div data-lang="en" hidden>
+            <div class="eyebrow">After setup</div>
+            <h2>Just talk naturally.</h2>
+            <p class="body">You do not need to understand file routing or spreadsheets. The system handles that.</p>
+          </div>
+
+          <div class="commands">
+            <code data-lang="id">Cari lowongan untuk saya.</code>
+            <code data-lang="en" hidden>Find jobs for me.</code>
+
+            <code data-lang="id">Review lowongan ini: [link].</code>
+            <code data-lang="en" hidden>Review this job: [link].</code>
+
+            <code data-lang="id">Saya sudah apply yang ini.</code>
+            <code data-lang="en" hidden>I applied to this one.</code>
+
+            <code data-lang="id">Cari recruiter atau hiring manager-nya.</code>
+            <code data-lang="en" hidden>Find the recruiter or hiring manager.</code>
+
+            <code data-lang="id">Tampilkan dashboard tracker saya.</code>
+            <code data-lang="en" hidden>Show my job-search dashboard.</code>
+          </div>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature">
+            <strong data-lang="id">AI + user discovery</strong>
+            <strong data-lang="en" hidden>AI + user discovery</strong>
+            <span data-lang="id">AI bisa cari sendiri, atau lo tinggal paste link yang lo temukan.</span>
+            <span data-lang="en" hidden>AI can search on its own, or you can simply paste a job link you found.</span>
+          </div>
+          <div class="feature">
+            <strong data-lang="id">Freshness check</strong>
+            <strong data-lang="en" hidden>Freshness check</strong>
+            <span data-lang="id">Posting stale diarahkan ke career page resmi dan live alternatives.</span>
+            <span data-lang="en" hidden>Stale postings are checked against official careers pages and live alternatives.</span>
+          </div>
+          <div class="feature">
+            <strong data-lang="id">Recruiter enrichment</strong>
+            <strong data-lang="en" hidden>Recruiter enrichment</strong>
+            <span data-lang="id">Role viable otomatis dilanjutkan ke recruiter / probable hiring-user search.</span>
+            <span data-lang="en" hidden>Viable roles automatically proceed to recruiter / likely hiring-user search.</span>
+          </div>
+          <div class="feature">
+            <strong data-lang="id">Human-controlled memory</strong>
+            <strong data-lang="en" hidden>Human-controlled memory</strong>
+            <span data-lang="id">Konteks personal baru dibuat setelah lo review dan approve.</span>
+            <span data-lang="en" hidden>Persistent personal context is created only after your review and approval.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div data-lang="id">
+          <div class="eyebrow">Database transparan</div>
+          <h2>Tracker tetap bisa lo audit sendiri.</h2>
+          <p class="body narrow">Daily use tetap lewat chat, tapi spreadsheet-nya terbuka kalau lo pengen lihat raw pipeline, contacts, activity, dan dashboard.</p>
+        </div>
+        <div data-lang="en" hidden>
+          <div class="eyebrow">Transparent database</div>
+          <h2>You can still audit the tracker yourself.</h2>
+          <p class="body narrow">Daily use stays conversational, but the spreadsheet remains available if you want to inspect the raw pipeline, contacts, activity, and dashboard.</p>
+        </div>
+
+        <img class="preview" src="dashboard-preview.png" alt="AI Job Search OS dashboard preview" />
+
+        <div class="small-links">
+          <a href="downloads/JOB_TRACKER.xlsx" download>JOB_TRACKER.xlsx</a>
+          <span>·</span>
+          <a href="downloads/SYSTEM.md">SYSTEM.md</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section security">
+      <div class="wrap">
+        <div data-lang="id">
+          <div class="eyebrow">Privacy & trust</div>
+          <h2>Inspect dulu sebelum percaya.</h2>
+          <p class="body narrow">Project ini sengaja file-based dan auditable. Tidak ada executable, installer, extension, API key, OAuth, plugin wajib, background process, atau telemetry.</p>
+        </div>
+        <div data-lang="en" hidden>
+          <div class="eyebrow">Privacy & trust</div>
+          <h2>Inspect before you trust.</h2>
+          <p class="body narrow">The project is intentionally file-based and auditable. There are no executables, installers, extensions, API keys, OAuth, mandatory plugins, background processes, or telemetry.</p>
+        </div>
+
+        <div class="security-grid">
+          <div class="security-item">
+            <strong>SYSTEM.md</strong>
+            <span data-lang="id">Plain-text instruction file.</span>
+            <span data-lang="en" hidden>Plain-text instruction file.</span>
+          </div>
+          <div class="security-item">
+            <strong>JOB_TRACKER.xlsx</strong>
+            <span data-lang="id">Workbook .xlsx macro-free untuk tracking dan reporting.</span>
+            <span data-lang="en" hidden>Macro-free .xlsx workbook for tracking and reporting.</span>
+          </div>
+          <div class="security-item">
+            <strong data-lang="id">Sanitized CV</strong>
+            <strong data-lang="en" hidden>Sanitized CV</strong>
+            <span data-lang="id">Hapus identifier pribadi yang tidak dibutuhkan AI.</span>
+            <span data-lang="en" hidden>Remove personal identifiers the AI does not need.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="wrap">
+        <div data-lang="id">
+          <h2>AI memperbesar kapasitas lo. Judgment tetap milik lo.</h2>
+          <p class="body">Download, inspect, lalu pakai kalau workflow-nya masuk akal buat lo.</p>
+        </div>
+        <div data-lang="en" hidden>
+          <h2>AI expands your capacity. Judgment stays yours.</h2>
+          <p class="body">Download it, inspect it, and use it if the workflow makes sense for you.</p>
+        </div>
+        <div class="cta-row centered">
+          <a class="primary" href="downloads/AI-Job-Search-OS-Starter-v1.5.zip" download>
+            <span data-lang="id">Download v1.5</span>
+            <span data-lang="en" hidden>Download v1.5</span>
+          </a>
+          <a class="secondary" id="repoLinkBottom" href="#" rel="noreferrer">
+            <span data-lang="id">Lihat source di GitHub</span>
+            <span data-lang="en" hidden>View source on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>AI Job Search OS · MIT License</span>
+      <span>No analytics · No telemetry</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('langToggle');
+      let lang = 'id';
+
+      function applyLanguage() {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-lang]').forEach((el) => {
+          el.hidden = el.getAttribute('data-lang') !== lang;
+        });
+        toggle.textContent = lang === 'id' ? 'EN' : 'ID';
+      }
+
+      toggle.addEventListener('click', function () {
+        lang = lang === 'id' ? 'en' : 'id';
+        applyLanguage();
+      });
+
+      // Infer the repository URL on standard GitHub Pages project sites:
+      // https://OWNER.github.io/REPOSITORY/
+      const host = window.location.hostname;
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      let repoUrl = '#';
+
+      if (host.endsWith('.github.io')) {
+        const owner = host.split('.')[0];
+        const repository = parts[0] || (owner + '.github.io');
+        repoUrl = 'https://github.com/' + owner + '/' + repository;
+      }
+
+      ['repoLink', 'repoLinkBottom'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (repoUrl !== '#') {
+          el.href = repoUrl;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      applyLanguage();
+    })();
+  </script>
+</body>
+</html>

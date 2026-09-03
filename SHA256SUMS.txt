@@ -1,0 +1,3 @@
+edbd389bb577e63695438540229efb1d0896ba999f88435b47901d961f76a039  starter/SYSTEM.md
+1e159b06f37f0feaefcf9fdfca4457c3bc10db6831193ae8bf52b428e27328e8  starter/JOB_TRACKER.xlsx
+d71191ce5b38fcdb029ca3313c29dcbdd9b8758958c7be37a525787af4c80728  release/AI-Job-Search-OS-Starter-v1.5.zip
