@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AI Job Search OS — human-in-the-loop AI workflow for job discovery, tracking, recruiter enrichment, and career context." />
+  <meta name="description" content="AI Job Search OS — human-in-the-loop AI workflow for job discovery, ATS-safe application preparation, tracking, recruiter enrichment, and career context." />
   <title>AI Job Search OS</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -32,15 +32,14 @@
             <p class="lead">AI helps with search, verification, tracking, recruiter discovery, and application prep. You still decide which roles to pursue, drop, and submit.</p>
           </div>
           <div class="cta-row">
-            <a class="primary" href="downloads/AI-Job-Search-OS-Starter-v1.5.zip" download>Download Starter Pack</a>
-            <a class="secondary" href="downloads/SYSTEM.md">Audit SYSTEM.md</a>
+            <a class="primary" href="downloads/SYSTEM.md" download>Download SYSTEM.md</a>
+            <a class="secondary" href="downloads/JOB_TRACKER.xlsx" download>Download JOB_TRACKER.xlsx</a>
           </div>
-          <div class="trust-row"><span>No executable</span><span>No API key</span><span>No plugin</span><span>No telemetry</span></div>
+          <div class="trust-row"><span>Editable DOCX output</span><span>ATS-safe defaults</span><span>No plugin</span><span>No telemetry</span></div>
         </div>
 
         <div class="flow-card">
-          <div class="flow-title" data-lang="id">Human-in-the-loop</div>
-          <div class="flow-title" data-lang="en" hidden>Human-in-the-loop</div>
+          <div class="flow-title">Human-in-the-loop</div>
           <div class="flow">
             <div class="node">AI searches & analyzes</div><div class="arrow">↓</div>
             <div class="node human">YOU review & decide</div><div class="arrow">↓</div>
@@ -56,8 +55,8 @@
         <div data-lang="id"><div class="eyebrow">Mulai dalam 3 langkah</div><h2>Setup-nya sengaja dibuat sesingkat mungkin.</h2></div>
         <div data-lang="en" hidden><div class="eyebrow">Start in 3 steps</div><h2>The setup is intentionally minimal.</h2></div>
         <div class="steps">
-          <article class="card"><div class="step-num">1</div><h3>Download starter</h3><p><code>SYSTEM.md</code> + <code>JOB_TRACKER.xlsx</code>.</p></article>
-          <article class="card"><div class="step-num">2</div><h3 data-lang="id">Upload ke AI Project</h3><h3 data-lang="en" hidden>Upload to an AI Project</h3><p data-lang="id">Tambahkan starter + sanitized CV.</p><p data-lang="en" hidden>Add the starter + your sanitized CV.</p></article>
+          <article class="card"><div class="step-num">1</div><h3 data-lang="id">Download 2 starter files</h3><h3 data-lang="en" hidden>Download 2 starter files</h3><p><code>SYSTEM.md</code> + <code>JOB_TRACKER.xlsx</code>.</p></article>
+          <article class="card"><div class="step-num">2</div><h3 data-lang="id">Upload ke AI Project</h3><h3 data-lang="en" hidden>Upload to an AI Project</h3><p data-lang="id">Tambahkan dua file tadi + sanitized CV.</p><p data-lang="en" hidden>Add both files + your sanitized CV.</p></article>
           <article class="card"><div class="step-num">3</div><h3 data-lang="id">Onboarding & approve</h3><h3 data-lang="en" hidden>Onboard & approve</h3><p data-lang="id">AI interview, lo koreksi, lalu upload <code>USER_CONTEXT.md</code> yang sudah approved.</p><p data-lang="en" hidden>AI interviews you, you correct it, then upload the approved <code>USER_CONTEXT.md</code>.</p></article>
         </div>
       </div>
@@ -65,118 +64,100 @@
 
     <section class="section workflow-section">
       <div class="wrap">
-        <div data-lang="id">
-          <div class="eyebrow">End-to-end workflow</div>
-          <h2>Lo pegang keputusan. AI pegang pekerjaan repetitifnya.</h2>
-          <p class="body narrow">Diagram ini nunjukin siapa melakukan apa dari setup pertama sampai application selesai. Setelah satu cycle selesai, lo bisa balik lagi ke job search dengan konteks dan tracker yang lebih kaya.</p>
-        </div>
-        <div data-lang="en" hidden>
-          <div class="eyebrow">End-to-end workflow</div>
-          <h2>You own the decisions. AI handles the repetitive work.</h2>
-          <p class="body narrow">This shows who does what from first setup through application outcomes. After each cycle, you return to job search with richer context and tracking.</p>
-        </div>
+        <div data-lang="id"><div class="eyebrow">End-to-end workflow</div><h2>Lo pegang keputusan. AI pegang pekerjaan repetitifnya.</h2><p class="body narrow">Flow-nya deterministic: AI jalan sendiri untuk pekerjaan internal yang low-risk, dan berhenti hanya di checkpoint yang memang butuh keputusan manusia.</p></div>
+        <div data-lang="en" hidden><div class="eyebrow">End-to-end workflow</div><h2>You own the decisions. AI handles the repetitive work.</h2><p class="body narrow">The workflow is deterministic: AI proceeds through low-risk internal work and stops only at checkpoints that genuinely require human judgment.</p></div>
 
         <div class="lane-legend"><span class="legend-human">YOU / HUMAN</span><span class="legend-ai">AI</span></div>
-
         <div class="process">
           <article class="process-row">
-            <div class="process-num">01</div>
-            <div class="process-stage"><strong>Setup & onboarding</strong><span data-lang="id">dilakukan sekali</span><span data-lang="en" hidden>one-time setup</span></div>
-            <div class="lane human-lane"><strong data-lang="id">Upload starter + sanitized CV</strong><strong data-lang="en" hidden>Upload starter + sanitized CV</strong><p data-lang="id">Jawab interview, koreksi interpretasi AI, lalu approve kalau sudah akurat.</p><p data-lang="en" hidden>Answer onboarding questions, correct the AI's interpretation, then approve when accurate.</p></div>
+            <div class="process-num">01</div><div class="process-stage"><strong>Setup & onboarding</strong><span>one time</span></div>
+            <div class="lane human-lane"><strong data-lang="id">Upload files + jawab onboarding</strong><strong data-lang="en" hidden>Upload files + answer onboarding</strong><p data-lang="id">Koreksi interpretasi AI dan approve kalau sudah akurat.</p><p data-lang="en" hidden>Correct the AI's interpretation and approve when accurate.</p></div>
             <div class="connector">→</div>
-            <div class="lane ai-lane"><strong data-lang="id">Baca fakta, bukan menebak arah karier</strong><strong data-lang="en" hidden>Read facts without guessing your direction</strong><p data-lang="id">AI membangun proposed profile lalu generate <code>USER_CONTEXT.md</code> setelah approval.</p><p data-lang="en" hidden>AI builds a proposed profile and generates <code>USER_CONTEXT.md</code> only after approval.</p></div>
+            <div class="lane ai-lane"><strong data-lang="id">Bangun konteks yang approved</strong><strong data-lang="en" hidden>Build approved context</strong><p>CV = factual evidence, bukan otomatis arah karier. Setelah approval AI membuat <code>USER_CONTEXT.md</code>.</p></div>
           </article>
 
           <article class="process-row">
-            <div class="process-num">02</div>
-            <div class="process-stage"><strong data-lang="id">Minta job search</strong><strong data-lang="en" hidden>Request job search</strong><span>repeat anytime</span></div>
-            <div class="lane human-lane"><strong data-lang="id">“Cari lowongan buat saya”</strong><strong data-lang="en" hidden>“Find jobs for me”</strong><p data-lang="id">Lo juga bisa paste link yang lo temukan sendiri dari LinkedIn, career page, referral, atau job board.</p><p data-lang="en" hidden>You can also paste links you find from LinkedIn, career pages, referrals, or job boards.</p></div>
+            <div class="process-num">02</div><div class="process-stage"><strong data-lang="id">Job discovery</strong><strong data-lang="en" hidden>Job discovery</strong><span>repeat anytime</span></div>
+            <div class="lane human-lane"><strong data-lang="id">“Cari lowongan buat gue”</strong><strong data-lang="en" hidden>“Find jobs for me”</strong><p data-lang="id">Atau langsung paste link yang lo temukan sendiri.</p><p data-lang="en" hidden>Or simply paste a job link you found yourself.</p></div>
             <div class="connector">→</div>
-            <div class="lane ai-lane"><strong data-lang="id">Search luas + verify</strong><strong data-lang="en" hidden>Search broadly + verify</strong><p data-lang="id">AI cari role, cross-check official career page, tandai stale/closed, cari alternatif live, review fit, dan cek duplicate/history.</p><p data-lang="en" hidden>AI searches, checks official career pages, flags stale/closed roles, finds live alternatives, reviews fit, and checks duplicates/history.</p></div>
+            <div class="lane ai-lane"><strong>Search → verify → review</strong><p data-lang="id">Cross-check official careers page, stale link, duplicate/history, fit, gap, dan evidence.</p><p data-lang="en" hidden>Check official careers pages, stale links, duplicates/history, fit, gaps, and evidence.</p></div>
           </article>
 
           <article class="process-row human-checkpoint">
-            <div class="process-num">03</div>
-            <div class="process-stage"><strong data-lang="id">Human shortlist</strong><strong data-lang="en" hidden>Human shortlist</strong><span>critical checkpoint</span></div>
-            <div class="lane human-lane"><strong data-lang="id">Sortir hasil AI</strong><strong data-lang="en" hidden>Sort the AI results</strong><p data-lang="id">Kasih tahu AI role mana yang mau lo pursue/approve, mana yang HOLD, dan mana yang DROP beserta alasannya.</p><p data-lang="en" hidden>Tell the AI which roles you want to pursue, hold, or drop — including the reason when useful.</p></div>
+            <div class="process-num">03</div><div class="process-stage"><strong>Human shortlist</strong><span>critical checkpoint</span></div>
+            <div class="lane human-lane"><strong data-lang="id">PURSUE / HOLD / DROP</strong><strong data-lang="en" hidden>PURSUE / HOLD / DROP</strong><p data-lang="id">Contoh: “A, C, F gue pursue. Sisanya drop.”</p><p data-lang="en" hidden>Example: “Pursue A, C, F. Drop the rest.”</p></div>
             <div class="connector">→</div>
-            <div class="lane ai-lane"><strong data-lang="id">Catat keputusan dengan scope yang benar</strong><strong data-lang="en" hidden>Record decisions with the correct scope</strong><p data-lang="id">AI update tracker. Drop karena lokasi ≠ blacklist company. Preference durable baru jadi memory kalau memang reusable.</p><p data-lang="en" hidden>AI updates the tracker. Dropping for location does not blacklist the company. Durable preferences become memory only when reusable.</p></div>
+            <div class="lane ai-lane"><strong data-lang="id">Reconcile seluruh batch</strong><strong data-lang="en" hidden>Reconcile the batch</strong><p data-lang="id">Update tracker otomatis. Alasan drop disimpan dengan scope yang benar.</p><p data-lang="en" hidden>Update the tracker automatically. Drop reasons keep the correct scope.</p></div>
           </article>
 
           <article class="process-row">
-            <div class="process-num">04</div>
-            <div class="process-stage"><strong data-lang="id">Prepare application</strong><strong data-lang="en" hidden>Prepare application</strong><span>per approved role</span></div>
-            <div class="lane human-lane"><strong data-lang="id">Pilih satu role yang mau di-apply</strong><strong data-lang="en" hidden>Pick an approved role to apply to</strong><p data-lang="id">Minta AI siapin CV, cover letter, atau application answers. Review hasilnya dan restore contact info pribadi bila perlu.</p><p data-lang="en" hidden>Ask AI to prepare the CV, cover letter, or application answers. Review them and restore personal contact details if needed.</p></div>
-            <div class="connector">↔</div>
-            <div class="lane ai-lane"><strong data-lang="id">Tailor dari verified evidence</strong><strong data-lang="en" hidden>Tailor from verified evidence</strong><p data-lang="id">AI mapping JD → evidence, ubah emphasis/wording tanpa mengarang outcome, metrics, deployment, atau pengalaman.</p><p data-lang="en" hidden>AI maps JD → evidence and changes emphasis/wording without inventing outcomes, metrics, deployments, or experience.</p></div>
+            <div class="process-num">04</div><div class="process-stage"><strong>Application prep</strong><span>per pursued role</span></div>
+            <div class="lane human-lane"><strong data-lang="id">“Siapin application buat JOB-012.”</strong><strong data-lang="en" hidden>“Prepare JOB-012.”</strong><p data-lang="id">Lo nggak perlu milih ATS vs fancy, DOCX vs PDF, atau 1 vs 2 halaman kalau default-nya sudah jelas.</p><p data-lang="en" hidden>You do not need to choose ATS vs fancy, DOCX vs PDF, or 1 vs 2 pages when the default is clear.</p></div>
+            <div class="connector">→</div>
+            <div class="lane ai-lane"><strong data-lang="id">Generate editable ATS application</strong><strong data-lang="en" hidden>Generate an editable ATS application</strong><p data-lang="id"><strong>Default CV = DOCX, single-column, ATS-safe, 1 page untuk early/mid-career.</strong> Cover letter juga DOCX bila dibutuhkan/requested.</p><p data-lang="en" hidden><strong>Default CV = DOCX, single-column, ATS-safe, 1 page for early/mid-career.</strong> Cover letters are also DOCX when needed/requested.</p></div>
           </article>
 
           <article class="process-row human-checkpoint">
-            <div class="process-num">05</div>
-            <div class="process-stage"><strong>Apply</strong><span>human action</span></div>
-            <div class="lane human-lane"><strong data-lang="id">Submit di official ATS</strong><strong data-lang="en" hidden>Submit on the official ATS</strong><p data-lang="id">Lo isi data sensitif sendiri, submit application, lalu bilang ke AI: “gue sudah apply.”</p><p data-lang="en" hidden>You enter sensitive information yourself, submit the application, then tell the AI: “I applied.”</p></div>
+            <div class="process-num">05</div><div class="process-stage"><strong>Apply</strong><span>human action</span></div>
+            <div class="lane human-lane"><strong data-lang="id">Review, edit, submit sendiri</strong><strong data-lang="en" hidden>Review, edit, submit yourself</strong><p data-lang="id">Isi data sensitif di official ATS, lalu bilang ke AI kalau sudah submitted.</p><p data-lang="en" hidden>Enter sensitive information on the official ATS, then tell AI once submitted.</p></div>
             <div class="connector">→</div>
-            <div class="lane ai-lane"><strong data-lang="id">Update pipeline + contacts</strong><strong data-lang="en" hidden>Update pipeline + contacts</strong><p data-lang="id">AI catat applied date/stage/next action dan cari recruiter, job poster, atau probable hiring user dengan confidence yang jelas.</p><p data-lang="en" hidden>AI records the applied date/stage/next action and finds recruiters, job posters, or likely hiring users with explicit confidence.</p></div>
+            <div class="lane ai-lane"><strong data-lang="id">Update pipeline</strong><strong data-lang="en" hidden>Update the pipeline</strong><p data-lang="id">Catat Applied Date, stage, Activity, next action, lalu lakukan contact enrichment.</p><p data-lang="en" hidden>Record Applied Date, stage, Activity, next action, then perform contact enrichment.</p></div>
           </article>
 
           <article class="process-row">
-            <div class="process-num">06</div>
-            <div class="process-stage"><strong>Outreach</strong><span>optional</span></div>
-            <div class="lane human-lane"><strong data-lang="id">Pilih siapa yang mau dihubungi</strong><strong data-lang="en" hidden>Choose who to contact</strong><p data-lang="id">Review draft outreach dan kirim sendiri via LinkedIn/email.</p><p data-lang="en" hidden>Review the outreach draft and send it yourself through LinkedIn/email.</p></div>
+            <div class="process-num">06</div><div class="process-stage"><strong>Recruiter & outreach</strong><span>after pursue/apply</span></div>
+            <div class="lane human-lane"><strong data-lang="id">Lo tetap yang kirim</strong><strong data-lang="en" hidden>You still send it</strong><p data-lang="id">Review recruiter/hiring-user evidence dan draft message.</p><p data-lang="en" hidden>Review recruiter/hiring-user evidence and the message draft.</p></div>
             <div class="connector">↔</div>
-            <div class="lane ai-lane"><strong data-lang="id">Research + draft outreach</strong><strong data-lang="en" hidden>Research + draft outreach</strong><p data-lang="id">AI jelasin kenapa contact relevan, draft message yang role-specific, lalu track outreach setelah lo confirm sudah kirim.</p><p data-lang="en" hidden>AI explains contact relevance, drafts role-specific messages, and tracks outreach after you confirm it was sent.</p></div>
+            <div class="lane ai-lane"><strong data-lang="id">Research + draft</strong><strong data-lang="en" hidden>Research + draft</strong><p data-lang="id">AI tidak mengarang orang, URL, email, atau reporting line.</p><p data-lang="en" hidden>AI does not invent people, URLs, emails, or reporting lines.</p></div>
           </article>
 
           <article class="process-row">
-            <div class="process-num">07</div>
-            <div class="process-stage"><strong data-lang="id">Recruitment process</strong><strong data-lang="en" hidden>Recruitment process</strong><span>screen → interview</span></div>
-            <div class="lane human-lane"><strong data-lang="id">Kasih setiap update ke AI</strong><strong data-lang="en" hidden>Report every meaningful update</strong><p data-lang="id">Recruiter screen, assessment, interview, case, final interview — cukup bilang apa yang berubah.</p><p data-lang="en" hidden>Recruiter screen, assessment, interview, case, final interview — just report what changed.</p></div>
+            <div class="process-num">07</div><div class="process-stage"><strong>Recruitment process</strong><span>screen → interview</span></div>
+            <div class="lane human-lane"><strong data-lang="id">Report perubahan stage</strong><strong data-lang="en" hidden>Report stage changes</strong><p>Recruiter screen, assessment, interview, case, final interview.</p></div>
             <div class="connector">→</div>
-            <div class="lane ai-lane"><strong data-lang="id">Track + prepare next stage</strong><strong data-lang="en" hidden>Track + prepare the next stage</strong><p data-lang="id">AI update Activity/Status dan bantu company research, interview prep, story selection, follow-up, atau assessment prep sesuai kebutuhan.</p><p data-lang="en" hidden>AI updates Activity/Status and helps with company research, interview prep, story selection, follow-ups, or assessment prep.</p></div>
+            <div class="lane ai-lane"><strong data-lang="id">Track + prepare next stage</strong><strong data-lang="en" hidden>Track + prepare the next stage</strong><p data-lang="id">Kalau lo minta interview prep, AI langsung execute — bukan kasih menu layanan lagi.</p><p data-lang="en" hidden>If you ask for interview prep, AI executes it instead of offering another menu.</p></div>
           </article>
 
           <article class="process-row">
-            <div class="process-num">08</div>
-            <div class="process-stage"><strong data-lang="id">Outcome & learning</strong><strong data-lang="en" hidden>Outcome & learning</strong><span>offer / reject / closed</span></div>
-            <div class="lane human-lane"><strong data-lang="id">Laporkan outcome & tetap pegang keputusan</strong><strong data-lang="en" hidden>Report the outcome & keep final control</strong><p data-lang="id">Kalau offer, lo yang decide. Kalau rejected/closed, kasih tahu AI. Kalau preference lo berubah, review dulu sebelum disimpan permanen.</p><p data-lang="en" hidden>If there is an offer, you decide. If rejected/closed, report it. If your preferences change, review them before they become persistent.</p></div>
+            <div class="process-num">08</div><div class="process-stage"><strong>Outcome & learning</strong><span>offer / reject / closed</span></div>
+            <div class="lane human-lane"><strong data-lang="id">Final judgment tetap manusia</strong><strong data-lang="en" hidden>Final judgment stays human</strong><p data-lang="id">Offer, rejection, closed posting, atau perubahan preference.</p><p data-lang="en" hidden>Offers, rejections, closed postings, or preference changes.</p></div>
             <div class="connector">→</div>
-            <div class="lane ai-lane"><strong data-lang="id">Close the loop</strong><strong data-lang="en" hidden>Close the loop</strong><p data-lang="id">AI update tracker/dashboard, analisa bottleneck, dan kalau ada durable learning akan usulkan <code>USER_CONTEXT</code> versi baru — tetap butuh approval lo.</p><p data-lang="en" hidden>AI updates the tracker/dashboard, analyzes bottlenecks, and proposes a new <code>USER_CONTEXT</code> version for durable learning — still requiring your approval.</p></div>
+            <div class="lane ai-lane"><strong data-lang="id">Close loop & learn</strong><strong data-lang="en" hidden>Close the loop & learn</strong><p data-lang="id">Tracker/dashboard diupdate. Durable context baru hanya disimpan setelah approval lo.</p><p data-lang="en" hidden>Tracker/dashboard updates. Durable context changes still require your approval.</p></div>
           </article>
         </div>
-
-        <div class="loop-back" data-lang="id"><strong>↻ Ulangi:</strong> minta job search lagi → sortir → prepare → apply → track. Sistem makin berguna karena konteks dan history makin kaya, bukan karena AI mengambil alih keputusan.</div>
-        <div class="loop-back" data-lang="en" hidden><strong>↻ Repeat:</strong> search again → shortlist → prepare → apply → track. The system becomes more useful as context and history grow, not because AI takes over decisions.</div>
+        <div class="loop-back" data-lang="id"><strong>↻ Repeat:</strong> search → shortlist → prepare → apply → track. AI jadi makin berguna karena konteks dan history makin kaya, bukan karena mengambil alih judgment.</div>
+        <div class="loop-back" data-lang="en" hidden><strong>↻ Repeat:</strong> search → shortlist → prepare → apply → track. AI becomes more useful because context and history get richer, not because it takes over judgment.</div>
       </div>
     </section>
 
     <section class="section muted">
       <div class="wrap two-col">
         <div>
-          <div data-lang="id"><div class="eyebrow">Daily use</div><h2>Cukup ngobrol natural.</h2><p class="body">Lo nggak perlu ngerti file routing atau spreadsheet.</p></div>
-          <div data-lang="en" hidden><div class="eyebrow">Daily use</div><h2>Just talk naturally.</h2><p class="body">You do not need to understand file routing or spreadsheets.</p></div>
+          <div data-lang="id"><div class="eyebrow">Daily use</div><h2>Cukup ngobrol natural.</h2><p class="body">AI harus paham workflow, bukan terus-terusan nanya lo mau langkah A atau B.</p></div>
+          <div data-lang="en" hidden><div class="eyebrow">Daily use</div><h2>Just talk naturally.</h2><p class="body">The AI should understand the workflow instead of repeatedly asking you to choose the next obvious step.</p></div>
           <div class="commands">
             <code data-lang="id">Cari 20 lowongan yang cocok buat gue.</code><code data-lang="en" hidden>Find 20 jobs that fit me.</code>
-            <code data-lang="id">Yang A, C, dan F gue pursue. Sisanya drop.</code><code data-lang="en" hidden>I want to pursue A, C, and F. Drop the rest.</code>
-            <code data-lang="id">Siapin CV + cover letter buat JOB-012.</code><code data-lang="en" hidden>Prepare my CV + cover letter for JOB-012.</code>
-            <code data-lang="id">Gue sudah apply JOB-012.</code><code data-lang="en" hidden>I applied to JOB-012.</code>
-            <code data-lang="id">Tampilkan dashboard tracker gue.</code><code data-lang="en" hidden>Show my job-search dashboard.</code>
+            <code data-lang="id">A, C, F gue pursue. Sisanya drop.</code><code data-lang="en" hidden>Pursue A, C, F. Drop the rest.</code>
+            <code data-lang="id">Siapin application buat JOB-012.</code><code data-lang="en" hidden>Prepare my application for JOB-012.</code>
+            <code data-lang="id">Gue sudah submit JOB-012.</code><code data-lang="en" hidden>I submitted JOB-012.</code>
+            <code data-lang="id">Prepare gue buat recruiter screen.</code><code data-lang="en" hidden>Prepare me for the recruiter screen.</code>
           </div>
         </div>
         <div class="feature-list">
-          <div class="feature"><strong>AI + user discovery</strong><span data-lang="id">AI bisa cari sendiri atau menerima link yang lo temukan.</span><span data-lang="en" hidden>AI can search on its own or accept links you find.</span></div>
-          <div class="feature"><strong>Freshness check</strong><span data-lang="id">Stale result dicek ke official careers page.</span><span data-lang="en" hidden>Stale results are checked against official careers pages.</span></div>
-          <div class="feature"><strong>Application support</strong><span data-lang="id">CV, cover letter, answers, interview prep — tetap berbasis verified evidence.</span><span data-lang="en" hidden>CVs, cover letters, answers, interview prep — grounded in verified evidence.</span></div>
-          <div class="feature"><strong>Human-controlled memory</strong><span data-lang="id">Persistent context berubah hanya setelah lo approve.</span><span data-lang="en" hidden>Persistent context changes only after your approval.</span></div>
+          <div class="feature"><strong data-lang="id">Ask only blocking questions</strong><strong data-lang="en" hidden>Ask only blocking questions</strong><span data-lang="id">Kalau ada safe default, AI pakai default dan lanjut.</span><span data-lang="en" hidden>If a safe default exists, AI uses it and proceeds.</span></div>
+          <div class="feature"><strong>ATS document contract</strong><span data-lang="id">CV default: editable DOCX, single-column, no icon/photo/sidebar/skill bar, 1 page bila profil memungkinkan.</span><span data-lang="en" hidden>CV default: editable DOCX, single-column, no icons/photos/sidebars/skill bars, 1 page when the profile allows it.</span></div>
+          <div class="feature"><strong>Evidence-first tailoring</strong><span data-lang="id">Keyword JD dipakai hanya kalau didukung pengalaman verified. Page limit tidak pernah jadi alasan buat inflate claim.</span><span data-lang="en" hidden>JD terms are used only when supported by verified experience. Page limits never justify inflated claims.</span></div>
+          <div class="feature"><strong>Efficient enrichment</strong><span data-lang="id">Deep recruiter search dilakukan setelah role di-pursue/apply, bukan untuk semua search noise.</span><span data-lang="en" hidden>Deep recruiter research happens after pursue/apply, not for every search result.</span></div>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap">
-        <div data-lang="id"><div class="eyebrow">Database transparan</div><h2>Tracker tetap bisa lo audit sendiri.</h2><p class="body narrow">Daily use lewat chat, tetapi spreadsheet tetap tersedia kalau lo mau lihat raw pipeline, contacts, activity, dan dashboard.</p></div>
+        <div data-lang="id"><div class="eyebrow">Database transparan</div><h2>Tracker tetap bisa lo audit sendiri.</h2><p class="body narrow">Daily use lewat chat, tapi spreadsheet tetap tersedia kalau lo mau lihat raw pipeline, contacts, activity, dan dashboard.</p></div>
         <div data-lang="en" hidden><div class="eyebrow">Transparent database</div><h2>You can still audit the tracker yourself.</h2><p class="body narrow">Daily use happens through chat, while the spreadsheet remains available for inspecting the raw pipeline, contacts, activity, and dashboard.</p></div>
         <img class="preview" src="dashboard-preview.png" alt="AI Job Search OS dashboard preview" />
-        <div class="small-links"><a href="downloads/JOB_TRACKER.xlsx" download>JOB_TRACKER.xlsx</a><span>·</span><a href="downloads/SYSTEM.md">SYSTEM.md</a></div>
+        <div class="small-links"><a href="downloads/JOB_TRACKER.xlsx" download>JOB_TRACKER.xlsx</a><span>·</span><a href="downloads/SYSTEM.md" download>SYSTEM.md</a></div>
       </div>
     </section>
 
@@ -194,9 +175,12 @@
 
     <section class="section final-cta">
       <div class="wrap">
-        <div data-lang="id"><h2>AI memperbesar kapasitas lo. Judgment tetap milik lo.</h2><p class="body">Download, inspect, lalu pakai kalau workflow-nya masuk akal buat lo.</p></div>
-        <div data-lang="en" hidden><h2>AI expands your capacity. Judgment stays yours.</h2><p class="body">Download it, inspect it, and use it if the workflow makes sense for you.</p></div>
-        <div class="cta-row centered"><a class="primary" href="downloads/AI-Job-Search-OS-Starter-v1.5.zip" download>Download v1.5</a><a class="secondary" id="repoLinkBottom" href="#" rel="noreferrer">View source on GitHub</a></div>
+        <div data-lang="id"><h2>AI memperbesar kapasitas lo. Judgment tetap milik lo.</h2><p class="body">Download dua starter file, inspect, lalu upload bersama sanitized CV.</p></div>
+        <div data-lang="en" hidden><h2>AI expands your capacity. Judgment stays yours.</h2><p class="body">Download the two starter files, inspect them, then upload them with a sanitized CV.</p></div>
+        <div class="cta-row centered">
+          <a class="primary" href="downloads/SYSTEM.md" download>Download SYSTEM.md</a>
+          <a class="secondary" href="downloads/JOB_TRACKER.xlsx" download>Download JOB_TRACKER.xlsx</a>
+        </div>
       </div>
     </section>
   </main>
@@ -221,10 +205,8 @@
         const repository = parts[0] || (owner + '.github.io');
         repoUrl = 'https://github.com/' + owner + '/' + repository;
       }
-      ['repoLink', 'repoLinkBottom'].forEach((id) => {
-        const el = document.getElementById(id);
-        if (repoUrl !== '#') el.href = repoUrl; else el.style.display = 'none';
-      });
+      const repo = document.getElementById('repoLink');
+      if (repoUrl !== '#') repo.href = repoUrl; else repo.style.display = 'none';
       applyLanguage();
     })();
   </script>
