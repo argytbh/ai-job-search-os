@@ -1,8 +1,6 @@
 # AI Job Search OS — Panduan Pengguna
 
-Kamu tidak perlu paham RAG, database, coding, atau automation.
-
-Sistem ini dirancang supaya kamu cukup **ngobrol dengan AI seperti biasa**.
+Kamu tidak perlu paham RAG, database, coding, atau automation. Sistem ini dirancang supaya kamu cukup **ngobrol dengan AI seperti biasa**.
 
 ## Yang perlu kamu upload ke Project
 
@@ -10,143 +8,167 @@ Sistem ini dirancang supaya kamu cukup **ngobrol dengan AI seperti biasa**.
 2. `JOB_TRACKER.xlsx`
 3. salinan CV terbaru yang sudah dibersihkan dari data pribadi yang tidak perlu
 
-Jangan upload CV master kalau masih berisi data sensitif yang tidak dibutuhkan AI.
+Hapus data yang tidak dibutuhkan AI, misalnya nomor telepon, email pribadi, alamat lengkap, NIK/paspor/NPWP, DOB, dan tanda tangan. Jangan pernah masukkan password, OTP, data rekening, atau kredensial portal lamaran.
 
-Hapus dulu, misalnya:
-- nomor telepon;
-- email pribadi;
-- alamat lengkap;
-- NIK / paspor / NPWP;
-- tanda tangan.
-
-Jangan pernah masukkan password, OTP, data rekening, atau kredensial portal lamaran.
-
-## Cara mulai
+## 1. Setup sekali
 
 Setelah semua file di-upload, mulai chat seperti biasa.
 
-Contoh:
+AI akan membaca CV sebagai **sumber fakta**, lalu melakukan onboarding untuk memahami arah karier, preference, constraint, dan evidence yang benar-benar kamu miliki. Isi CV tidak otomatis dianggap sebagai arah karier yang kamu inginkan.
 
-> Halo
+Setelah AI merangkum pemahamannya:
+1. koreksi kalau ada yang salah;
+2. approve kalau sudah akurat;
+3. AI membuat `USER_CONTEXT.md`;
+4. upload file tersebut kembali ke Project Sources.
 
-atau:
+Project sekarang masuk **ACTIVE MODE**.
 
-> Mulai job search saya.
-
-AI akan melihat bahwa profilmu belum tersimpan dan mulai onboarding.
-
-AI akan:
-1. membaca CV sebagai sumber fakta;
-2. bertanya tentang arah karier yang kamu inginkan;
-3. menggali role/perusahaan/industri yang kamu suka atau hindari;
-4. memahami kekuatan, gap, dan pengalaman yang bisa jadi evidence;
-5. merangkum pemahamannya;
-6. meminta kamu mengoreksi kalau ada yang salah.
-
-Setelah kamu bilang pemahamannya sudah benar, AI akan membuat file:
-
-`USER_CONTEXT.md`
-
-Download file tersebut lalu upload kembali ke Project Sources.
-
-**Selesai. Project kamu sekarang sudah terinisialisasi.**
-
-## Setelah itu cukup ngobrol
-
-### Minta AI cari kerja
-> Cari lowongan untuk saya.
-
-### Kamu menemukan link sendiri
-Paste saja:
-
-> Cek ini: [link]
-
-AI seharusnya otomatis:
-- mengecek apakah posting masih aktif;
-- mencari versi resmi di career page perusahaan;
-- review fit;
-- masukin role yang layak ke tracker;
-- mencari recruiter dan probable hiring user.
-
-Kalau link LinkedIn/job board ternyata outdated, AI akan mencoba mencari role yang sama atau alternatif yang masih live di career page resmi perusahaan.
-
-Tetap cross-check lowongan penting sebelum apply karena hasil AI, LinkedIn, dan job board tidak selalu up to date.
-
-### Setelah apply
-Submit sendiri di situs resmi perusahaan lalu bilang:
-
-> Saya sudah apply hari ini.
-
-### Kalau drop
-> Drop yang ini. Terlalu sales.
-
-atau:
-
-> Drop yang ini. Company-nya bagus, tapi lokasi kantor ini terlalu jauh.
-
-AI harus menjaga alasan tersebut dengan scope yang benar dan tidak asal mem-blacklist seluruh perusahaan.
-
-### Kalau ada update
-> Saya dapat recruiter screening.
-
-> Saya dapat interview.
-
-> Saya ditolak.
-
-> Saya dapat offer.
-
-## Cara lihat database kamu
-
-Kamu tidak perlu buka Excel setiap hari.
+## 2. Minta AI cari kerja
 
 Cukup bilang:
 
-> **Tampilkan dashboard tracker saya.**
+> Cari 20 lowongan yang cocok buat gue.
 
-Atau:
+AI seharusnya langsung melakukan pekerjaan internal yang memang sudah ditentukan workflow: search, verification, official-career-page check, duplicate/history check, fit review, dan gap/evidence analysis.
 
-> Tampilkan lamaran aktif saya.
+Kalau kamu menemukan link sendiri, cukup paste:
 
-> Tampilkan lowongan yang belum saya review.
+> Cek ini: [link]
 
-> Tampilkan recruiter yang sudah tersimpan.
+AI harus memproses link tersebut tanpa meminta kamu mengulang perintah untuk setiap tahap.
 
-> Tampilkan riwayat JOB-012.
+## 3. Kamu yang sortir
 
-> Analisis pipeline job search saya.
-
-AI akan menampilkan data tracker langsung di chat.
-
-`JOB_TRACKER.xlsx` tetap ada sebagai database transparan di belakang layar kalau kamu ingin mengeceknya sendiri.
-
-## Siapa yang mengambil keputusan?
-
-**Kamu.**
-
-AI boleh memberi verdict APPLY / CONDITIONAL / DROP, tetapi keputusan final tetap milikmu.
-
-- `Dropped` = kamu yang memutuskan tidak lanjut.
-- `Rejected` = perusahaan yang menolak.
-- `Closed` = lowongan/proses sudah tidak tersedia.
-
-## Kalau preference kamu berubah
+Setelah AI memberi hasil, **kamu tetap decision-maker**.
 
 Contoh:
 
-> Mulai sekarang jangan rekomendasikan role yang punya sales quota.
+> A, C, dan F gue pursue. Sisanya drop.
 
-AI akan memakai preference baru tersebut langsung.
+AI harus merekonsiliasi batch tersebut dan memperbarui tracker sejauh platform memungkinkan. Kalau alasan drop spesifik, scope-nya juga harus spesifik. Drop karena lokasi bukan berarti blacklist perusahaan.
 
-Kalau perubahan durable sudah cukup penting, AI akan meminta approval lalu membuat versi baru `USER_CONTEXT.md`.
+`HOLD` tetap non-terminal. Kalau tracker belum punya status Hold khusus, AI menyimpannya sebagai `Review` dengan note/next action HOLD — bukan sebagai Dropped.
 
-Kamu cukup replace file lama di Project Sources.
+## 4. Siapkan application untuk role yang kamu pursue
 
-## Lima kalimat yang cukup
+Contoh:
 
-1. **Cari lowongan untuk saya.**
-2. **Review ini: [link].**
-3. **Saya apply / drop yang ini.**
-4. **Cari recruiter atau hiring manager-nya.**
-5. **Tampilkan dashboard tracker saya.**
+> Siapin application buat JOB-012.
 
-Itu saja. File di belakang layar adalah tugas sistem, bukan tugas kamu.
+Kamu tidak perlu menjawab pertanyaan seperti “mau ATS-friendly?”, “PDF atau DOCX?”, atau “1 atau 2 halaman?” kalau default-nya sudah jelas.
+
+Default CV:
+- **editable DOCX**;
+- ATS-safe;
+- single-column;
+- section heading konvensional;
+- tanpa photo, icon, sidebar, skill bar, infographic, floating text box, atau layout multi-column;
+- **1 halaman untuk early/mid-career** bila evidence relevan bisa direpresentasikan dengan jujur;
+- 2 halaman hanya kalau experience/seniority memang membutuhkannya;
+- terminology dari JD hanya digunakan bila didukung verified evidence;
+- tidak boleh mengarang metrics, outcome, deployment, tools, seniority, atau pengalaman demi terlihat lebih cocok.
+
+PDF bukan default. PDF hanya dibuat kalau kamu meminta atau employer memang mewajibkan.
+
+Cover letter, bila required/requested/appropriate untuk application pack, juga default editable DOCX dan maksimal 1 halaman.
+
+Kalau platform tidak bisa membuat DOCX, AI harus menyatakan limitation itu sekali dan memberi fallback editable — bukan diam-diam menggantinya dengan PDF.
+
+## 5. Kamu yang submit
+
+Review/edit dokumen lalu submit sendiri di official ATS perusahaan. Isi data sensitif langsung di sana.
+
+Setelah submit, bilang:
+
+> Gue sudah submit JOB-012.
+
+Baru setelah konfirmasi itu AI boleh menandai role sebagai `Applied`, mencatat applied date/activity/next action, lalu melakukan recruiter/hiring-user enrichment bila belum dilakukan.
+
+## 6. Recruiter & outreach
+
+Deep recruiter research default-nya dilakukan **setelah kamu memilih untuk pursue/apply**, bukan untuk semua search noise.
+
+AI boleh mencari:
+1. confirmed job poster/recruiter;
+2. recruiter/TA yang relevan;
+3. confirmed hiring manager jika ada bukti publik;
+4. likely hiring user / functional manager;
+5. role-adjacent practitioner.
+
+AI tidak boleh mengarang orang, LinkedIn URL, email, atau reporting line.
+
+AI boleh menyiapkan draft outreach, tetapi **kamu yang review dan mengirimnya**.
+
+## 7. Recruitment process
+
+Kalau ada update, cukup bilang apa yang berubah:
+
+> Gue dapat recruiter screening.
+
+> Gue dapat assessment.
+
+> Gue dipanggil interview.
+
+> Gue ditolak.
+
+> Gue dapat offer.
+
+AI memperbarui stage/history dan, kalau kamu meminta preparation untuk stage tertentu, AI harus langsung mengeksekusinya — bukan kembali menawarkan menu layanan.
+
+## 8. Outcome jadi feedback
+
+- `Dropped` = kamu memutuskan tidak lanjut.
+- `Rejected` = perusahaan/proses menolak kamu.
+- `Closed` = opportunity tidak lagi tersedia.
+- `Offer` = keputusan menerima/menolak tetap milik kamu.
+
+Kalau ada durable preference baru, AI boleh mengusulkan update `USER_CONTEXT.md`, tetapi perubahan canonical tetap membutuhkan approval kamu.
+
+## AI tidak perlu minta izin di setiap micro-step
+
+Human-in-the-loop **bukan** human-in-every-micro-step.
+
+AI boleh otomatis menjalankan pekerjaan internal yang low-risk/reversible. AI hanya perlu bertanya bila jawabannya benar-benar blocking untuk factual correctness, eligibility, privacy, consequential decision, atau external action.
+
+Jadi AI tidak seharusnya terus bertanya:
+
+```text
+Mau saya bikin ATS-friendly?
+Mau PDF atau DOCX?
+Mau saya update tracker?
+Mau saya cari recruiternya juga?
+Mau saya lanjut?
+```
+
+Kalau safe default sudah ada di `SYSTEM.md`, AI harus pakai default tersebut dan lanjut.
+
+## Cara lihat database kamu
+
+Kamu tidak perlu buka Excel setiap hari. Cukup bilang:
+
+> Tampilkan dashboard tracker gue.
+
+Atau:
+
+> Tampilkan lamaran aktif gue.
+
+> Tampilkan lowongan yang belum gue review.
+
+> Analisis pipeline job search gue.
+
+`JOB_TRACKER.xlsx` tetap menjadi database transparan yang bisa kamu audit sendiri.
+
+## Contoh perintah yang cukup
+
+```text
+Cari 20 lowongan yang cocok buat gue.
+Review ini: [link].
+A, C, dan F gue pursue. Sisanya drop.
+Siapin application buat JOB-012.
+Gue sudah submit JOB-012.
+Prepare gue buat recruiter screen.
+Tampilkan dashboard tracker gue.
+```
+
+File di belakang layar adalah tugas sistem. **Judgment dan external action tetap tugas kamu.**
