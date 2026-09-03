@@ -15,7 +15,7 @@ AI Job Search OS turns an AI Project/workspace into a structured job-search part
 - maintain a structured job tracker;
 - enrich recruiter and likely hiring-user contacts;
 - distinguish **Dropped** decisions from employer **Rejections**;
-- help with CV tailoring, applications, outreach, interview preparation, and pipeline analysis;
+- help with CV tailoring, cover letters, application answers, outreach, interview preparation, and pipeline analysis;
 - preserve durable career context only after user review and approval.
 
 The user always owns the final **APPLY / DROP / HOLD** decision.
@@ -35,13 +35,74 @@ The user always owns the final **APPLY / DROP / HOLD** decision.
 
 Your project is now initialized.
 
+## End-to-end workflow
+
+The core idea is simple: **AI handles repetitive work and first-pass analysis; the human remains the decision-maker and the person who submits applications.**
+
+```mermaid
+flowchart TD
+    A[USER: Upload SYSTEM.md + JOB_TRACKER.xlsx + sanitized CV] --> B[AI: Read CV + onboarding interview]
+    B --> C[USER: Correct proposed profile]
+    C --> D{Accurate?}
+    D -- No --> B
+    D -- Yes --> E[AI: Generate USER_CONTEXT.md]
+    E --> F[USER: Upload USER_CONTEXT.md to the Project]
+
+    F --> G[USER: Ask AI to find jobs / paste your own link]
+    G --> H[AI: Search + verify official careers page + review fit + duplicate check]
+    H --> I[USER: Sort the results]
+    I --> J[USER: Choose PURSUE / HOLD / DROP + useful reasons]
+    J --> K[AI: Update tracker + reusable decision memory]
+
+    K --> L[USER: Pick an approved role to apply to]
+    L --> M[AI: Tailor CV + cover letter + application answers from verified evidence]
+    M --> N[USER: Review documents + restore personal contact details if needed]
+    N --> O[USER: Submit on the official ATS]
+    O --> P[USER: Tell AI the application was submitted]
+
+    P --> Q[AI: Update status + applied date + next action]
+    Q --> R[AI: Find recruiter / job poster / likely hiring user]
+    R --> S[USER: Review and send outreach if desired]
+
+    S --> T[USER: Report recruiter screen / assessment / interview]
+    T --> U[AI: Update pipeline + prepare for the next stage]
+    U --> V{Outcome}
+    V -- Offer --> W[USER: Final decision]
+    V -- Rejected / Closed --> X[AI: Update tracker & dashboard]
+    W --> X
+    X --> Y[AI: Analyze bottlenecks + propose durable learning when useful]
+    Y --> Z{USER approves context update?}
+    Z -- Yes --> AA[AI: Generate new USER_CONTEXT version]
+    Z -- No --> AB[Keep existing context]
+    AA --> G
+    AB --> G
+```
+
+### In plain language
+
+**1. Set up once.** Upload the starter files and a sanitized CV. The AI interviews you but must not assume your CV automatically defines what you want next.
+
+**2. Approve the context.** Once the AI's interpretation is accurate, it generates `USER_CONTEXT.md`. Add that file back to the Project.
+
+**3. Ask the AI to search.** The AI performs broad discovery, verification, fit review, and can also process links you found yourself.
+
+**4. You shortlist.** Tell the AI which roles to pursue, hold, or drop. A location-based drop should not become a company-wide blacklist.
+
+**5. Prepare each approved application.** Ask the AI for a role-specific CV, cover letter, and application answers grounded in verified evidence. You still review the output.
+
+**6. You submit.** Enter sensitive information yourself on the employer's official ATS. After submitting, tell the AI so it can update the tracker.
+
+**7. AI helps with follow-through.** It can find recruiters/hiring users, support outreach, assessments, and interviews, and keep the pipeline current based on your updates.
+
+**8. Outcomes become feedback.** Offers, rejections, closed postings, and preference changes are reflected in tracking/context with the appropriate human approval. Then the loop returns to job search.
+
 ## Five commands are enough
 
 ```text
 Find jobs for me.
 Review this job: [link].
-I applied / dropped this job.
-Find the recruiter or hiring manager.
+I want to pursue A, C, and F. Drop the rest.
+Prepare my CV + cover letter for JOB-012.
 Show my job-search dashboard.
 ```
 
