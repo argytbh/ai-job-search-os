@@ -1,0 +1,19 @@
+{
+  "name": "AI Job Search OS",
+  "slug": "ai-job-search-os",
+  "version": "1.6.0-dev",
+  "schema_version": 1,
+  "runtime_model": "skill-first",
+  "canonical_skill": "skill/ai-job-search-os/SKILL.md",
+  "portable_system": "portable/SYSTEM.md",
+  "portable_tracker": "portable/JOB_TRACKER.xlsx",
+  "behavior_tests": "tests/BEHAVIOR_TESTS.md",
+  "runtime_repository_dependency": false,
+  "human_in_the_loop": true,
+  "default_cv_output": {
+    "format": "docx",
+    "ats_safe": true,
+    "layout": "single-column",
+    "default_pages": 1
+  }
+}
