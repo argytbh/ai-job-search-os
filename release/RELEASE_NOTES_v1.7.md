@@ -19,7 +19,7 @@ The setup chat presents the complete matching route in clearly labeled sections.
 
 ## Data boundary
 
-The hosted page contains the interface only. It does not upload the tracker, create an account, or use a cloud database. Browser permission applies only to the folder the user chooses. The tracker remains on the user's computer.
+The hosted page contains the interface only. It does not upload the tracker, create an account, or use a cloud database. In local mode, browser permission applies only to the folder the user chooses and the tracker remains on that computer. If the user explicitly chooses Google Sheets, tracker data lives in the user's own Google account and the dashboard routes them to that verified Sheet.
 
 ## Compatibility
 

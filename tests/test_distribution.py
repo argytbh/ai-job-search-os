@@ -133,6 +133,12 @@ class DistributionTests(unittest.TestCase):
         for link in links:
             self.assertIn("docs/" + link, self.artifacts)
 
+    def test_pages_has_one_public_setup_entrypoint(self):
+        page = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        self.assertEqual(page.count('class="primary" href="downloads/MULAI_DI_SINI.md"'), 2)
+        self.assertNotIn('href="downloads/AI-Job-Search-Personal-Workspace-v1.7.0.zip"', page)
+        self.assertIn("Preview dashboard lokal", page)
+
     def test_dashboard_is_local_only_and_packaged(self):
         page = (ROOT / "docs/dashboard/index.html").read_text(encoding="utf-8")
         script = (ROOT / "docs/dashboard/dashboard.js").read_text(encoding="utf-8")
