@@ -2,6 +2,10 @@
 
 All notable public changes to AI Job Search OS will be documented here.
 
+## [Unreleased]
+
+- Added cookie-free aggregate visit analytics to the public landing page only. The local dashboard and Personal Workspace remain outside analytics.
+
 ## [1.7.0] - 2026-09-04
 
 - Added a no-account local dashboard that reads and writes the selected Personal Workspace through browser-granted folder access.

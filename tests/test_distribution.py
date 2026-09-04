@@ -158,6 +158,21 @@ class DistributionTests(unittest.TestCase):
         ):
             self.assertIn(expected, page)
 
+    def test_visit_analytics_is_disclosed_and_limited_to_landing_page(self):
+        landing = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        dashboard = (ROOT / "docs/dashboard/index.html").read_text(encoding="utf-8")
+        dashboard_script = (ROOT / "docs/dashboard/dashboard.js").read_text(encoding="utf-8")
+        beacon = "https://static.cloudflareinsights.com/beacon.min.js"
+        token = "426ed44ac3744f98b8e2690b17e2d9b2"
+        self.assertEqual(landing.count(beacon), 1)
+        self.assertEqual(landing.count(token), 1)
+        self.assertIn("Landing page ini menghitung kunjungan agregat tanpa cookie", landing)
+        self.assertIn("Dashboard lokal dan data pencarian kerja lo tidak dikirim ke analytics", landing)
+        self.assertNotIn(beacon, dashboard)
+        self.assertNotIn(beacon, dashboard_script)
+        self.assertNotIn(token, dashboard)
+        self.assertNotIn(token, dashboard_script)
+
     def test_dashboard_is_local_only_and_packaged(self):
         page = (ROOT / "docs/dashboard/index.html").read_text(encoding="utf-8")
         script = (ROOT / "docs/dashboard/dashboard.js").read_text(encoding="utf-8")
