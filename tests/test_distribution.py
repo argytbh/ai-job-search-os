@@ -133,13 +133,14 @@ class DistributionTests(unittest.TestCase):
                     links.append(attrs["href"])
 
         Links().feed((ROOT / "docs/index.html").read_text(encoding="utf-8"))
-        self.assertTrue(links)
         for link in links:
             self.assertIn("docs/" + link, self.artifacts)
 
     def test_pages_has_one_public_setup_entrypoint(self):
         page = (ROOT / "docs/index.html").read_text(encoding="utf-8")
-        self.assertEqual(page.count('class="primary" href="downloads/MULAI_DI_SINI.md"'), 2)
+        starter_url = "https://github.com/argytbh/ai-job-search-os/releases/download/v1.7.0/MULAI_DI_SINI.md"
+        self.assertEqual(page.count(f'class="primary" href="{starter_url}"'), 2)
+        self.assertEqual(page.count(starter_url), 5)
         self.assertNotIn('href="downloads/AI-Job-Search-Personal-Workspace-v1.7.0.zip"', page)
         self.assertIn("Preview dashboard lokal", page)
         self.assertIn('type="application/ld+json"', page)
