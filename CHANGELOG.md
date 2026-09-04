@@ -13,6 +13,7 @@ All notable public changes to AI Job Search OS will be documented here.
 - Bounded onboarding to focused question batches and strengthened application delivery with per-job persistence, read-back/visual QA, and tracker activity without premature Applied status.
 - Added an optional verified Google Sheets tracker mode while preserving local JSON + HTML dashboard as the no-Google default; each workspace records exactly one canonical tracker to prevent conflicting dual writes.
 - Changed the Migration Coach to present the complete matching setup route in clear sections and stages, pausing only for a required choice, external authorization, or an unverified interface.
+- Added a concise bilingual HowTo section and structured HowTo metadata to GitHub Pages, covering the full path from the starter file through local-agent onboarding.
 
 ## [1.6.0] - 2026-09-04
 

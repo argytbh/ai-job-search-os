@@ -142,6 +142,20 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual(page.count('class="primary" href="downloads/MULAI_DI_SINI.md"'), 2)
         self.assertNotIn('href="downloads/AI-Job-Search-Personal-Workspace-v1.7.0.zip"', page)
         self.assertIn("Preview dashboard lokal", page)
+        self.assertIn('type="application/ld+json"', page)
+        self.assertIn('id="cara-pakai"', page)
+        howto = json.loads(page.split('<script type="application/ld+json">', 1)[1].split("</script>", 1)[0])
+        self.assertEqual(howto["@type"], "HowTo")
+        self.assertEqual(len(howto["step"]), 6)
+        for expected in (
+            "Ini satu-satunya file yang perlu lo cari sendiri",
+            "Bantu saya mulai.",
+            "Pilih tempat tracker",
+            "Buka Personal Workspace",
+            "Lo tidak perlu clone repository",
+            "Masukkan CV dan mulai",
+        ):
+            self.assertIn(expected, page)
 
     def test_dashboard_is_local_only_and_packaged(self):
         page = (ROOT / "docs/dashboard/index.html").read_text(encoding="utf-8")
