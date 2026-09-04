@@ -14,7 +14,7 @@ Gunakan akun AI yang kamu buat sendiri dan hanya kamu yang bisa akses. Jangan gu
 
 ## 1. Setup sekali
 
-Upload `MULAI_DI_SINI.md` ke AI chat dan bilang **Bantu saya mulai**. AI menjelaskan proses lengkap dengan section dan tahapan yang jelas: persiapan komputer, konfirmasi akun pribadi, pilihan tracker, instalasi aplikasi resmi, download Personal Workspace, membuka folder, dan verifikasi. AI berhenti hanya ketika kamu perlu memilih, melakukan login sendiri, atau memastikan hasil yang terlihat di layar.
+Download `MULAI_DI_SINI.md` dari halaman resmi, upload ke AI chat, lalu bilang **Bantu saya mulai**. Itu satu-satunya file yang perlu kamu cari sendiri. AI kemudian menjelaskan proses lengkap dengan section dan tahapan yang jelas: persiapan komputer, konfirmasi akun pribadi, pilihan tracker, link instalasi aplikasi resmi, link Personal Workspace yang tepat, ekstrak ZIP, membuka folder, handoff, dan verifikasi. AI berhenti hanya ketika kamu perlu memilih, melakukan login sendiri, atau memastikan hasil yang terlihat di layar.
 
 Kamu tidak perlu akun GitHub, clone repository, branch, atau command line. Pilih agent yang dapat membuka folder di komputermu: Codex untuk akun ChatGPT, Antigravity IDE untuk akun Google/Gemini, Cursor, atau Claude Code untuk akun Claude. Work, Cowork, ChatGPT Projects, Add files, dan Project Sources bukan koneksi database lokal. Setelah folder terbuka di agent lokal, agent harus membuat dan membaca kembali `data/SETUP_STATUS.json` sebelum mengatakan setup berhasil.
 

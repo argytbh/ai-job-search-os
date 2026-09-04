@@ -74,6 +74,9 @@ class DistributionTests(unittest.TestCase):
         guide = self.artifacts["starter/MULAI_DI_SINI.md"].decode()
         for expected in (
             "Give a complete, detailed setup guide in one response",
+            "The uploaded file is the starting point",
+            "Personal Workspace ZIP",
+            "without asking the user to browse GitHub or find a release",
             "Do not scatter these questions across many messages",
             "provide its complete steps together under clear sections",
             "hanya kamu yang bisa mengaksesnya",
@@ -88,6 +91,7 @@ class DistributionTests(unittest.TestCase):
             "kamu tidak perlu akun GitHub",
             "data/SETUP_STATUS.json",
             "data/tracker.config.json",
+            "do not send them back to this web chat",
         ):
             self.assertIn(expected, guide)
         self.assertNotIn("satu langkah per pesan", guide.lower())

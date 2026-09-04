@@ -25,9 +25,9 @@ The user always owns **PURSUE / HOLD / DROP, submission, outreach, and offer dec
 **Next release: v1.7.0 (in development).** It adds an interactive local dashboard. The current published stable release remains v1.6.0; see [validation](VALIDATION.md).
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
-2. Upload it to the AI chat you already use and say **Help me get started**.
-3. The chat asks whether the tracker should stay local without Google or use Google Sheets, then guides the official desktop app in plain language.
-4. Download and extract the [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.7.0.zip).
+2. Upload it to the AI chat you already use and say **Help me get started**. You do not need to find another file yourself.
+3. The AI collects the minimum choices, supplies the correct official app and Personal Workspace ZIP links, and explains the whole setup in clear stages.
+4. Download and extract the Personal Workspace ZIP from the exact-version link supplied by the AI.
 5. Open that folder in Codex, Claude Code, Antigravity IDE, Cursor, or another compatible local agent.
 6. The agent verifies folder write access and one tracker mode before onboarding. Context and application outputs remain in that folder.
 7. In local mode, open `BUKA_DASHBOARD.html`; in Google mode, open your verified Sheet.

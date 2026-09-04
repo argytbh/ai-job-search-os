@@ -25,9 +25,9 @@ Keputusan akhir **PURSUE / HOLD / DROP, submission, outreach, dan offer tetap mi
 **Rilis berikutnya: v1.7.0 (sedang dikembangkan).** Versi ini menambahkan dashboard lokal interaktif. Rilis stabil publik saat ini tetap v1.6.0; lihat [hasil validasi](VALIDATION.md).
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
-2. Upload file itu ke AI chat yang sekarang kamu pakai dan bilang **Bantu saya mulai**.
-3. AI menanyakan apakah tracker ingin disimpan lokal tanpa Google atau memakai Google Sheets, lalu menjelaskan aplikasi desktop resmi tanpa istilah teknis.
-4. Download dan ekstrak [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.7.0.zip).
+2. Upload file itu ke AI chat yang sekarang kamu pakai dan bilang **Bantu saya mulai**. Kamu tidak perlu mencari file lain sendiri.
+3. AI menanyakan pilihan minimum, memberi link aplikasi desktop resmi dan Personal Workspace ZIP yang tepat, lalu menjelaskan seluruh setup dalam tahapan yang jelas.
+4. Download dan ekstrak Personal Workspace ZIP dari link exact-version yang diberikan AI.
 5. Buka folder tersebut melalui Codex, Claude Code, Antigravity IDE, Cursor, atau agent lokal yang kompatibel.
 6. Agent memverifikasi baca-tulis folder dan satu mode tracker sebelum onboarding. Context dan output lamaran tetap disimpan di folder itu.
 7. Untuk mode lokal, buka `BUKA_DASHBOARD.html`; untuk mode Google, buka Sheet terverifikasi milik kamu.
