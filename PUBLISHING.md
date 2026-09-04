@@ -2,7 +2,7 @@
 
 ## Current status
 
-Version 1.7.0 is under development on its feature branch. Building locally does not publish a tag, release, or Pages site. Exact release-asset URLs work only after the matching `v1.7.0` tag and GitHub Release are published.
+Version 1.7.0 is the current release source. Building locally still does not publish a tag, release, or Pages site. Exact release-asset URLs work only after the matching immutable tag and GitHub Release are published.
 
 ## Edit and build
 

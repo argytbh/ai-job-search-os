@@ -4,7 +4,7 @@ Kamu tidak perlu paham Git, database, coding, atau terminal. Setup dimulai lewat
 
 ## Yang perlu kamu download
 
-Versi v1.7.0 sedang dikembangkan dengan dashboard lokal interaktif. Rilis publik stabil saat ini tetap v1.6.0. [Hasil pengujian](../VALIDATION.md) membedakan validasi paket dari pengujian aplikasi nyata.
+Versi publik saat ini adalah v1.7.0 dengan dashboard lokal interaktif dan pilihan tracker Google Sheets. [Hasil pengujian](../VALIDATION.md) membedakan validasi paket dari pengujian aplikasi nyata.
 
 1. `MULAI_DI_SINI.md` untuk di-upload ke AI chat yang sekarang kamu pakai.
 2. `AI-Job-Search-Personal-Workspace.zip` ketika AI chat memintanya.

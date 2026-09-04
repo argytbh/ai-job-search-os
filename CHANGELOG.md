@@ -2,7 +2,7 @@
 
 All notable public changes to AI Job Search OS will be documented here.
 
-## [1.7.0] - Unreleased
+## [1.7.0] - 2026-09-04
 
 - Added a no-account local dashboard that reads and writes the selected Personal Workspace through browser-granted folder access.
 - Added a software-style navigation panel with connected Dashboard/Kanban, Analytics, Tracker/table, and Logs views.

@@ -22,7 +22,7 @@ Keputusan akhir **PURSUE / HOLD / DROP, submission, outreach, dan offer tetap mi
 
 ## Cara mulai
 
-**Rilis berikutnya: v1.7.0 (sedang dikembangkan).** Versi ini menambahkan dashboard lokal interaktif. Rilis stabil publik saat ini tetap v1.6.0; lihat [hasil validasi](VALIDATION.md).
+**Rilis saat ini: v1.7.0.** Versi ini menambahkan dashboard lokal interaktif dan pilihan tracker Google Sheets yang terverifikasi. Lihat [hasil validasi](VALIDATION.md) untuk perilaku yang sudah diuji dan pengujian platform yang masih pending.
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
 2. Upload file itu ke AI chat yang sekarang kamu pakai dan bilang **Bantu saya mulai**. Kamu tidak perlu mencari file lain sendiri.

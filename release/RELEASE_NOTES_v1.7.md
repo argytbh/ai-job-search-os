@@ -1,4 +1,4 @@
-# AI Job Search OS v1.7.0 — development draft
+# AI Job Search OS v1.7.0
 
 v1.7.0 adds a local-first interactive Job Desk for people who want to see and update their pipeline without repeatedly prompting the agent.
 
@@ -25,4 +25,4 @@ The hosted page contains the interface only. It does not upload the tracker, cre
 
 The direct local-folder workflow targets current desktop Chrome and Edge. Other browsers show an unsupported-browser message when the required File System Access API is unavailable. Browser permission may need to be granted again in a later session.
 
-This document is a development draft until S19 and T22 have been exercised in a real supported browser and the v1.7.0 release is published.
+Package checks and fictional browser fixtures passed. Complete live execution across every named agent, real Google authorization, and real-folder dashboard reconciliation remain pending and are documented in `VALIDATION.md`; no untested host is certified by this release.

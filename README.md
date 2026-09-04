@@ -22,7 +22,7 @@ The user always owns **PURSUE / HOLD / DROP, submission, outreach, and offer dec
 
 ## Quick start
 
-**Next release: v1.7.0 (in development).** It adds an interactive local dashboard. The current published stable release remains v1.6.0; see [validation](VALIDATION.md).
+**Current release: v1.7.0.** It adds an interactive local dashboard and an optional verified Google Sheets tracker. See [validation](VALIDATION.md) for tested behavior and pending platform-specific checks.
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
 2. Upload it to the AI chat you already use and say **Help me get started**. You do not need to find another file yourself.

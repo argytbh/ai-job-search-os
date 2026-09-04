@@ -6,7 +6,7 @@
 
 - Version: 1.7.0
 - Personal Workspace: https://github.com/argytbh/ai-job-search-os/releases/download/v1.7.0/AI-Job-Search-Personal-Workspace-v1.7.0.zip
-- This development release may not exist publicly until the matching tag and asset are published.
+- This stable distribution is pinned to the matching tag and release asset.
 
 # Migration Coach — instructions for the user's current AI chat
 

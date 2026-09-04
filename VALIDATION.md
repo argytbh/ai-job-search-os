@@ -1,6 +1,6 @@
 # Validation
 
-## v1.7.0 development candidate
+## v1.7.0 release
 
 v1.7.0 adds an optional browser dashboard over the Personal Workspace's existing `data/tracker.json`. The dashboard has no cloud database and no network-write path: the user explicitly selects a local workspace folder in Chrome or Edge, the board checks that tracker about every 1.5 seconds while visible, and user status changes are written back to that same file with a `status_changed` activity record.
 
