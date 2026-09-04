@@ -10,9 +10,10 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_DIR = ROOT / "skill" / "ai-job-search-os"
-OUT = ROOT / "portable" / "SYSTEM.md"
+OUT = ROOT / "portable" / "PORTABLE_WORKFLOW.md"
 
 REFERENCE_ORDER = [
+    "startup.md",
     "onboarding.md",
     "discovery.md",
     "shortlist.md",
@@ -33,11 +34,15 @@ def strip_frontmatter(text: str) -> str:
     return re.sub(r"\A---\s*\n.*?\n---\s*\n", "", text, count=1, flags=re.S).strip()
 
 
-def build() -> str:
-    skill = strip_frontmatter(read_text(SKILL_DIR / "SKILL.md"))
+def build(root: Path = ROOT) -> str:
+    import json
+    skill_dir = root / "skill" / "ai-job-search-os"
+    version = json.loads((root / "manifest.json").read_text(encoding="utf-8"))["version"]
+    skill = strip_frontmatter(read_text(skill_dir / "SKILL.md"))
 
     parts = [
-        "# AI JOB SEARCH OS — PORTABLE SYSTEM",
+        "# AI JOB SEARCH OS — PORTABLE WORKFLOW",
+        f"Workflow version: {version}",
         "",
         "> GENERATED FILE — canonical behavior lives under `skill/ai-job-search-os/`.",
         "> This standalone fallback is for environments where Agent Skills are unavailable.",
@@ -47,13 +52,13 @@ def build() -> str:
         "",
         "Treat all workflow references named below as embedded sections of this document. "
         "Do not attempt to fetch GitHub during normal runtime. The user should provide a sanitized CV, "
-        "JOB_TRACKER.xlsx, and USER_CONTEXT.md after approved onboarding.",
+        "a current tracker state and USER_CONTEXT.md after approved onboarding. Prefer data/tracker.json in a Personal Workspace.",
         "",
         skill,
     ]
 
     for filename in REFERENCE_ORDER:
-        path = SKILL_DIR / "references" / filename
+        path = skill_dir / "references" / filename
         parts.extend([
             "",
             "---",
@@ -72,6 +77,8 @@ def main() -> None:
     output = build()
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(output, encoding="utf-8", newline="\n")
+    # Compatibility path for v1.6 development links; this is not the bootstrap.
+    (ROOT / "portable" / "SYSTEM.md").write_text(output, encoding="utf-8", newline="\n")
     print(f"Wrote {OUT.relative_to(ROOT)} ({len(output)} chars)")
 
 

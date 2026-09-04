@@ -2,27 +2,34 @@
 
 ## Tracker role
 
-`JOB_TRACKER.xlsx` is the operational WHAT/NOW database.
+`data/tracker.json` in the Personal Workspace is the preferred operational WHAT/NOW database. An existing XLSX/CSV tracker remains valid input and may be preserved or migrated with user approval.
 
-Expected logical areas:
-- Jobs: one row per viable opportunity;
-- Contacts: relevant recruiter/hiring-user records linked by Job ID;
-- Activity: meaningful history/milestones;
-- Dashboard: pipeline summary.
+Expected logical collections:
+- `jobs`: one record per viable opportunity;
+- `contacts`: relevant recruiter/hiring-user records linked by Job ID;
+- `activity`: meaningful history/milestones;
+- `reports/DASHBOARD.md`: generated readable pipeline summary, never canonical state.
 
-The spreadsheet is transparent infrastructure, not homework for the user.
+The JSON state is transparent infrastructure, not homework for the user. The AI maintains it and generates human-readable reports or optional XLSX/CSV exports.
 
 ## File persistence
+
+Read `startup.md` on session recovery or when file authority is unclear. Never overwrite existing data with a release's blank tracker. If tracker copies disagree, establish which is current before writing.
 
 Capabilities differ by platform.
 
 If the platform can genuinely persist tracker changes:
-- update the tracker directly.
+- read the latest canonical tracker;
+- check duplicates by requisition ID or canonical job URL, then by normalized company + role + location;
+- preserve existing Job IDs and append meaningful activity;
+- for nontrivial migrations, create a dated backup;
+- write valid JSON through a temporary file when supported, replace the canonical file, and read it back;
+- refresh `reports/DASHBOARD.md` after successful persistence.
 
 If it cannot:
 - never claim the file was updated;
 - maintain the latest working state available in the conversation/project;
-- when persistence is needed, generate a replacement updated file and tell the user exactly what to replace.
+- when persistence is needed, generate replacement structured state and tell the user exactly what to replace.
 
 Do not repeatedly ask the user whether standard tracker updates should happen.
 
@@ -85,7 +92,7 @@ Never invent causality from insufficient evidence.
 
 ## Runtime repository rule
 
-Once the Skill is installed and operational, normal job-search use must not depend on repeatedly fetching this GitHub repository.
+Once the workspace or Skill is operational, normal job-search use must not depend on repeatedly fetching this GitHub repository. Never run Git commands in a Personal Workspace.
 
 User/project data must not be sent back to the public repository as part of normal operation.
 

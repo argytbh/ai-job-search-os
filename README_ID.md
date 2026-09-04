@@ -6,7 +6,7 @@
 
 ## Sistem ini bisa apa?
 
-AI Job Search OS mengubah AI Project/workspace menjadi partner job search yang lebih terstruktur. AI dapat:
+AI Job Search OS mengubah folder lokal menjadi workspace yang bisa dikerjakan AI agent dan tetap dimiliki pengguna. AI dapat:
 
 - mencari lowongan dan menilai fit berdasarkan konteks karier yang sudah kamu approve;
 - menerima link lowongan yang kamu temukan sendiri;
@@ -22,26 +22,28 @@ Keputusan akhir **PURSUE / HOLD / DROP, submission, outreach, dan offer tetap mi
 
 ## Cara mulai
 
-1. Download [`SYSTEM.md`](starter/SYSTEM.md) dan [`JOB_TRACKER.xlsx`](starter/JOB_TRACKER.xlsx).
-2. Buat AI Project/workspace baru.
-3. Upload kedua file tadi + **salinan CV terbaru yang sudah disanitasi**.
-4. Mulai ngobrol seperti biasa.
-5. AI melakukan onboarding dan menampilkan pemahamannya.
-6. Koreksi sampai akurat, lalu approve.
-7. AI membuat `USER_CONTEXT.md`.
-8. Upload `USER_CONTEXT.md` kembali ke Project Sources yang sama.
+**Rilis saat ini: v1.6.0.** Setup lokal, onboarding dengan approval, persistence, dan pemulihan sesi baru sudah diuji di Codex. Agent lain belum diverifikasi; lihat [hasil validasi](VALIDATION.md).
 
-Selesai. Project sudah masuk **ACTIVE MODE**.
+1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
+2. Upload file itu ke AI chat yang sekarang kamu pakai dan bilang **Bantu saya mulai**.
+3. AI menjelaskan cara memasang aplikasi desktop resmi, memakai akun pribadi, dan membuka folder lokal tanpa istilah teknis.
+4. Download dan ekstrak [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.6.0.zip).
+5. Buka folder tersebut melalui Codex, Claude Code, Antigravity IDE, Cursor, atau agent lokal yang kompatibel.
+6. Agent memverifikasi baca-tulis lokal sebelum onboarding. Context, tracker, dan output selanjutnya disimpan di folder itu.
+
+Pengguna tidak perlu akun GitHub, `git clone`, branch, atau command line. Paket Personal Workspace tidak mengandung `.git` dan melarang push/publish data pribadi. Portable chat mode tetap tersedia sebagai fallback dengan persistence terbatas.
 
 ## End-to-end workflow
 
 ```mermaid
 flowchart TD
-    A[USER: Upload SYSTEM + tracker + sanitized CV] --> B[AI: Onboarding + proposed context]
+    A[USER: Upload MULAI_DI_SINI ke chat] --> SETUP[AI: Guide desktop agent and Personal Workspace setup]
+    SETUP --> VERIFY[Local agent: verify folder read/write]
+    VERIFY --> B[AI: Onboarding + proposed context]
     B --> C{USER: Accurate?}
     C -- No --> B
     C -- Yes --> D[AI: Generate USER_CONTEXT.md]
-    D --> E[USER: Upload USER_CONTEXT.md]
+    D --> E[AI: Save approved context in local workspace]
 
     E --> F[USER: Ask for job search / paste a job link]
     F --> G[AI: Search + verify + fit review + duplicate/history check]
@@ -132,25 +134,26 @@ Kalau kamu memang minta contact research lebih awal, AI boleh melakukannya.
 
 Gunakan salinan CV yang sudah disanitasi. Hapus data pribadi yang tidak dibutuhkan, misalnya nomor telepon, email pribadi, alamat lengkap, DOB, NIK/paspor/NPWP, atau tanda tangan.
 
-Jangan simpan password, OTP, bank information, atau employer-portal credentials di Project. Isi data sensitif langsung di official ATS perusahaan.
+Jangan simpan password, OTP, bank information, atau employer-portal credentials di workspace. Isi data sensitif langsung di official ATS perusahaan.
 
 ## Keamanan file
 
-Repository ini tidak membutuhkan executable, installer, browser extension, API key, OAuth, plugin, background process, atau telemetry.
-
-`SYSTEM.md` adalah plain text. `JOB_TRACKER.xlsx` adalah workbook `.xlsx` macro-free untuk tracking/reporting.
+Personal Workspace berisi instruksi, workflow, dan state JSON kosong. Paket tidak memiliki Git metadata, executable, API key, atau telemetry. CV, context, tracker, dan application files tetap berada di folder yang dipilih pengguna kecuali pengguna sendiri memindahkan atau membagikannya.
 
 ## Arsitektur
 
 ```text
-SYSTEM.md
+MULAI_DI_SINI.md
+    = GUIDE — mengantar user dari AI chat ke agent lokal
+
+Personal Workspace / system/ai-job-search-os
     = HOW — bagaimana AI harus bekerja
 
-USER_CONTEXT.md
+profile/USER_CONTEXT.md
     = WHO + WHY — konteks karier durable yang sudah di-approve user
 
-JOB_TRACKER.xlsx
-    = WHAT / NOW — jobs, contacts, activity, dashboard
+data/tracker.json
+    = WHAT / NOW — jobs, contacts, activity
 
 Sanitized CV
     = supporting factual evidence
@@ -158,7 +161,7 @@ Sanitized CV
 
 ## File persistence
 
-Kemampuan AI platform berbeda. Kalau platform bisa benar-benar mengubah Project file, AI boleh update tracker langsung. Kalau tidak, AI tidak boleh mengaku sudah mengubah file; ia harus memakai working state terbaru dan menghasilkan replacement file bila persistence dibutuhkan.
+Agent lokal membaca dan memperbarui `data/tracker.json`, memverifikasi hasil tulis, lalu menyegarkan `reports/DASHBOARD.md`. Chat-only fallback tidak boleh mengaku memiliki persistence lokal.
 
 ## Lisensi
 

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Job Search OS tracker",
+  "type": "object",
+  "required": ["schema_version", "updated_at", "jobs", "contacts", "activity"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "updated_at": { "type": ["string", "null"], "format": "date-time" },
+    "jobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["job_id", "company", "role", "status"],
+        "properties": {
+          "job_id": { "type": "string", "minLength": 1 },
+          "requisition_id": { "type": ["string", "null"] },
+          "company": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1 },
+          "location": { "type": ["string", "null"] },
+          "canonical_url": { "type": ["string", "null"] },
+          "source_url": { "type": ["string", "null"] },
+          "status": {
+            "enum": ["Review", "Pursue", "Hold", "Applied", "Screen", "Assessment", "Interview", "Offer", "Dropped", "Rejected", "Closed"]
+          },
+          "discovered_at": { "type": ["string", "null"], "format": "date-time" },
+          "applied_at": { "type": ["string", "null"], "format": "date-time" },
+          "next_action": { "type": ["string", "null"] },
+          "notes": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["contact_id", "job_id", "name"],
+        "properties": {
+          "contact_id": { "type": "string", "minLength": 1 },
+          "job_id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "role": { "type": ["string", "null"] },
+          "profile_url": { "type": ["string", "null"] },
+          "confidence": { "enum": ["confirmed", "likely", "possible", null] },
+          "notes": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "activity": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["activity_id", "job_id", "at", "type", "summary"],
+        "properties": {
+          "activity_id": { "type": "string", "minLength": 1 },
+          "job_id": { "type": "string", "minLength": 1 },
+          "at": { "type": "string", "format": "date-time" },
+          "type": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

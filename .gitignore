@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.tmp/
+workspace/data/SETUP_STATUS.json
+workspace/data/backups/*.json
+workspace/profile/USER_CONTEXT.md
+workspace/profile/CV*
+workspace/applications/*/

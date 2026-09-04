@@ -1,6 +1,11 @@
-# Pre-publication testing note:
-# SYSTEM.md is still being patched and should be inspected directly in the repository.
-# A stable SYSTEM.md checksum will be published with the frozen release artifact.
-# The previous starter ZIP was removed because it contained an older SYSTEM.md.
-
-1e159b06f37f0feaefcf9fdfca4457c3bc10db6831193ae8bf52b428e27328e8  starter/JOB_TRACKER.xlsx
+9289784124b35dc1b10111c90a85ce1c04db3812aa97edb9af0fff700168eda5  docs/downloads/AI-Job-Search-Personal-Workspace-v1.6.0.zip
+0f53221e11369deb00f4aa582759633c6450c0d8df85175a3ccb5ed71cdf17e5  docs/downloads/MULAI_DI_SINI.md
+654b1370c07df24353b611b69f2b9369e6fca505358446ef13223b89327dc96e  docs/downloads/PORTABLE_WORKFLOW.md
+cfa42f1721e822ab89d2f0350b2def4c12903762a88f7a2c9d600da4724857c3  docs/downloads/SYSTEM.md
+0d726ee367c0a8954c27a8ebac3e379e50204861f565c62d110bd1656d5da6c9  manifest.json
+654b1370c07df24353b611b69f2b9369e6fca505358446ef13223b89327dc96e  portable/PORTABLE_WORKFLOW.md
+654b1370c07df24353b611b69f2b9369e6fca505358446ef13223b89327dc96e  portable/SYSTEM.md
+39b81580b0ab224abc7f31e5a90175610de8e1151272b49371829ac3ee3ef158  release/AI-Job-Search-OS-Skill-v1.6.0.zip
+9289784124b35dc1b10111c90a85ce1c04db3812aa97edb9af0fff700168eda5  release/AI-Job-Search-Personal-Workspace-v1.6.0.zip
+0f53221e11369deb00f4aa582759633c6450c0d8df85175a3ccb5ed71cdf17e5  starter/MULAI_DI_SINI.md
+cfa42f1721e822ab89d2f0350b2def4c12903762a88f7a2c9d600da4724857c3  starter/SYSTEM.md

@@ -2,6 +2,25 @@
 
 All notable public changes to AI Job Search OS will be documented here.
 
+## [1.6.0] - 2026-09-04
+
+- Changed the recommended runtime from upload-first chat Projects to a folder-capable local Personal Workspace.
+- Added a generated Indonesian-friendly Migration Coach that guides one action at a time from web chat to Codex, Claude Code, Antigravity IDE, Cursor, or a compatible folder-capable agent.
+- Added a personal-account safety gate with official-download-only guidance and no credential collection.
+- Added a reproducible Personal Workspace ZIP with no Git metadata, remotes, maintainer scripts, credentials, or personal data.
+- Added agent instructions for verified local writes, JSON tracker persistence, backups, report refresh, and strict prohibition of Git/push/publish actions.
+- Retained native Skill and chat-only Portable Mode as compatibility fallbacks.
+- Added observed Codex acceptance evidence for local setup, approval-gated fictional onboarding, persistence, and fresh-session recovery; other named hosts remain unverified.
+
+## [1.6.0-dev.1] - Unreleased development history
+
+- Added a generated SYSTEM.md bootstrap for upload-first setup across capability profiles.
+- Connected exact-version Skill acquisition, native verification, pending human import, portable fallback, and session recovery.
+- Added a startup module with honest browsing/document/storage fallbacks and protection of existing user context and tracking history.
+- Added reproducible Starter/Skill ZIP builds, complete embedded portable workflow, checksums, package checks, and setup acceptance scenarios.
+- Updated setup documentation and Pages downloads for the development package.
+- Native installation and live workflow behavior on named platforms remain unverified; see VALIDATION.md. No public release/tag has been created by these changes.
+
 ## [1.5.0] - 2026-09-03
 
 ### Added

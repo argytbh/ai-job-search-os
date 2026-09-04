@@ -22,7 +22,7 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Human-in-the-loop job search</div>
+          <div class="eyebrow">Human-in-the-loop job search · v1.6.0</div><p data-lang="id">Jalur Codex sudah diuji. Dukungan agent lain mengikuti kemampuan aplikasi dan masih perlu diverifikasi.</p><p data-lang="en" hidden>The Codex path has been tested. Other agents depend on application capabilities and still require verification.</p>
           <div data-lang="id">
             <h1>Bikin AI jadi partner job search, bukan pengganti keputusan lo.</h1>
             <p class="lead">AI bantu search, verification, tracking, recruiter discovery, dan application prep. Lo tetap menentukan role mana yang dikejar, di-drop, dan akhirnya di-submit.</p>
@@ -32,10 +32,10 @@
             <p class="lead">AI helps with search, verification, tracking, recruiter discovery, and application prep. You still decide which roles to pursue, drop, and submit.</p>
           </div>
           <div class="cta-row">
-            <a class="primary" href="downloads/SYSTEM.md" download>Download SYSTEM.md</a>
-            <a class="secondary" href="downloads/JOB_TRACKER.xlsx" download>Download JOB_TRACKER.xlsx</a>
+            <a class="primary" href="downloads/MULAI_DI_SINI.md" download>Download MULAI_DI_SINI.md</a>
+            <a class="secondary" href="downloads/AI-Job-Search-Personal-Workspace-v1.6.0.zip" download>Personal Workspace</a>
           </div>
-          <div class="trust-row"><span>Editable DOCX output</span><span>ATS-safe defaults</span><span>No plugin</span><span>No telemetry</span></div>
+          <div class="trust-row"><span>Editable DOCX output</span><span>ATS-safe defaults</span><span>Portable fallback</span><span>No telemetry</span></div>
         </div>
 
         <div class="flow-card">
@@ -55,9 +55,9 @@
         <div data-lang="id"><div class="eyebrow">Mulai dalam 3 langkah</div><h2>Setup-nya sengaja dibuat sesingkat mungkin.</h2></div>
         <div data-lang="en" hidden><div class="eyebrow">Start in 3 steps</div><h2>The setup is intentionally minimal.</h2></div>
         <div class="steps">
-          <article class="card"><div class="step-num">1</div><h3 data-lang="id">Download 2 starter files</h3><h3 data-lang="en" hidden>Download 2 starter files</h3><p><code>SYSTEM.md</code> + <code>JOB_TRACKER.xlsx</code>.</p></article>
-          <article class="card"><div class="step-num">2</div><h3 data-lang="id">Upload ke AI Project</h3><h3 data-lang="en" hidden>Upload to an AI Project</h3><p data-lang="id">Tambahkan dua file tadi + sanitized CV.</p><p data-lang="en" hidden>Add both files + your sanitized CV.</p></article>
-          <article class="card"><div class="step-num">3</div><h3 data-lang="id">Onboarding & approve</h3><h3 data-lang="en" hidden>Onboard & approve</h3><p data-lang="id">AI interview, lo koreksi, lalu upload <code>USER_CONTEXT.md</code> yang sudah approved.</p><p data-lang="en" hidden>AI interviews you, you correct it, then upload the approved <code>USER_CONTEXT.md</code>.</p></article>
+          <article class="card"><div class="step-num">1</div><h3 data-lang="id">Upload panduan ke chat</h3><h3 data-lang="en" hidden>Upload the guide to chat</h3><p data-lang="id">Upload MULAI_DI_SINI.md ke AI yang sudah lo pakai. Bilang: Bantu saya mulai.</p><p data-lang="en" hidden>Upload MULAI_DI_SINI.md to the AI you already use. Say: Help me get started.</p></article>
+          <article class="card"><div class="step-num">2</div><h3 data-lang="id">Ikuti satu langkah tiap kali</h3><h3 data-lang="en" hidden>Follow one action at a time</h3><p data-lang="id">AI membantu install aplikasi resmi dan download workspace. Gunakan akun pribadi.</p><p data-lang="en" hidden>The AI guides the official app and workspace download. Use a personal account.</p></article>
+          <article class="card"><div class="step-num">3</div><h3 data-lang="id">Buka folder lokal</h3><h3 data-lang="en" hidden>Open the local folder</h3><p data-lang="id">Codex, Claude Code, Antigravity IDE, atau Cursor memverifikasi baca-tulis lalu mulai onboarding.</p><p data-lang="en" hidden>Codex, Claude Code, Antigravity IDE, or Cursor verifies read/write access, then starts onboarding.</p></article>
         </div>
       </div>
     </section>
@@ -71,7 +71,7 @@
         <div class="process">
           <article class="process-row">
             <div class="process-num">01</div><div class="process-stage"><strong>Setup & onboarding</strong><span>one time</span></div>
-            <div class="lane human-lane"><strong data-lang="id">Upload files + jawab onboarding</strong><strong data-lang="en" hidden>Upload files + answer onboarding</strong><p data-lang="id">Koreksi interpretasi AI dan approve kalau sudah akurat.</p><p data-lang="en" hidden>Correct the AI's interpretation and approve when accurate.</p></div>
+            <div class="lane human-lane"><strong data-lang="id">Buka folder + jawab onboarding</strong><strong data-lang="en" hidden>Open folder + answer onboarding</strong><p data-lang="id">Koreksi interpretasi AI dan approve kalau sudah akurat.</p><p data-lang="en" hidden>Correct the AI's interpretation and approve when accurate.</p></div>
             <div class="connector">→</div>
             <div class="lane ai-lane"><strong data-lang="id">Bangun konteks yang approved</strong><strong data-lang="en" hidden>Build approved context</strong><p>CV = factual evidence, bukan otomatis arah karier. Setelah approval AI membuat <code>USER_CONTEXT.md</code>.</p></div>
           </article>
@@ -154,20 +154,19 @@
 
     <section class="section">
       <div class="wrap">
-        <div data-lang="id"><div class="eyebrow">Database transparan</div><h2>Tracker tetap bisa lo audit sendiri.</h2><p class="body narrow">Daily use lewat chat, tapi spreadsheet tetap tersedia kalau lo mau lihat raw pipeline, contacts, activity, dan dashboard.</p></div>
-        <div data-lang="en" hidden><div class="eyebrow">Transparent database</div><h2>You can still audit the tracker yourself.</h2><p class="body narrow">Daily use happens through chat, while the spreadsheet remains available for inspecting the raw pipeline, contacts, activity, and dashboard.</p></div>
-        <img class="preview" src="dashboard-preview.png" alt="AI Job Search OS dashboard preview" />
-        <div class="small-links"><a href="downloads/JOB_TRACKER.xlsx" download>JOB_TRACKER.xlsx</a><span>·</span><a href="downloads/SYSTEM.md" download>SYSTEM.md</a></div>
+        <div data-lang="id"><div class="eyebrow">Database lokal transparan</div><h2>Data job search tetap ada di folder lo.</h2><p class="body narrow">Agent menjaga tracker JSON lokal dan memperbarui laporan dashboard yang bisa lo buka kapan saja.</p></div>
+        <div data-lang="en" hidden><div class="eyebrow">Transparent local database</div><h2>Your job-search data stays in your folder.</h2><p class="body narrow">The agent maintains local JSON state and refreshes a readable dashboard report you can open anytime.</p></div>
+        <div class="small-links"><a href="downloads/MULAI_DI_SINI.md" download>MULAI_DI_SINI.md</a><span>·</span><a href="downloads/AI-Job-Search-Personal-Workspace-v1.6.0.zip" download>Personal Workspace</a></div>
       </div>
     </section>
 
     <section class="section security">
       <div class="wrap">
-        <div data-lang="id"><div class="eyebrow">Privacy & trust</div><h2>Inspect dulu sebelum percaya.</h2><p class="body narrow">File-based dan auditable. Tidak ada executable, installer, extension, API key, OAuth, plugin wajib, background process, atau telemetry.</p></div>
-        <div data-lang="en" hidden><div class="eyebrow">Privacy & trust</div><h2>Inspect before you trust.</h2><p class="body narrow">File-based and auditable. No executables, installers, extensions, API keys, OAuth, mandatory plugins, background processes, or telemetry.</p></div>
+        <div data-lang="id"><div class="eyebrow">Privacy & trust</div><h2>Inspect dulu sebelum percaya.</h2><p class="body narrow">File bisa diperiksa. Instalasi Skill memakai mekanisme resmi aplikasi dan mungkin memerlukan konfirmasi. Portable Mode tersedia tanpa instalasi native. Tidak ada telemetry.</p></div>
+        <div data-lang="en" hidden><div class="eyebrow">Privacy & trust</div><h2>Inspect before you trust.</h2><p class="body narrow">Inspectable files. Skill import uses the host’s supported mechanism and may require confirmation. Portable Mode works without native installation. No telemetry.</p></div>
         <div class="security-grid">
-          <div class="security-item"><strong>SYSTEM.md</strong><span>Plain-text instruction file.</span></div>
-          <div class="security-item"><strong>JOB_TRACKER.xlsx</strong><span>Macro-free .xlsx tracker.</span></div>
+          <div class="security-item"><strong>No Git remote</strong><span>Workspace ZIP has no .git metadata or push destination.</span></div>
+          <div class="security-item"><strong>Local JSON</strong><span>Tracker state remains in the selected folder.</span></div>
           <div class="security-item"><strong>Sanitized CV</strong><span data-lang="id">Hapus identifier yang tidak dibutuhkan.</span><span data-lang="en" hidden>Remove unnecessary identifiers.</span></div>
         </div>
       </div>
@@ -175,11 +174,11 @@
 
     <section class="section final-cta">
       <div class="wrap">
-        <div data-lang="id"><h2>AI memperbesar kapasitas lo. Judgment tetap milik lo.</h2><p class="body">Download dua starter file, inspect, lalu upload bersama sanitized CV.</p></div>
-        <div data-lang="en" hidden><h2>AI expands your capacity. Judgment stays yours.</h2><p class="body">Download the two starter files, inspect them, then upload them with a sanitized CV.</p></div>
+        <div data-lang="id"><h2>AI memperbesar kapasitas lo. Judgment tetap milik lo.</h2><p class="body">Mulai dari chat yang sudah lo kenal; AI akan mengantar lo ke workspace lokal langkah demi langkah.</p></div>
+        <div data-lang="en" hidden><h2>AI expands your capacity. Judgment stays yours.</h2><p class="body">Start in the chat you already know; the AI guides you into a local workspace one step at a time.</p></div>
         <div class="cta-row centered">
-          <a class="primary" href="downloads/SYSTEM.md" download>Download SYSTEM.md</a>
-          <a class="secondary" href="downloads/JOB_TRACKER.xlsx" download>Download JOB_TRACKER.xlsx</a>
+          <a class="primary" href="downloads/MULAI_DI_SINI.md" download>Download MULAI_DI_SINI.md</a>
+          <a class="secondary" href="downloads/AI-Job-Search-Personal-Workspace-v1.6.0.zip" download>Personal Workspace</a>
         </div>
       </div>
     </section>

@@ -1,71 +1,33 @@
-# Publishing Guide
+# Building and publishing v1.6
 
-This file is for the repository maintainer.
+## Current status
 
-## 1. Repository
+Version 1.6.0 is the stable release line. Building locally does not publish a tag, release, or Pages site. Exact release-asset URLs work only after the matching `v1.6.0` tag and GitHub Release are published.
 
-Recommended repository name:
+## Edit and build
 
-`ai-job-search-os`
+1. Edit the Migration Coach in `MIGRATION_COACH.md`, the end-user shell in `workspace/`, compatibility setup in `INSTALL.md`, and runtime in `skill/ai-job-search-os/`.
+2. Align Skill and manifest versions. source_ref is the exact v<version> tag. Update archive names and user-facing links when versioning.
+3. Run `python scripts/build_release.py` with Python 3.10+.
+4. Run `python scripts/build_release.py --check` and `python -m unittest discover -s tests -p "test_*.py"`.
 
-Keep the public repository as the auditable source of truth.
+The build generates the Migration Coach, Personal Workspace ZIP, compatibility bootstrap, portable workflow, native Skill ZIP, Pages downloads, and checksums without network calls. Stable ordering and timestamps make ZIPs reproducible.
 
-## 2. GitHub Pages
+The Personal Workspace ZIP contains folder instructions, the canonical Skill, empty JSON state, private-data directories, a readable dashboard placeholder, license, version, and checksums. It contains no Git metadata, maintainer scripts, credentials, or real user data.
 
-In the repository:
+## Validate the user journey
 
-1. Open **Settings**
-2. Open **Pages**
-3. Under **Build and deployment**, choose **Deploy from a branch**
-4. Select the default branch (usually `main`)
-5. Select folder `/docs`
-6. Save
+Use fictional data. Run tests/SETUP_TESTS.md in clean environments, then required tests in tests/BEHAVIOR_TESTS.md. Record actual results in VALIDATION.md, including new-session recovery and required human import steps.
 
-The landing page is `docs/index.html`.
+Do not label a host supported from documentation or package checks alone. Untested cases stay pending. Correct output with false installation/persistence claims is a failure.
 
-On a standard project site:
+## Publish after review
 
-`https://YOUR-USERNAME.github.io/ai-job-search-os/`
+1. Complete required behavioral tests, resolve failures, and update release notes/status. Do not advertise stable support while gates are pending.
+2. Freeze the version, rebuild/check outputs, and review the diff for personal data.
+3. Commit frozen sources/artifacts and create the exact source_ref tag on that commit through the authorized publishing workflow. Never move an existing published tag.
+4. Push the reviewed commit/tag and verify exact-ref manifest, Skill resources, and fallback URLs resolve to the frozen files.
+5. Attach the matching Personal Workspace and Skill ZIPs to the GitHub Release with fresh checksums; never silently overwrite existing release assets.
+6. Publish the matching docs/ directory through GitHub Pages and verify its ZIP matches the release checksum. Update public release-status wording only when the corresponding release state is true.
 
-During pre-publication testing, GitHub Pages distributes the two current starter files directly:
-
-- `docs/downloads/SYSTEM.md`
-- `docs/downloads/JOB_TRACKER.xlsx`
-
-This avoids serving a stale packaged ZIP while `SYSTEM.md` is still being hardened through user testing.
-
-## 3. Pre-publication testing
-
-Before freezing a tagged release:
-
-1. test onboarding with a fresh Project/workspace;
-2. test a batch job-search request;
-3. test PURSUE / HOLD / DROP reconciliation;
-4. test application preparation;
-5. confirm default CV output is editable DOCX, ATS-safe, single-column, and follows the page-length rules;
-6. confirm the AI does not repeatedly ask non-blocking menu questions;
-7. test submission confirmation and tracker updates;
-8. test recruiter enrichment timing;
-9. test recruitment-stage updates;
-10. inspect the final files for privacy/security regressions.
-
-## 4. Freeze and publish a stable release
-
-Only after the starter is frozen:
-
-1. update canonical files under `/starter`;
-2. copy the final `SYSTEM.md` to `/docs/downloads/`;
-3. rebuild the starter ZIP from the frozen files;
-4. place the matching ZIP under `/release/` and optionally `/docs/downloads/`;
-5. calculate fresh SHA-256 checksums from the exact frozen files;
-6. update `CHANGELOG.md` and release notes;
-7. tag the release, for example `v1.5.0`;
-8. attach the matching ZIP to the GitHub Release.
-
-Do not silently replace a published release asset without changing the version or documenting the change.
-
-## 5. Public links
-
-For nontechnical users, share the GitHub Pages URL.
-
-For people who want to inspect how the system works, share the GitHub repository or direct `SYSTEM.md` link.
+Local packages may reference an unpublished tag. Test offline paths without switching to a moving branch. Pushing, tagging, releasing, and updating the live site remain separate publication actions.

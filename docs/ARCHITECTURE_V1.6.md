@@ -1,127 +1,58 @@
-# AI Job Search OS v1.6 — Skill-First Architecture
+# AI Job Search OS v1.6 — chat-guided, local-workspace-first
 
-## Design goal
+The current AI chat is a Migration Coach. It teaches the user why a folder-capable agent is needed, checks the personal-account safety gate, and guides one visible setup action at a time. The job-search runtime begins only after a local agent opens the Personal Workspace and proves it can write and read back local state.
 
-Move runtime behavior out of one monolithic system prompt and into an Agent Skill bundle while preserving the human-in-the-loop operating model.
-
-## Layers
-
-```text
-GitHub repository
-  development + distribution only
-        |
-        v
-Installed Agent Skill (preferred runtime)
-  HOW the AI operates
-        |
-        +--------------------------+
-        |                          |
-        v                          v
-USER_CONTEXT.md              JOB_TRACKER.xlsx
-WHO + WHY                    WHAT + NOW
-        \                          /
-         \                        /
-          +---- sanitized CV -----+
-                factual evidence
+```mermaid
+flowchart TD
+    CHAT[Existing AI web chat] --> COACH[Upload MULAI_DI_SINI.md]
+    COACH --> SAFE[Computer and personal-account gate]
+    SAFE --> APP[Official desktop app]
+    APP --> ZIP[Extract Personal Workspace ZIP]
+    ZIP --> OPEN[Open local folder in Codex, Claude Code, Antigravity IDE, Cursor, or compatible agent]
+    OPEN --> VERIFY[Write and read back data/SETUP_STATUS.json]
+    VERIFY --> RUNTIME[Load bundled modular Skill]
+    RUNTIME --> CONTEXT{Approved local context exists?}
+    CONTEXT -- No --> ONBOARD[Onboard, approve, save profile/USER_CONTEXT.md]
+    CONTEXT -- Yes --> ACTIVE[Resume]
+    ONBOARD --> ACTIVE
+    ACTIVE --> STATE[data/tracker.json]
+    STATE --> REPORT[reports/DASHBOARD.md and optional exports]
 ```
 
-After installation, normal job-search use should not require repeated repository access.
+## Distribution artifacts
 
-## Canonical runtime
+| Canonical source | Generated result |
+| --- | --- |
+| `MIGRATION_COACH.md` + `manifest.json` | `starter/MULAI_DI_SINI.md` and Pages download |
+| `workspace/` + canonical Skill | Versioned Personal Workspace ZIP |
+| `skill/ai-job-search-os/` | Workspace runtime, native Skill ZIP, and portable workflow |
+| `INSTALL.md` | Compatibility `SYSTEM.md` for chat-only/native-Skill hosts |
+| `scripts/build_release.py` | Reproducible artifacts and checksums |
 
-`skill/ai-job-search-os/SKILL.md`
+The Personal Workspace contains no `.git`, `.github`, maintainer scripts, credentials, or personal data. Its `AGENTS.md` forbids Git initialization, remotes, pushes, publishing, and personal-data upload. Users download a release asset and never clone the maintainer repository.
 
-The Skill entry point contains:
-- purpose;
-- global execution/autonomy rules;
-- state detection;
-- human checkpoints;
-- workflow routing;
-- universal truthfulness/privacy rules.
+## Local state
 
-Detailed behavior is modularized under `references/`:
+- `profile/USER_CONTEXT.md`: user-approved durable career context.
+- `profile/`: sanitized CV and user evidence.
+- `data/tracker.json`: canonical jobs, contacts, and activity state.
+- `data/SETUP_STATUS.json`: observed local write/read verification.
+- `data/backups/`: backups before nontrivial state migrations.
+- `applications/<JOB_ID>/`: application artifacts.
+- `reports/DASHBOARD.md`: generated human-readable view, not canonical data.
 
-- `onboarding.md`
-- `discovery.md`
-- `shortlist.md`
-- `application.md`
-- `ats-documents.md`
-- `contacts-outreach.md`
-- `recruitment.md`
-- `persistence.md`
+The agent must read current state before duplicate checks, preserve Job IDs/history, write valid JSON safely, read it back, and refresh the report. File existence alone does not prove persistence.
 
-The runtime should load the relevant module instead of treating every detailed procedure as always-active prose.
+## Compatibility boundary
 
-## Portable compatibility
+The friendly path requires a computer, a personal provider account, an official agent with local-folder access, and permission to that folder. Codex, Claude Code, Antigravity IDE, and Cursor have different availability and UI; the Migration Coach checks what is actually visible instead of promising plan support. Work, Cowork, cloud Projects, Sources, and chat attachments are excluded from the v1.6 runtime because they do not prove direct write-back to the local tracker.
 
-When Agent Skills are not supported, use:
+Portable chat mode remains available when local access is impossible, but cannot promise automatic local persistence. Local storage also does not imply that model processing stays on-device; provider data handling still applies.
 
-- `portable/SYSTEM.md`
-- `portable/JOB_TRACKER.xlsx`
-- sanitized user CV
+## Updates
 
-Portable mode is a compatibility fallback, not the canonical source of future behavior changes.
+Normal runtime does not fetch GitHub. A user-requested update is downloaded to a temporary folder, version/checksum verified, and applied only to system files. `profile/`, `data/`, `applications/`, and `reports/` are preserved. The Personal Workspace never becomes a Git checkout.
 
-## Repository instructions
+## Maintenance
 
-- `AGENTS.md` tells development/coding agents how to modify the repository.
-- `INSTALL.md` tells setup agents how to choose Skill-first vs Portable mode.
-- `manifest.json` identifies canonical paths/version/runtime characteristics.
-- `tests/BEHAVIOR_TESTS.md` defines behavioral release gates.
-
-## Autonomy boundary
-
-### AI executes without unnecessary permission menus
-
-Reversible internal work:
-- job discovery;
-- freshness/official-source verification;
-- fit review;
-- duplicate/history checks;
-- tracker maintenance when possible;
-- application drafting;
-- ATS document generation/QA;
-- recruiter research at the correct stage;
-- outreach drafting;
-- interview/assessment prep;
-- pipeline analysis.
-
-### Human controls
-
-Consequential decisions/actions:
-- pursue/apply/hold/drop;
-- actual application submission;
-- sending messages/emails;
-- sensitive personal/application data;
-- offer decision;
-- durable context updates.
-
-## Application artifact contract
-
-Default CV behavior:
-- editable DOCX;
-- ATS-safe;
-- single column;
-- early/mid-career default one page when evidence allows;
-- two pages only when experience/seniority genuinely warrants it;
-- no PDF-only default;
-- no formatting choice menu when defaults already determine the result;
-- no invented metrics/outcomes/experience to improve fit or page count.
-
-## Update model
-
-v1.6 initially uses a deterministic installed Skill snapshot.
-
-Do not make GitHub HEAD a silent per-prompt runtime dependency.
-
-A future update mechanism may be added only after platform-specific Skill update/sync behavior is tested. Repository version checks, if introduced, should be a distribution concern rather than a requirement for every job-search action.
-
-## Release philosophy
-
-Before v1.6 reaches `main`:
-1. validate installation/import behavior in a clean supported environment;
-2. run behavioral acceptance tests;
-3. ensure portable fallback remains semantically aligned;
-4. rebuild distribution artifacts;
-5. update Pages/README to make Skill-first the recommended path;
-6. keep Portable Mode clearly available for unsupported environments.
+Developers follow the repository root `AGENTS.md`; end-user agents follow the different `workspace/AGENTS.md`. Change canonical sources, bump versions for material behavior changes, rebuild, run distribution tests, and record actual host acceptance separately. Package checks never certify a named host.

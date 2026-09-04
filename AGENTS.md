@@ -2,6 +2,8 @@
 
 This repository is agent-first.
 
+`MIGRATION_COACH.md` is the canonical web-chat guide. `workspace/AGENTS.md` governs the generated end-user Personal Workspace. `INSTALL.md` remains the chat-only compatibility bootstrap. Runtime behavior remains canonical in the Skill below. This root `AGENTS.md` governs repository development only.
+
 ## Source of truth
 
 Canonical runtime behavior for AI Job Search OS v1.6 lives under:
@@ -21,6 +23,10 @@ When changing runtime behavior:
 4. regenerate/synchronize portable fallback artifacts;
 5. update public documentation and changelog;
 6. run the behavioral regression checklist before merging.
+
+The Personal Workspace must never contain `.git`, `.github`, maintainer scripts, credentials, or personal data. Its Git prohibition is a product boundary. Preserve `profile/`, `data/`, `applications/`, and `reports/` during update designs.
+
+Build with `python scripts/build_release.py`; verify with `python scripts/build_release.py --check` and `python -m unittest discover -s tests -p "test_*.py"`. Do not edit generated files. Record behavioral scenarios as pending when no actual host run was performed. Static checks do not establish platform compatibility. Exact-ref setup links require publishing the matching ref before public distribution.
 
 Never patch a generated/fallback artifact as the only source of a behavior change.
 

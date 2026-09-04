@@ -6,7 +6,7 @@
 
 ## What it does
 
-AI Job Search OS turns an AI Project/workspace into a structured job-search partner. It can:
+AI Job Search OS turns a user-owned local folder into a structured workspace for a local AI agent. It can:
 
 - discover jobs and review fit against approved career context;
 - process job links you find yourself;
@@ -22,26 +22,28 @@ The user always owns **PURSUE / HOLD / DROP, submission, outreach, and offer dec
 
 ## Quick start
 
-1. Download [`SYSTEM.md`](starter/SYSTEM.md) and [`JOB_TRACKER.xlsx`](starter/JOB_TRACKER.xlsx).
-2. Create a new AI Project/workspace.
-3. Upload both files plus a **sanitized copy of your latest CV**.
-4. Start chatting normally.
-5. The AI runs onboarding and shows its proposed understanding.
-6. Correct it until accurate, then approve it.
-7. The AI generates `USER_CONTEXT.md`.
-8. Add `USER_CONTEXT.md` back to the same Project Sources.
+**Current release: v1.6.0.** Local setup, approval-gated onboarding, persistence, and fresh-session recovery have been tested in Codex. Other named hosts remain unverified; see [validation](VALIDATION.md).
 
-The Project is now in **ACTIVE MODE**.
+1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
+2. Upload it to the AI chat you already use and say **Help me get started**.
+3. The chat guides you through an official desktop app, a personal account, and local-folder access in plain language.
+4. Download and extract the [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.6.0.zip).
+5. Open that folder in Codex, Claude Code, Antigravity IDE, Cursor, or another compatible local agent.
+6. The agent verifies local read/write access before onboarding, then keeps context, tracker state, and outputs in that folder.
+
+Users do not need a GitHub account, clone, branch, or command line. The Personal Workspace contains no `.git` metadata and prohibits pushing or publishing personal data. Portable chat mode remains a limited-persistence fallback.
 
 ## End-to-end workflow
 
 ```mermaid
 flowchart TD
-    A[USER: Upload SYSTEM + tracker + sanitized CV] --> B[AI: Onboarding + proposed context]
+    A[USER: Upload MULAI_DI_SINI to chat] --> SETUP[AI: Guide desktop agent and Personal Workspace setup]
+    SETUP --> VERIFY[Local agent: verify folder read/write]
+    VERIFY --> B[AI: Onboarding + proposed context]
     B --> C{USER: Accurate?}
     C -- No --> B
     C -- Yes --> D[AI: Generate USER_CONTEXT.md]
-    D --> E[USER: Upload USER_CONTEXT.md]
+    D --> E[AI: Save approved context in local workspace]
 
     E --> F[USER: Ask for job search / paste a job link]
     F --> G[AI: Search + verify + fit review + duplicate/history check]
@@ -132,25 +134,26 @@ The user can explicitly request earlier contact research.
 
 Use a sanitized CV copy. Remove unnecessary identifiers such as phone number, personal email, full home address, DOB, national ID/passport/tax numbers, or signatures.
 
-Never store passwords, OTPs, banking information, or employer-portal credentials in the Project. Enter sensitive information directly on the employer's official ATS.
+Never store passwords, OTPs, banking information, or employer-portal credentials in the workspace. Enter sensitive information directly on the employer's official ATS.
 
 ## File safety
 
-This repository requires no executable, installer, browser extension, API key, OAuth connection, plugin, background process, or telemetry.
-
-`SYSTEM.md` is plain text. `JOB_TRACKER.xlsx` is a macro-free `.xlsx` workbook for tracking/reporting.
+The Personal Workspace contains instructions, the workflow, and empty JSON state. It contains no Git metadata, executable, API key, or telemetry. CVs, context, tracker state, and application files remain in the user-selected folder unless the user moves or shares them.
 
 ## Architecture
 
 ```text
-SYSTEM.md
+MULAI_DI_SINI.md
+    = GUIDE — move from web chat to a local agent
+
+Personal Workspace / system/ai-job-search-os
     = HOW the AI should operate
 
-USER_CONTEXT.md
+profile/USER_CONTEXT.md
     = WHO + WHY — user-approved durable career context
 
-JOB_TRACKER.xlsx
-    = WHAT / NOW — jobs, contacts, activity, dashboard
+data/tracker.json
+    = WHAT / NOW — jobs, contacts, activity
 
 Sanitized CV
     = supporting factual evidence
@@ -158,7 +161,7 @@ Sanitized CV
 
 ## File persistence
 
-AI platform capabilities differ. If the platform can genuinely modify Project files, it may update the tracker directly. If not, it must not claim that a file was updated; it should preserve the latest working state and generate a replacement file when persistence is needed.
+The local agent updates `data/tracker.json`, verifies the write, and refreshes `reports/DASHBOARD.md`. A chat-only fallback must never claim local persistence.
 
 ## License
 

@@ -1,8 +1,10 @@
+> v1.6: Start with [setup acceptance tests](tests/SETUP_TESTS.md), then [runtime tests](tests/BEHAVIOR_TESTS.md). Record observed results in [VALIDATION.md](VALIDATION.md). The checklist below remains historical v1.5 regression coverage.
+
 # AI Job Search OS — Behavioral Regression Tests
 
 This file is for maintainers/testers. It is **not** a required Project Source.
 
-Use a fresh AI Project/workspace when possible. Upload the current `starter/SYSTEM.md`, `starter/JOB_TRACKER.xlsx`, and a sanitized test CV.
+For v1.6, start with `starter/MULAI_DI_SINI.md` in a fresh web chat, then test the generated Personal Workspace in a clean local-agent folder using fictional data. Use `starter/SYSTEM.md` only for the chat-only compatibility path.
 
 The goal is to test behavior, not a specific model's prose style.
 

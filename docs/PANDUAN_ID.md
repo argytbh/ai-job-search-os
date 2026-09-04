@@ -1,28 +1,34 @@
 # AI Job Search OS — Panduan Pengguna
 
-Kamu tidak perlu paham RAG, database, coding, atau automation. Sistem ini dirancang supaya kamu cukup **ngobrol dengan AI seperti biasa**.
+Kamu tidak perlu paham Git, database, coding, atau terminal. Setup dimulai lewat AI chat yang sudah kamu kenal, lalu AI memandu kamu membuka Personal Workspace di agent desktop.
 
-## Yang perlu kamu upload ke Project
+## Yang perlu kamu download
 
-1. `SYSTEM.md`
-2. `JOB_TRACKER.xlsx`
-3. salinan CV terbaru yang sudah dibersihkan dari data pribadi yang tidak perlu
+Versi v1.6.0 adalah rilis stabil. [Hasil pengujian](../VALIDATION.md) membedakan validasi paket dari pengujian aplikasi AI nyata; jalur Codex sudah diuji, sedangkan agent lain belum diverifikasi.
 
-Hapus data yang tidak dibutuhkan AI, misalnya nomor telepon, email pribadi, alamat lengkap, NIK/paspor/NPWP, DOB, dan tanda tangan. Jangan pernah masukkan password, OTP, data rekening, atau kredensial portal lamaran.
+1. `MULAI_DI_SINI.md` untuk di-upload ke AI chat yang sekarang kamu pakai.
+2. `AI-Job-Search-Personal-Workspace.zip` ketika AI chat memintanya.
+3. Salinan CV terbaru yang sudah dibersihkan, lalu simpan di folder `profile/` setelah workspace siap.
+
+Gunakan akun AI yang kamu buat sendiri dan hanya kamu yang bisa akses. Jangan gunakan akun bersama, sewaan, reseller, atau marketplace untuk workspace pribadi. Hapus data CV yang tidak dibutuhkan dan jangan masukkan password, OTP, data rekening, atau kredensial portal lamaran.
 
 ## 1. Setup sekali
 
-Setelah semua file di-upload, mulai chat seperti biasa.
+Upload `MULAI_DI_SINI.md` ke AI chat dan bilang **Bantu saya mulai**. AI memberi satu langkah setiap kali: gunakan komputer, konfirmasi akun pribadi, install aplikasi resmi, download Personal Workspace, lalu buka foldernya di Codex, Claude Code, Antigravity IDE, Cursor, atau agent lokal yang tersedia.
+
+Kamu tidak perlu akun GitHub, clone repository, branch, atau command line. Pilih agent yang dapat membuka folder di komputermu: Codex untuk akun ChatGPT, Antigravity IDE untuk akun Google/Gemini, Cursor, atau Claude Code untuk akun Claude. Work, Cowork, ChatGPT Projects, Add files, dan Project Sources bukan koneksi database lokal. Setelah folder terbuka di agent lokal, agent harus membuat dan membaca kembali `data/SETUP_STATUS.json` sebelum mengatakan setup berhasil.
 
 AI akan membaca CV sebagai **sumber fakta**, lalu melakukan onboarding untuk memahami arah karier, preference, constraint, dan evidence yang benar-benar kamu miliki. Isi CV tidak otomatis dianggap sebagai arah karier yang kamu inginkan.
 
 Setelah AI merangkum pemahamannya:
 1. koreksi kalau ada yang salah;
 2. approve kalau sudah akurat;
-3. AI membuat `USER_CONTEXT.md`;
-4. upload file tersebut kembali ke Project Sources.
+3. AI menyimpan `profile/USER_CONTEXT.md`;
+4. AI membaca kembali file tersebut untuk memastikan sudah tersimpan.
 
-Project sekarang masuk **ACTIVE MODE**.
+Workspace sekarang masuk **ACTIVE MODE**.
+
+Gunakan folder yang sama pada sesi berikutnya. Agent membaca context dan tracker terbaru tanpa mengulang onboarding. Tanpa browsing, berikan teks JD dan anggap status lowongan belum terverifikasi. Tanpa pembuatan DOCX, AI memberikan fallback editable dan menjelaskan keterbatasannya.
 
 ## 2. Minta AI cari kerja
 
@@ -48,7 +54,7 @@ Contoh:
 
 AI harus merekonsiliasi batch tersebut dan memperbarui tracker sejauh platform memungkinkan. Kalau alasan drop spesifik, scope-nya juga harus spesifik. Drop karena lokasi bukan berarti blacklist perusahaan.
 
-`HOLD` tetap non-terminal. Kalau tracker belum punya status Hold khusus, AI menyimpannya sebagai `Review` dengan note/next action HOLD — bukan sebagai Dropped.
+`HOLD` tetap non-terminal dan disimpan sebagai `Hold`, bukan `Dropped`.
 
 ## 4. Siapkan application untuk role yang kamu pursue
 
@@ -141,7 +147,7 @@ Mau saya cari recruiternya juga?
 Mau saya lanjut?
 ```
 
-Kalau safe default sudah ada di `SYSTEM.md`, AI harus pakai default tersebut dan lanjut.
+Kalau safe default sudah ada di Skill atau `PORTABLE_WORKFLOW.md`, AI harus pakai default tersebut dan lanjut.
 
 ## Cara lihat database kamu
 
@@ -157,7 +163,7 @@ Atau:
 
 > Analisis pipeline job search gue.
 
-`JOB_TRACKER.xlsx` tetap menjadi database transparan yang bisa kamu audit sendiri.
+`data/tracker.json` menjadi database transparan yang dijaga agent. Ringkasan yang mudah dibaca tersedia di `reports/DASHBOARD.md`; XLSX/CSV dapat dibuat sebagai ekspor bila dibutuhkan.
 
 ## Contoh perintah yang cukup
 

@@ -1,20 +1,24 @@
 # Security & Privacy
 
-AI Job Search OS is a file-based workflow. It does not require executable software, installers, browser extensions, API keys, OAuth connections, plugins, background services, or telemetry.
+AI Job Search OS distributes a chat Migration Coach, a private local Personal Workspace, an instruction-only Skill, and a portable fallback. It requires no repository credentials or telemetry.
 
 ## Files
 
-- `SYSTEM.md` is plain text.
-- `JOB_TRACKER.xlsx` is a macro-free `.xlsx` workbook used for structured tracking and reporting.
-- The starter package contains no executable application.
+- `MULAI_DI_SINI.md` guides the user's current chat toward an official folder-capable desktop agent.
+- The Personal Workspace stores canonical operational state in `data/tracker.json`.
+- `PORTABLE_WORKFLOW.md` remains a limited-persistence fallback.
+- The workspace contains no `.git`, GitHub remote, executable application, credential, or maintainer script.
+- Workspace instructions prohibit Git initialization, remotes, pushes, publishing, and personal-data uploads.
 
 Users are encouraged to inspect the repository and verify SHA-256 checksums before use.
+
+Checksums detect file mismatches; they do not independently authenticate a publisher. Development packages may refer to an unpublished tag. Do not replace a missing release with source code, another branch, clone, or fork. Maintainer Python scripts are excluded from the Personal Workspace.
 
 ## Sensitive information
 
 Use a sanitized CV copy and avoid storing unnecessary personal identifiers.
 
-Never place the following in Project Sources or job-search memory:
+Never place the following in the workspace or job-search memory:
 
 - passwords;
 - OTPs;

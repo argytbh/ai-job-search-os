@@ -56,9 +56,9 @@ Do not create canonical persistent context before approval.
 
 ## Output after approval
 
-Generate an editable/downloadable Markdown file named exactly:
+Generate an editable Markdown file named exactly:
 
-`USER_CONTEXT.md`
+`profile/USER_CONTEXT.md` in a Personal Workspace, otherwise `USER_CONTEXT.md` for portable mode.
 
 Use:
 
@@ -95,17 +95,23 @@ user_approved: true
 - Do not claim
 ## Durable Constraints
 ## Decision Memory
+## Workflow Setup
+<!-- Observed mode/version and where current files are kept; no credentials. -->
 ```
 
 Keep it concise. Preserve conclusions and evidence, not the onboarding transcript.
 
-Tell the user to add `USER_CONTEXT.md` to the same persistent Project/workspace context.
+In a verified Personal Workspace, save the approved file directly under `profile/`, read it back, and do not ask the user to re-upload it. In portable mode, tell the user to add `USER_CONTEXT.md` to the same persistent Project/workspace context.
+
+Follow `startup.md` for persistence. If authorized direct project writes are available, save and verify instead of asking for re-upload. Otherwise distinguish generated output from a saved Project source. Do not claim cross-session readiness until the context is accessible there.
 
 ## Completion criteria
 
-Onboarding is complete when:
+Onboarding approval is complete when:
 - the user's durable profile has been explicitly approved;
 - `USER_CONTEXT.md` has been generated;
-- the user has been told the single next action: add that file to the persistent project context.
+- the context has been saved and read back when authorized persistent writes are available, or the user has been told the single save/upload action still required.
+
+If saving is pending, state that explicitly; approval alone is not evidence of cross-session readiness.
 
 Do not immediately start personalized job discovery before the durable context is available unless the user explicitly asks to continue temporarily with the approved in-conversation context.
