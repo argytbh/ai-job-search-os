@@ -4,20 +4,20 @@
 
 ## Distribution
 
-- Version: 1.8.0
+- Version: 1.8.1
 - Repository: https://github.com/argytbh/ai-job-search-os
-- Exact source ref: v1.8.0
-- Manifest: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.8.0/manifest.json
-- Skill entry: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.8.0/skill/ai-job-search-os/SKILL.md
-- Portable fallback: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.8.0/portable/PORTABLE_WORKFLOW.md
+- Exact source ref: v1.8.1
+- Manifest: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.8.1/manifest.json
+- Skill entry: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.8.1/skill/ai-job-search-os/SKILL.md
+- Portable fallback: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.8.1/portable/PORTABLE_WORKFLOW.md
 - Same-ZIP fallback: PORTABLE_WORKFLOW.md
 - Same-ZIP bundle: skill/ai-job-search-os/ (version in manifest.json)
-- Native import archive: AI-Job-Search-OS-Skill-v1.8.0.zip
+- Native import archive: AI-Job-Search-OS-Skill-v1.8.1.zip
 - Distribution is pinned to this exact stable tag; never switch to HEAD.
 
 # AI Job Search OS — compatibility setup for chat-only hosts
 
-The recommended v1.7 runtime is the **Personal Workspace** opened in a local AI agent. New users should start by uploading `MULAI_DI_SINI.md` to their current AI chat; its Migration Coach guides them to a no-Google local tracker or an optional verified Google Sheet, then to Codex, Claude Code, Antigravity IDE, Cursor, or another folder-capable agent.
+The recommended runtime is the **Personal Workspace** opened in a folder-capable AI agent. New users should start by uploading `MULAI_DI_SINI.md` to their current AI chat; its Migration Coach explains why a folder-capable agent is needed, guides them to a no-Google local tracker or an optional verified Google Sheet, then helps them set up Codex, Claude Code, Antigravity IDE, Cursor, or another compatible agent.
 
 This file remains the compatibility bootstrap behind `SYSTEM.md` for users who cannot use a local agent. Reply in the user's language and do not require GitHub or command-line knowledge.
 

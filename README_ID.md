@@ -22,15 +22,17 @@ Keputusan akhir **PURSUE / HOLD / DROP, submission, outreach, dan offer tetap mi
 
 ## Cara mulai
 
-**Rilis saat ini: v1.8.0.** Versi ini menyertakan source dashboard lokal yang bisa diedit di setiap Personal Workspace, sambil mempertahankan tracker existing dan pilihan Google Sheets terverifikasi. Lihat [hasil validasi](VALIDATION.md) untuk perilaku yang sudah diuji dan pengujian platform yang masih pending.
+**Rilis saat ini: v1.8.1.** Versi ini menjelaskan perpindahan dari AI chat biasa ke agent yang bisa membuka folder dengan bahasa sederhana, sambil mempertahankan dashboard lokal yang bisa diedit, tracker existing, dan pilihan Google Sheets terverifikasi. Lihat [hasil validasi](VALIDATION.md) untuk perilaku yang sudah diuji dan pengujian platform yang masih pending.
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
 2. Upload file itu ke AI chat yang sekarang kamu pakai dan bilang **Bantu saya mulai**. Kamu tidak perlu mencari file lain sendiri.
-3. AI menanyakan pilihan minimum, memberi link aplikasi desktop resmi dan Personal Workspace ZIP yang tepat, lalu menjelaskan seluruh setup dalam tahapan yang jelas.
+3. AI menjelaskan perbedaan chat biasa dan agent yang bisa membuka folder, menanyakan pilihan minimum, lalu memberi link aplikasi resmi dan Personal Workspace ZIP dalam tahapan yang jelas.
 4. Download dan ekstrak Personal Workspace ZIP dari link exact-version yang diberikan AI.
 5. Buka folder tersebut melalui Codex, Claude Code, Antigravity IDE, Cursor, atau agent lokal yang kompatibel.
 6. Agent memverifikasi baca-tulis folder dan satu mode tracker sebelum onboarding. Context dan output lamaran tetap disimpan di folder itu.
 7. Untuk mode lokal, buka `BUKA_DASHBOARD.html`; untuk mode Google, buka Sheet terverifikasi milik kamu.
+
+Folder Personal Workspace yang sama bisa dibuka lagi melalui agent lain yang kompatibel. Konteks berlanjut karena mereka membaca file yang sama, bukan karena platform AI terhubung langsung. Gunakan satu agent yang menulis pada satu waktu; folder yang disalin tidak tersinkron otomatis.
 
 Pengguna tidak perlu akun GitHub, `git clone`, branch, atau command line. Paket Personal Workspace tidak mengandung `.git` dan melarang push/publish data pribadi. Portable chat mode tetap tersedia sebagai fallback dengan persistence terbatas.
 

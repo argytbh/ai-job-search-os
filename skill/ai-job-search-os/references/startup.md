@@ -10,6 +10,8 @@ Use after setup and at the start of a new session. In Portable Mode every workfl
 4. Honor the configured `local_json` or `google_sheets` tracker mode. Prefer the latest user-confirmed canonical tracker. If copies conflict and authority is unclear, ask which is current before writing. Never choose a blank template over history or dual-write conflicting stores.
 5. Establish actual web, document, spreadsheet, and persistence capabilities. Recheck only when a task needs a capability that remains uncertain.
 
+The same Personal Workspace may be opened later in another compatible folder-capable agent. Continuity comes from the files in that exact folder, not from a connection between AI providers. Re-read the current workspace state before acting, preserve approved context, and do not repeat onboarding just because the agent changed. Prefer one writing agent at a time. A copied folder or a folder on another device is a separate workspace unless the user has independently arranged and verified synchronization; never imply that copies update each other automatically.
+
 If no readable runtime is available, return to setup; do not invent missing procedures. If a requested file is inaccessible, ask for it once and continue independent work where possible.
 
 ## Capability fallbacks

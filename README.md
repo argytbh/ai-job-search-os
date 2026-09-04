@@ -22,15 +22,17 @@ The user always owns **PURSUE / HOLD / DROP, submission, outreach, and offer dec
 
 ## Quick start
 
-**Current release: v1.8.0.** It makes the local dashboard source editable inside each Personal Workspace, while preserving the existing tracker and optional verified Google Sheets mode. See [validation](VALIDATION.md) for tested behavior and pending platform-specific checks.
+**Current release: v1.8.1.** It explains the move from ordinary AI chat to a folder-capable agent in plain language, while preserving the editable local dashboard, existing tracker, and optional verified Google Sheets mode. See [validation](VALIDATION.md) for tested behavior and pending platform-specific checks.
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
 2. Upload it to the AI chat you already use and say **Help me get started**. You do not need to find another file yourself.
-3. The AI collects the minimum choices, supplies the correct official app and Personal Workspace ZIP links, and explains the whole setup in clear stages.
+3. The AI explains the difference between ordinary chat and a folder-capable agent, collects the minimum choices, then supplies the correct official app and Personal Workspace ZIP links in clear stages.
 4. Download and extract the Personal Workspace ZIP from the exact-version link supplied by the AI.
 5. Open that folder in Codex, Claude Code, Antigravity IDE, Cursor, or another compatible local agent.
 6. The agent verifies folder write access and one tracker mode before onboarding. Context and application outputs remain in that folder.
 7. In local mode, open `BUKA_DASHBOARD.html`; in Google mode, open your verified Sheet.
+
+You can later open the exact same Personal Workspace folder in another compatible agent. Continuity comes from the shared files, not a direct connection between providers. Use one writing agent at a time; copied folders do not synchronize automatically.
 
 Users do not need a GitHub account, clone, branch, or command line. The Personal Workspace contains no `.git` metadata and prohibits pushing or publishing personal data. Portable chat mode remains a limited-persistence fallback.
 

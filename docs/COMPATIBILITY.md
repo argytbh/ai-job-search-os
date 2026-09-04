@@ -9,7 +9,7 @@ AI Job Search OS v1.7 prefers a local Personal Workspace. Product names are rout
 | Antigravity IDE | Open the extracted Personal Workspace as the current folder/workspace | Recommended Google/Gemini route; reads the included local instructions |
 | Cursor | File → Open Folder, then use Agent | Graphical fallback with direct local-file access |
 | Optional Google Sheets tracker | Authenticated connector inside the local agent | Must prove create/read/write; public link alone is insufficient |
-| Work, Cowork, cloud Projects, Sources, or chat attachments | Unsupported as the v1.7 runtime | No verified direct write-back to the workspace |
+| Work, Cowork, cloud Projects, Sources, or chat attachments | Unsupported as the local-workspace runtime | No verified direct write-back to the workspace |
 | Native Skill host without folder access | Exact-version Skill import | Persistent operational state may remain unavailable |
 | Markdown chat only | Portable workflow | User must retain replacement state; no automatic local persistence |
 

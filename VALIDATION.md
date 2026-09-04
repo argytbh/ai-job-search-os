@@ -1,5 +1,13 @@
 # Validation
 
+## v1.8.1 release
+
+v1.8.1 clarifies the one-time transition from ordinary AI chat to a folder-capable agent. It does not change the local-workspace architecture, tracker modes, dashboard persistence, privacy boundary, or human decision checkpoints.
+
+- **PASS:** automated distribution checks verify the friendly Chat-to-Agent explanation, one-file CTA label, same-folder continuity rule, one-writer recommendation, and no automatic synchronization claim.
+- **PASS:** reproducible build/check and unit-test suite for all generated v1.8.1 artifacts.
+- **PENDING:** fresh live setup conversations on each named web-chat and folder-capable-agent combination; static instructions do not establish host behavior.
+
 ## v1.8.0 release
 
 v1.8.0 bundles the dashboard source inside the Personal Workspace and changes the launcher to open that local copy. The dashboard remains static HTML/CSS/JavaScript over the same user-selected `data/tracker.json`; ordinary visual and feature customization must preserve its no-network CSP, persistence safeguards, and single-tracker model.

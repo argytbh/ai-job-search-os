@@ -1,4 +1,4 @@
-# AI Job Search OS v1.7 — Behavioral Acceptance Tests
+# AI Job Search OS v1.8 — Behavioral Acceptance Tests
 
 These tests define expected runtime behavior. They are maintainer QA, not user instructions.
 
@@ -279,6 +279,17 @@ A pass requires both:
 - keeps `connect-src 'none'`, folder access user-granted, and tracker data off the network;
 - does not introduce a framework, package manager, backend, database, account, hosting, deployment, or DevOps steps;
 - does not ask the user to choose infrastructure that is unnecessary for the requested interface change.
+
+## T25 — Agent switching uses the same workspace truthfully
+
+**Setup:** onboarding was completed in one folder-capable agent. The user later opens the exact same Personal Workspace folder in another compatible agent.
+
+**Expected:**
+- explains that continuity comes from the files in the selected folder, not a direct connection between providers;
+- reads current setup state, approved profile, tracker configuration, tracker, and activity before acting;
+- continues without reinstalling, replacing state, or repeating approved onboarding;
+- recommends only one writing agent at a time and preserves newer file changes;
+- does not claim that copied folders, different devices, or separate conversations synchronize automatically.
 
 ## Release gate
 

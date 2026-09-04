@@ -18,9 +18,19 @@ Always call the download **Personal Workspace ZIP**, not “the repository” or
 
 ## Explain the move once
 
-Tell the user:
+Before naming or installing another app, explain the transition in the user's language. Keep the tone friendly and use this simple mental model:
 
-> Chat helps you think and learn. A local AI agent can also work directly with files in a folder you control. AI Job Search OS uses that folder to keep your career context, job history, and application files current. You still approve job decisions, submissions, and messages.
+> **Kenapa perlu aplikasi agent?** AI chat seperti ChatGPT, Claude, atau Gemini adalah tempat ngobrol, bertanya, dan menyusun rencana. Supaya AI juga bisa menyimpan hasil, memperbarui tracker, membuat CV, dan menjaga dashboard di komputer kamu, AI perlu sebuah aplikasi yang boleh membuka satu folder. Codex, Claude Code, Cursor, dan Antigravity adalah contoh aplikasi agent tersebut.
+>
+> Anggap AI chat sebagai tempat konsultasi, sedangkan agent adalah AI yang duduk di meja kerja berisi folder kamu. Namanya mungkin terdengar teknis, tetapi cara memakainya tetap dengan ngobrol biasa. Kamu tidak perlu menulis kode. Setup ini dilakukan sekali; setelah folder terbuka, kamu bisa lanjut memberi instruksi seperti biasa.
+
+Explain that the ordinary chat is useful for guiding setup, while the folder-capable agent becomes the daily workspace because it can read and update the same user-controlled files. The user still approves job decisions, submissions, messages, sensitive data, and durable career-context changes.
+
+Also explain the multi-agent option once:
+
+> Kamu boleh memakai Codex sekarang lalu membuka workspace yang sama di Cursor, Claude Code, Antigravity, atau agent lain nanti. Pilih **folder Personal Workspace yang sama** supaya mereka membaca tracker, profil, dan dokumen yang sama. Gunakan satu agent pada satu waktu agar dua aplikasi tidak menimpa perubahan bersamaan. Kalau foldernya disalin, setiap salinan menjadi workspace terpisah dan tidak tersinkron otomatis.
+
+Do not claim the platforms are connected to each other, share a conversation, or synchronize through a cloud service. Their continuity comes from reading the same local files. Different providers may respond differently, but the bundled workspace instructions keep the operating flow consistent.
 
 Do not lead with GitHub, repositories, Skills, JSON, CLI, or architecture.
 
@@ -75,7 +85,7 @@ The two modes are alternatives, not simultaneous databases. Never instruct the a
 
 ## 4. Select a folder-capable agent
 
-The runtime must be an agent that can open and edit a folder on the user's computer. Supported routes include **Codex**, **Claude Code**, **Antigravity IDE**, **Cursor**, and equivalent local agents. ChatGPT Work, Claude Cowork, ordinary AI chats, cloud Projects, Sources, and file attachments are not setup routes for v1.7.
+The runtime must be an agent that can open and edit a folder on the user's computer. Supported routes include **Codex**, **Claude Code**, **Antigravity IDE**, **Cursor**, and equivalent local agents. ChatGPT Work, Claude Cowork, ordinary AI chats, cloud Projects, Sources, and file attachments do not provide the verified local-folder setup required by this workflow.
 
 Prefer a graphical app and the provider the user already understands. Use the account answer already collected, then guide only the matching route. Check the actual interface and plan availability; do not assume a feature exists or recommend an upgrade before checking.
 

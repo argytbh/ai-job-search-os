@@ -75,6 +75,9 @@ class DistributionTests(unittest.TestCase):
         for expected in (
             "Give a complete, detailed setup guide in one response",
             "The uploaded file is the starting point",
+            "Kenapa perlu aplikasi agent?",
+            "agent adalah AI yang duduk di meja kerja",
+            "Kamu tidak perlu menulis kode",
             "Personal Workspace ZIP",
             "without asking the user to browse GitHub or find a release",
             "Do not scatter these questions across many messages",
@@ -82,6 +85,10 @@ class DistributionTests(unittest.TestCase):
             "hanya kamu yang bisa mengaksesnya",
             "Kamu mau tracker disimpan di komputer saja, atau di Google Sheets?",
             "The two modes are alternatives, not simultaneous databases",
+            "folder Personal Workspace yang sama",
+            "Gunakan satu agent pada satu waktu",
+            "tidak tersinkron otomatis",
+            "Their continuity comes from reading the same local files",
             "https://chatgpt.com/download/",
             "ChatGPT Work, Claude Cowork, ordinary AI chats",
             "Ask them to select **Codex** from the product menu",
@@ -138,9 +145,9 @@ class DistributionTests(unittest.TestCase):
 
     def test_pages_has_one_public_setup_entrypoint(self):
         page = (ROOT / "docs/index.html").read_text(encoding="utf-8")
-        starter_url = "https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md"
-        self.assertEqual(page.count(starter_url), 7)
-        self.assertNotIn('href="downloads/AI-Job-Search-Personal-Workspace-v1.8.0.zip"', page)
+        starter_url = "https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.1/MULAI_DI_SINI.md"
+        self.assertEqual(page.count(starter_url), 6)
+        self.assertNotIn('href="downloads/AI-Job-Search-Personal-Workspace-v1.8.1.zip"', page)
         self.assertIn("Preview dashboard lokal", page)
         self.assertIn('type="application/ld+json"', page)
         self.assertIn('id="cara-pakai"', page)
@@ -155,6 +162,12 @@ class DistributionTests(unittest.TestCase):
             "Lo tidak perlu clone repository",
             "Masukkan CV dan mulai",
             "Job search sudah cukup melelahkan",
+            "Mulai Setup — Download 1 File",
+            "Kenapa pindah ke aplikasi agent?",
+            "Tetap ngobrol dengan AI. Sekarang AI juga punya meja kerja.",
+            "folder Personal Workspace yang sama",
+            "satu agent pada satu waktu",
+            "tidak ikut sinkron otomatis",
             "Dashboard ini bisa lo ubah sesuai cara kerja lo",
             "Catatan dari pembuatnya",
         ):

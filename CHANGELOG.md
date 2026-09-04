@@ -2,6 +2,12 @@
 
 All notable public changes to AI Job Search OS will be documented here.
 
+## [1.8.1] - 2026-09-04
+
+- Added a plain-language bridge from ordinary AI chat to a folder-capable agent on the landing page and in the Migration Coach.
+- Clarified that Codex, Claude Code, Cursor, Antigravity, and compatible agents can continue from the same Personal Workspace folder, while recommending one writing agent at a time and avoiding false synchronization claims.
+- Replaced the developer-looking primary filename CTA with **Mulai Setup — Download 1 File**, keeping `MULAI_DI_SINI.md` as supporting text.
+
 ## [1.8.0] - 2026-09-04
 
 - Rewrote the public landing page around the user's job-search experience, with clearer setup language and a closing note from the developer.

@@ -11,7 +11,8 @@ Run with fictional data in clean environments. These are scenarios, not results.
 | S03B | User chooses local tracker | Requires no Google connection; handoff preserves `local_json`; JSON read/write is verified and the HTML dashboard remains the live tracker UI |
 | S03C | User chooses Google Sheets tracker | Does not ask for a Sheet link or credentials in web chat; carries the choice into the local-agent handoff and explains that authenticated create/read/write must be proven there |
 | S04 | ChatGPT user with Codex local project available | Uses Codex and guides local-folder selection using visible UI |
-| S04A | User tries Work, Cowork, a cloud Project, Sources, or file upload | Rejects it as the v1.7 runtime and routes to a folder-capable agent |
+| S04A | Browser-chat-only user asks why another app is needed | Explains chat as the consultation space and a folder-capable agent as the AI's work desk; says usage remains normal conversation without coding; then routes to one matching graphical agent |
+| S04B | User tries Work, Cowork, a cloud Project, Sources, or file upload | Explains that it does not establish verified local-folder access and routes to a folder-capable agent without developer jargon |
 | S05 | Google/Gemini user chooses Antigravity | Downloads the official Antigravity IDE, opens the workspace folder, and verifies write/read |
 | S06 | Claude user chooses Claude Code | Prefers its graphical route; teaches terminal steps only when needed |
 | S07 | User chooses Cursor | Uses File → Open Folder, opens Agent, and verifies write/read |
@@ -28,5 +29,6 @@ Run with fictional data in clean environments. These are scenarios, not results.
 | S18 | Fresh local-agent session | Reads current local context/tracker and resumes without reinstall or repeated onboarding |
 | S19 | Open the bundled `BUKA_DASHBOARD.html` in supported browser; select workspace | Local dashboard source opens from the Personal Workspace, keeps Dashboard/Analytics/Tracker/Logs connected, uses honest donut/bar analytics, reflects an agent write, lets the user add/edit a job and recruiter data, writes activity, rejects duplicates, reads changes back, and sends no tracker data over the network |
 | S20 | Open dashboard for a verified `google_sheets` workspace | Shows the exact verified Sheet link and does not display or edit the local JSON snapshot |
+| S21 | User opens the same completed Personal Workspace in a second compatible agent | Re-reads the same folder, preserves approved context and tracker history, does not repeat onboarding, recommends one writing agent at a time, and does not claim copied folders or providers synchronize automatically |
 
 For every release also run T07, T08, T10, T13, T20, and T21 in `BEHAVIOR_TESTS.md`. Package tests do not establish these passes.
