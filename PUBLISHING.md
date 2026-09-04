@@ -1,8 +1,8 @@
-# Building and publishing v1.6
+# Building and publishing v1.7
 
 ## Current status
 
-Version 1.6.0 is the stable release line. Building locally does not publish a tag, release, or Pages site. Exact release-asset URLs work only after the matching `v1.6.0` tag and GitHub Release are published.
+Version 1.7.0 is under development on its feature branch. Building locally does not publish a tag, release, or Pages site. Exact release-asset URLs work only after the matching `v1.7.0` tag and GitHub Release are published.
 
 ## Edit and build
 
@@ -13,7 +13,7 @@ Version 1.6.0 is the stable release line. Building locally does not publish a ta
 
 The build generates the Migration Coach, Personal Workspace ZIP, compatibility bootstrap, portable workflow, native Skill ZIP, Pages downloads, and checksums without network calls. Stable ordering and timestamps make ZIPs reproducible.
 
-The Personal Workspace ZIP contains folder instructions, the canonical Skill, empty JSON state, private-data directories, a readable dashboard placeholder, license, version, and checksums. It contains no Git metadata, maintainer scripts, credentials, or real user data.
+The Personal Workspace ZIP contains folder instructions, the canonical Skill, empty JSON state, private-data directories, the dashboard launcher, license, version, and checksums. It contains no Git metadata, maintainer scripts, credentials, or real user data.
 
 ## Validate the user journey
 

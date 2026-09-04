@@ -5,3 +5,5 @@ Open this extracted folder in Codex, Claude Code, Antigravity IDE, Cursor, or an
 > Baca `MULAI_DI_SINI.md` di folder ini dan siapkan workspace saya. Jangan gunakan Git dan jangan upload atau publikasikan file saya.
 
 Your private state belongs in `profile/`, `data/`, `applications/`, and `reports/`. This package contains no Git repository metadata.
+
+Double-click `BUKA_DASHBOARD.html` to open the interactive local dashboard. In Chrome or Edge, select this workspace folder when asked. The dashboard reads and writes `data/tracker.json` directly; it does not upload tracker data.

@@ -22,14 +22,15 @@ The user always owns **PURSUE / HOLD / DROP, submission, outreach, and offer dec
 
 ## Quick start
 
-**Current release: v1.6.0.** Local setup, approval-gated onboarding, persistence, and fresh-session recovery have been tested in Codex. Other named hosts remain unverified; see [validation](VALIDATION.md).
+**Next release: v1.7.0 (in development).** It adds an interactive local dashboard. The current published stable release remains v1.6.0; see [validation](VALIDATION.md).
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
 2. Upload it to the AI chat you already use and say **Help me get started**.
 3. The chat guides you through an official desktop app, a personal account, and local-folder access in plain language.
-4. Download and extract the [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.6.0.zip).
+4. Download and extract the [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.7.0.zip).
 5. Open that folder in Codex, Claude Code, Antigravity IDE, Cursor, or another compatible local agent.
 6. The agent verifies local read/write access before onboarding, then keeps context, tracker state, and outputs in that folder.
+7. Open `BUKA_DASHBOARD.html` in Chrome or Edge to view live changes and update job status directly.
 
 Users do not need a GitHub account, clone, branch, or command line. The Personal Workspace contains no `.git` metadata and prohibits pushing or publishing personal data. Portable chat mode remains a limited-persistence fallback.
 

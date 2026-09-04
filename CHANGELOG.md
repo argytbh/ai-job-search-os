@@ -2,6 +2,16 @@
 
 All notable public changes to AI Job Search OS will be documented here.
 
+## [1.7.0] - Unreleased
+
+- Added a no-account local dashboard that reads and writes the selected Personal Workspace through browser-granted folder access.
+- Added a software-style navigation panel with connected Dashboard/Kanban, Analytics, Tracker/table, and Logs views.
+- Added live tracker polling, KPI cards, donut/bar analytics, evidence-grounded classifications, pipeline-age signals, search/filter controls, job and recruiter links, and activity history.
+- Added manual job creation/editing, Excel-readable CSV export, automatic first Interview timestamping, duplicate checks, concurrent-write protection, activity logging, and read-back verification.
+- Added a one-click dashboard launcher to the Personal Workspace; no job-search data is uploaded to the dashboard host.
+- Limited direct folder access to supporting HTTPS browsers, with a clear Chrome/Edge fallback message.
+- Bounded onboarding to focused question batches and strengthened application delivery with per-job persistence, read-back/visual QA, and tracker activity without premature Applied status.
+
 ## [1.6.0] - 2026-09-04
 
 - Changed the recommended runtime from upload-first chat Projects to a folder-capable local Personal Workspace.

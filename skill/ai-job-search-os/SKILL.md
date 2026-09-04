@@ -4,7 +4,7 @@ description: Human-in-the-loop job-search operating system for onboarding, job d
 license: MIT
 metadata:
   author: argytbh
-  version: "1.6.0"
+  version: "1.7.0"
 ---
 
 # AI Job Search OS

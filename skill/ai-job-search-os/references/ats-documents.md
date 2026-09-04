@@ -53,12 +53,15 @@ Never respond to page pressure by inventing metrics, strengthening verbs beyond 
 ## Content quality
 
 - tailor to the target JD, not generic ATS folklore;
+- prioritize must-have requirements before preferred requirements, then map the strongest verified evidence into the summary, skills, and experience bullets where it naturally belongs;
 - use JD terminology only when it accurately describes verified experience;
 - prioritize role-relevant evidence;
 - keep bullets concise;
 - use outcomes only when verified;
 - do not keyword-stuff;
 - preserve chronology and factual consistency.
+
+Do not copy requirements into the CV when the candidate has no matching evidence. Do not alter official job titles or dates to resemble the target role. If a truthful adjacent description helps, keep the official title and clarify the relevant function in the bullet content.
 
 If the source CV is already ATS-safe, preserve useful structure and professional identity instead of redesigning it unnecessarily.
 
@@ -96,6 +99,8 @@ Before delivery, verify as far as the platform allows:
 - no leftover text from another employer/role;
 - no accidental sensitive data introduced;
 - file is editable and readable.
+
+Open or parse the generated DOCX after saving to confirm it is a real readable document rather than merely trusting file creation. When visual rendering is available, inspect every page.
 
 If document rendering/inspection is available, inspect it and fix overflow, broken spacing, orphaned headings, or accidental extra pages before delivery.
 

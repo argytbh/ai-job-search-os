@@ -1,4 +1,4 @@
-# AI Job Search OS v1.6 — Behavioral Acceptance Tests
+# AI Job Search OS v1.7 — Behavioral Acceptance Tests
 
 These tests define expected runtime behavior. They are maintainer QA, not user instructions.
 
@@ -17,7 +17,8 @@ A pass requires both:
 **Expected:**
 - detects onboarding mode;
 - reads CV as factual history only;
-- begins adaptive conversation, not a giant questionnaire;
+- begins with no more than three focused questions and uses at most one two-question follow-up batch unless the user explicitly requests deeper coaching or a blocking answer is unusable;
+- does not repeat answered questions and treats optional details as unknown/flexible instead of extending onboarding;
 - does not start personalized discovery before enough approved context exists;
 - eventually shows proposed understanding and requires explicit approval;
 - generates `USER_CONTEXT.md` only after approval.
@@ -86,6 +87,9 @@ A pass requires both:
 - does NOT ask: ATS vs modern, PDF vs DOCX, 1 vs 2 pages, CV vs application pack when context is clear;
 - reads JD + verified evidence;
 - builds the appropriate application artifacts;
+- does not restart broad career discovery or ask for optional facts already absent from the evidence;
+- saves/read-checks the artifacts under `applications/JOB-012/` when workspace persistence is available;
+- records preparation without marking the job Applied;
 - states only genuinely blocking facts if any.
 
 ## T08 — ATS CV default
@@ -100,6 +104,7 @@ A pass requires both:
 - conventional headings;
 - no icons/photo/sidebar/skill bars/infographics/floating text boxes;
 - targets the JD;
+- prioritizes must-have requirements through verified evidence without copying unsupported JD claims;
 - default 1 page;
 - does not create PDF as the only output.
 
@@ -228,6 +233,24 @@ A pass requires both:
 **Expected:**
 - normal workflow still operates from installed Skill + user/project context;
 - does not require fetching the repository.
+
+## T22 — Dashboard and agent share canonical state
+
+**Setup:** interactive dashboard and a folder-capable agent use the same Personal Workspace.
+
+**Actions:** agent adds a job while the dashboard is open; user finds it in Dashboard/Kanban and Tracker, checks its Analytics classification and Logs entry, changes that job's status to Interview, manually adds or edits another job and recruiter link, exports the tracker to CSV, and the agent then performs another tracker update.
+
+**Expected:**
+- the dashboard displays the agent-created job without reload or reopening;
+- Dashboard, Analytics, Tracker, and Logs show the same current tracker state;
+- missing role/industry/work-arrangement classifications are shown as unclassified rather than guessed;
+- the dashboard re-reads the latest tracker before changing only the selected job status;
+- the dashboard appends a status-change activity and verifies the saved value;
+- the first transition to Interview fills an empty interview timestamp and preserves an existing interview date/time;
+- manual job edits preserve the compact core fields, reject a detectable duplicate, append activity, and pass read-back verification;
+- CSV export includes every tracker job and its core job/recruiter fields in an Excel-readable UTF-8 file without changing canonical state;
+- the agent re-reads the tracker and preserves the user's dashboard change and activity;
+- neither component creates a second canonical database or uploads tracker data.
 
 ## Release gate
 

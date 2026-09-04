@@ -22,14 +22,15 @@ Keputusan akhir **PURSUE / HOLD / DROP, submission, outreach, dan offer tetap mi
 
 ## Cara mulai
 
-**Rilis saat ini: v1.6.0.** Setup lokal, onboarding dengan approval, persistence, dan pemulihan sesi baru sudah diuji di Codex. Agent lain belum diverifikasi; lihat [hasil validasi](VALIDATION.md).
+**Rilis berikutnya: v1.7.0 (sedang dikembangkan).** Versi ini menambahkan dashboard lokal interaktif. Rilis stabil publik saat ini tetap v1.6.0; lihat [hasil validasi](VALIDATION.md).
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
 2. Upload file itu ke AI chat yang sekarang kamu pakai dan bilang **Bantu saya mulai**.
 3. AI menjelaskan cara memasang aplikasi desktop resmi, memakai akun pribadi, dan membuka folder lokal tanpa istilah teknis.
-4. Download dan ekstrak [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.6.0.zip).
+4. Download dan ekstrak [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.7.0.zip).
 5. Buka folder tersebut melalui Codex, Claude Code, Antigravity IDE, Cursor, atau agent lokal yang kompatibel.
 6. Agent memverifikasi baca-tulis lokal sebelum onboarding. Context, tracker, dan output selanjutnya disimpan di folder itu.
+7. Buka `BUKA_DASHBOARD.html` di Chrome atau Edge untuk melihat perubahan langsung dan mengubah status lowongan.
 
 Pengguna tidak perlu akun GitHub, `git clone`, branch, atau command line. Paket Personal Workspace tidak mengandung `.git` dan melarang push/publish data pribadi. Portable chat mode tetap tersedia sebagai fallback dengan persistence terbatas.
 

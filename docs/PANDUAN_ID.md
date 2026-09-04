@@ -4,7 +4,7 @@ Kamu tidak perlu paham Git, database, coding, atau terminal. Setup dimulai lewat
 
 ## Yang perlu kamu download
 
-Versi v1.6.0 adalah rilis stabil. [Hasil pengujian](../VALIDATION.md) membedakan validasi paket dari pengujian aplikasi AI nyata; jalur Codex sudah diuji, sedangkan agent lain belum diverifikasi.
+Versi v1.7.0 sedang dikembangkan dengan dashboard lokal interaktif. Rilis publik stabil saat ini tetap v1.6.0. [Hasil pengujian](../VALIDATION.md) membedakan validasi paket dari pengujian aplikasi nyata.
 
 1. `MULAI_DI_SINI.md` untuk di-upload ke AI chat yang sekarang kamu pakai.
 2. `AI-Job-Search-Personal-Workspace.zip` ketika AI chat memintanya.
@@ -151,7 +151,18 @@ Kalau safe default sudah ada di Skill atau `PORTABLE_WORKFLOW.md`, AI harus paka
 
 ## Cara lihat database kamu
 
-Kamu tidak perlu buka Excel setiap hari. Cukup bilang:
+Untuk melihat tracker tanpa membuka chat:
+
+1. double-click `BUKA_DASHBOARD.html` di folder Personal Workspace;
+2. buka dengan Chrome atau Edge;
+3. klik **Pilih folder AI Job Search** dan pilih folder workspace yang sama;
+4. izinkan akses baca-tulis saat browser meminta izin.
+
+Dashboard membaca `data/tracker.json` langsung dari perangkat. Panel kiri menyediakan Dashboard/Kanban, Analytics, Tracker berbentuk tabel, dan Logs aktivitas. Analytics menggabungkan KPI, donut chart untuk komposisi sederhana, dan ranked bar untuk klasifikasi, industri, lokasi, sumber, serta umur lowongan aktif. Analytics hanya memakai data yang tercatat dan menandai data yang belum tersedia.
+
+Di Tracker, kamu dapat mencari dan memfilter lowongan, mengubah status, menambahkan lowongan sendiri, mengedit data inti, atau export seluruh tracker ke CSV yang bisa dibuka di Excel. Data inti mencakup perusahaan, posisi, link, lokasi, tanggal ditemukan/dilamar/interview, dan LinkedIn recruiter. Saat status pertama kali diubah menjadi Interview, waktu perubahan otomatis dicatat jika jadwal interview masih kosong. Detail klasifikasi ditempatkan di bagian opsional agar tabel utama tetap mudah dibaca. Perubahan user dan agent masuk ke tracker dan Logs yang sama secara otomatis. Data tidak di-upload ke server dashboard.
+
+Kamu tetap dapat meminta analisis lewat agent dengan mengatakan:
 
 > Tampilkan dashboard tracker gue.
 

@@ -4,16 +4,16 @@
 
 ## Distribution
 
-- Version: 1.6.0
+- Version: 1.7.0
 - Repository: https://github.com/argytbh/ai-job-search-os
-- Exact source ref: v1.6.0
-- Manifest: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.6.0/manifest.json
-- Skill entry: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.6.0/skill/ai-job-search-os/SKILL.md
-- Portable fallback: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.6.0/portable/PORTABLE_WORKFLOW.md
+- Exact source ref: v1.7.0
+- Manifest: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.7.0/manifest.json
+- Skill entry: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.7.0/skill/ai-job-search-os/SKILL.md
+- Portable fallback: https://raw.githubusercontent.com/argytbh/ai-job-search-os/v1.7.0/portable/PORTABLE_WORKFLOW.md
 - Same-ZIP fallback: PORTABLE_WORKFLOW.md
 - Same-ZIP bundle: skill/ai-job-search-os/ (version in manifest.json)
-- Native import archive: AI-Job-Search-OS-Skill-v1.6.0.zip
-- Distribution is pinned to this exact stable tag; never switch to HEAD.
+- Native import archive: AI-Job-Search-OS-Skill-v1.7.0.zip
+- The exact ref may be unavailable for an unpublished development package. Use the matching bundled files; never switch to HEAD.
 
 # AI Job Search OS — compatibility setup for chat-only hosts
 

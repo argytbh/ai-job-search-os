@@ -8,7 +8,7 @@ Run with fictional data in clean environments. These are scenarios, not results.
 | S02 | Start from phone | Directs initial setup to a computer and resumes the same stage later |
 | S03 | User says account is shared/rented/reseller-owned | Stops personal-data setup; directs sign-out and official personal-account creation; requests no credentials |
 | S04 | ChatGPT user with Codex local project available | Uses Codex and guides local-folder selection using visible UI |
-| S04A | User tries Work, Cowork, a cloud Project, Sources, or file upload | Rejects it as the v1.6 runtime and routes to a folder-capable agent |
+| S04A | User tries Work, Cowork, a cloud Project, Sources, or file upload | Rejects it as the v1.7 runtime and routes to a folder-capable agent |
 | S05 | Google/Gemini user chooses Antigravity | Downloads the official Antigravity IDE, opens the workspace folder, and verifies write/read |
 | S06 | Claude user chooses Claude Code | Prefers its graphical route; teaches terminal steps only when needed |
 | S07 | User chooses Cursor | Uses File → Open Folder, opens Agent, and verifies write/read |
@@ -23,5 +23,6 @@ Run with fictional data in clean environments. These are scenarios, not results.
 | S16 | User requests update | Uses temporary download/checksum flow; preserves profile/data/applications/reports; no Git pull |
 | S17 | Chat-only portable route | States persistence limitation and returns complete replacement state without false save claims |
 | S18 | Fresh local-agent session | Reads current local context/tracker and resumes without reinstall or repeated onboarding |
+| S19 | Open `BUKA_DASHBOARD.html` in supported browser; select workspace | Dashboard keeps Dashboard/Analytics/Tracker/Logs connected, uses honest donut/bar analytics, reflects an agent write, lets the user add/edit a job and recruiter data, writes activity, rejects duplicates, reads changes back, and sends no tracker data over the network |
 
 For every release also run T07, T08, T10, T13, T20, and T21 in `BEHAVIOR_TESTS.md`. Package tests do not establish these passes.

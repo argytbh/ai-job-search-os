@@ -1,6 +1,24 @@
-# v1.6.0 validation
+# Validation
 
-## Local automated checks
+## v1.7.0 development candidate
+
+v1.7.0 adds an optional browser dashboard over the Personal Workspace's existing `data/tracker.json`. The dashboard has no cloud database and no network-write path: the user explicitly selects a local workspace folder in Chrome or Edge, the board checks that tracker about every 1.5 seconds while visible, and user status changes are written back to that same file with a `status_changed` activity record.
+
+Observed on the local Windows development checkout using bundled Python 3.12 and Node.js 24:
+
+- **PASS:** reproducible build/check of all 11 generated v1.7.0 artifacts.
+- **PASS:** 13 distribution tests, including dashboard packaging, local-only Content Security Policy, required local-file APIs, polling contract, and absence of common network APIs.
+- **PASS:** `node --check docs/dashboard/dashboard.js`.
+- **PASS:** `git diff --check`.
+- **PASS:** Skill Creator `quick_validate.py` reports `Skill is valid!` for `skill/ai-job-search-os`.
+- **PASS (UI shell only):** the dashboard entry screen loaded from a local HTTP server in the Codex in-app browser at desktop width, exposed the expected folder-selection action, and produced no browser console warnings or errors.
+- **PASS (fictional browser fixture):** Dashboard/Kanban, Analytics, Tracker, and Logs rendered from a synthetic tracker. A user-added job appeared immediately in Tracker and Kanban, its subsequent date edit passed write/read-back verification, duplicate-URL entry was rejected, and both changes appeared in Logs. Analytics updated to the new total and rendered pipeline/work-arrangement donuts plus role, industry, location, source, and active-age bars. A first transition to Interview filled an empty timestamp, while another transition preserved an existing scheduled interview. CSV export processed all three jobs and displayed its Excel-readable download confirmation. The in-app browser harness did not expose the resulting downloaded file for an Excel open/read check. The temporary fixture was removed after the run.
+
+S19 and T22 remain **pending live Chrome/Edge execution**. The OS folder permission flow, remembered permission, live agent-to-dashboard refresh, write-back to a user-selected workspace folder, downloaded CSV opening in Excel, and concurrent agent/dashboard reconciliation have not yet been exercised end to end. Source review, static tests, and fixture UAT do not establish those behaviors.
+
+## v1.6.0 released baseline
+
+### Local automated checks
 
 The distribution tests cover reproducibility, complete Personal Workspace contents, canonical runtime parity, payload checksums, migration-guide generation, Git-metadata exclusion, Pages download targets, missing-module rejection, and version-mismatch rejection. They validate artifacts, not AI decisions.
 
@@ -21,7 +39,7 @@ Observed on the local Windows development checkout using bundled Python 3.12:
 
 The system Python launcher was unavailable, so checks used the bundled runtime. The first Skill-validator attempt lacked PyYAML; the successful run used the temporary dependency and read-only elevated access required by its local file permissions. No global Python install was changed.
 
-## Live host acceptance
+### Live host acceptance
 
 Observed on 2026-09-04 in Codex desktop on Windows, using GPT-5.6 Sol Medium and a clean extraction of the `1.6.0-dev.2` release-candidate Personal Workspace ZIP. The stable `1.6.0` package preserves the tested runtime and changes release-version metadata; its package integrity is covered by the automated checks above.
 
@@ -40,6 +58,6 @@ The complete Migration Coach journey, Claude Code/Antigravity IDE/Cursor setup, 
 
 Record future runs with host/version, actual tools, fictional inputs, expected vs observed behavior, resulting artifacts, and the new-session check. Publish no real CV, personal context, or job-search history as evidence.
 
-## Publication
+### Publication
 
 The stable ZIPs are reproducible release artifacts. Exact release links become exercisable when tag `v1.6.0` and its GitHub Release are published. The matching release-candidate runtime passed the local Codex tests above; the complete Migration Coach download journey and other named-host routes remain pending.

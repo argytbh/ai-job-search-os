@@ -9,6 +9,7 @@ Expected logical collections:
 - `contacts`: relevant recruiter/hiring-user records linked by Job ID;
 - `activity`: meaningful history/milestones;
 - `reports/DASHBOARD.md`: generated readable pipeline summary, never canonical state.
+- interactive local dashboard: optional user interface over `data/tracker.json`, never a second database.
 
 The JSON state is transparent infrastructure, not homework for the user. The AI maintains it and generates human-readable reports or optional XLSX/CSV exports.
 
@@ -21,10 +22,15 @@ Capabilities differ by platform.
 If the platform can genuinely persist tracker changes:
 - read the latest canonical tracker;
 - check duplicates by requisition ID or canonical job URL, then by normalized company + role + location;
+- for new jobs, record useful dates (`discovered_at`, `applied_at`, and the next known `interview_at`) plus `role_category`, `industry`, `work_arrangement`, `employment_type`, and `source_name` when the posting or verified company evidence supports them; use `null` or omit an optional value when it is unknown instead of guessing;
 - preserve existing Job IDs and append meaningful activity;
 - for nontrivial migrations, create a dated backup;
 - write valid JSON through a temporary file when supported, replace the canonical file, and read it back;
 - refresh `reports/DASHBOARD.md` after successful persistence.
+
+The user may add or edit job records, change job status, and export a CSV through the interactive dashboard. Treat dashboard writes as explicit human input. When a dashboard status transition first reaches `Interview`, record the transition time in an empty `interview_at` field; preserve an interview date/time already entered by the user or agent. Re-read the tracker immediately before agent writes, preserve dashboard-created jobs, contacts, dates, classifications, and activity records, and reconcile/retry if the state changed during the operation. Never replace a newer tracker with a stale in-memory copy.
+
+The dashboard presents four connected views over that state: Kanban overview, evidence-grounded analytics, a searchable tracker table, and activity logs. Missing analytics classifications must remain visibly unclassified rather than being inferred by the interface.
 
 If it cannot:
 - never claim the file was updated;

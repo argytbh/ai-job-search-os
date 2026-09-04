@@ -30,7 +30,7 @@ class DistributionTests(unittest.TestCase):
 
     def test_personal_workspace_contains_runtime_and_local_state(self):
         with self.workspace() as zf:
-            for name in ("MULAI_DI_SINI.md", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "VERSION", "data/tracker.json", "reports/DASHBOARD.md"):
+            for name in ("MULAI_DI_SINI.md", "BUKA_DASHBOARD.html", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "VERSION", "data/tracker.json", "reports/DASHBOARD.md"):
                 self.assertIn(name, zf.namelist())
             tracker = json.loads(zf.read("data/tracker.json"))
             self.assertEqual(tracker["jobs"], [])
@@ -118,6 +118,31 @@ class DistributionTests(unittest.TestCase):
         self.assertTrue(links)
         for link in links:
             self.assertIn("docs/" + link, self.artifacts)
+
+    def test_dashboard_is_local_only_and_packaged(self):
+        page = (ROOT / "docs/dashboard/index.html").read_text(encoding="utf-8")
+        script = (ROOT / "docs/dashboard/dashboard.js").read_text(encoding="utf-8")
+        self.assertIn("connect-src 'none'", page)
+        self.assertIn("showDirectoryPicker", script)
+        self.assertIn('getDirectoryHandle("data")', script)
+        self.assertIn("createWritable", script)
+        self.assertIn("status_changed", script)
+        self.assertIn('id="tableView"', page)
+        self.assertIn("renderTable", script)
+        for section in ("dashboard", "analytics", "tracker", "logs"):
+            self.assertIn(f'data-section="{section}"', page)
+        for renderer in ("renderAnalytics", "renderDonutChart", "renderBarChart", "renderLogs", "saveJob", "persistTrackerChange", "buildTrackerCsv", "exportTrackerCsv", "Belum diklasifikasikan"):
+            self.assertIn(renderer, script)
+        self.assertIn('id="exportCsvButton"', page)
+        self.assertIn('nextStatus === "Interview" && !job.interview_at', script)
+        for field in ("jobCompany", "jobRole", "jobUrl", "jobApplied", "jobInterview", "recruiterUrl"):
+            self.assertIn(f'id="{field}"', page)
+        self.assertIn("setInterval(() => refresh(false), 1500)", script)
+        for network_api in ("fetch(", "XMLHttpRequest", "WebSocket", "EventSource", "sendBeacon"):
+            self.assertNotIn(network_api, script)
+        with self.workspace() as zf:
+            launcher = zf.read("BUKA_DASHBOARD.html").decode()
+            self.assertIn("https://argytbh.github.io/ai-job-search-os/dashboard/", launcher)
 
     def fixture(self, directory):
         root = Path(directory)

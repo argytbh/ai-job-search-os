@@ -1,5 +1,5 @@
 # AI JOB SEARCH OS — PORTABLE WORKFLOW
-Workflow version: 1.6.0
+Workflow version: 1.7.0
 
 > GENERATED FILE — canonical behavior lives under `skill/ai-job-search-os/`.
 > This standalone fallback is for environments where Agent Skills are unavailable.
@@ -236,6 +236,10 @@ If no CV is available, ask for a sanitized latest CV. This is a blocking input.
 ## Interview behavior
 
 Use the CV only as factual career history. Interview conversationally and adaptively; do not send a long questionnaire.
+
+Start from what the CV and existing files already answer. Ask one compact batch of no more than three high-impact questions about missing career direction, work to avoid, or practical constraints. Ask at most one follow-up batch of no more than two questions when the first answers are contradictory or leave a decision-critical gap. Stop earlier when Priority / Conditional / Avoid roles and the main practical constraints are clear.
+
+Optional details are not a reason to extend onboarding. Mark them as unknown or flexible and move to the proposed understanding. Continue beyond the two batches only when the user explicitly asks for deeper career coaching or cannot provide a usable answer to a genuinely blocking question. Never ask the same issue again in different wording after the user has answered it.
 
 Learn enough to establish:
 - current professional positioning;
@@ -544,11 +548,16 @@ For a general “prepare my application” request:
 9. generate a cover letter when required/accepted/useful for an application pack, or explicitly requested;
 10. draft visible application questions when available and answerable from verified context;
 11. run artifact QA;
-12. give a concise application brief and state the single next human action: review/edit and submit on the official employer site.
+12. save deliverables under `applications/<JOB_ID>/` when a Personal Workspace is available, using a new versioned filename rather than overwriting a user-edited file;
+13. read the saved files back and, when document rendering is available, visually inspect and fix them;
+14. record successful preparation in tracker Activity and set a concise review/submit next action without changing the job to `Applied`;
+15. give a concise application brief and state the single next human action: review/edit and submit on the official employer site.
 
 If the user explicitly requests only one artifact, such as “CV only,” create only that artifact.
 
 Do not ask “CV or cover letter?” when the user's phrase “application pack” or equivalent already implies the normal package.
+
+Do not start a new fact-finding interview before drafting. Missing optional evidence means omit or soften that claim. Ask one compact batch only when missing facts would make the requested artifact materially inaccurate or unusable; otherwise create the best truthful artifact from current evidence and list the material gap once.
 
 ## Evidence discipline
 
@@ -591,6 +600,8 @@ Application preparation is complete when:
 - the required artifacts are delivered in the correct editable format;
 - claims pass truthfulness checks;
 - document QA has been performed as far as platform capability allows;
+- files are saved and readable in the target job folder when workspace persistence is available;
+- tracker activity reflects preparation while status remains short of `Applied` until submission is confirmed;
 - the user is told to review/edit and submit.
 
 Do not end with a generic offer to “make it ATS-friendly” or “convert it to DOCX.” Those are already defaults.
@@ -656,12 +667,15 @@ Never respond to page pressure by inventing metrics, strengthening verbs beyond 
 ## Content quality
 
 - tailor to the target JD, not generic ATS folklore;
+- prioritize must-have requirements before preferred requirements, then map the strongest verified evidence into the summary, skills, and experience bullets where it naturally belongs;
 - use JD terminology only when it accurately describes verified experience;
 - prioritize role-relevant evidence;
 - keep bullets concise;
 - use outcomes only when verified;
 - do not keyword-stuff;
 - preserve chronology and factual consistency.
+
+Do not copy requirements into the CV when the candidate has no matching evidence. Do not alter official job titles or dates to resemble the target role. If a truthful adjacent description helps, keep the official title and clarify the relevant function in the bullet content.
 
 If the source CV is already ATS-safe, preserve useful structure and professional identity instead of redesigning it unnecessarily.
 
@@ -699,6 +713,8 @@ Before delivery, verify as far as the platform allows:
 - no leftover text from another employer/role;
 - no accidental sensitive data introduced;
 - file is editable and readable.
+
+Open or parse the generated DOCX after saving to confirm it is a real readable document rather than merely trusting file creation. When visual rendering is available, inspect every page.
 
 If document rendering/inspection is available, inspect it and fix overflow, broken spacing, orphaned headings, or accidental extra pages before delivery.
 
@@ -894,6 +910,7 @@ Expected logical collections:
 - `contacts`: relevant recruiter/hiring-user records linked by Job ID;
 - `activity`: meaningful history/milestones;
 - `reports/DASHBOARD.md`: generated readable pipeline summary, never canonical state.
+- interactive local dashboard: optional user interface over `data/tracker.json`, never a second database.
 
 The JSON state is transparent infrastructure, not homework for the user. The AI maintains it and generates human-readable reports or optional XLSX/CSV exports.
 
@@ -906,10 +923,15 @@ Capabilities differ by platform.
 If the platform can genuinely persist tracker changes:
 - read the latest canonical tracker;
 - check duplicates by requisition ID or canonical job URL, then by normalized company + role + location;
+- for new jobs, record useful dates (`discovered_at`, `applied_at`, and the next known `interview_at`) plus `role_category`, `industry`, `work_arrangement`, `employment_type`, and `source_name` when the posting or verified company evidence supports them; use `null` or omit an optional value when it is unknown instead of guessing;
 - preserve existing Job IDs and append meaningful activity;
 - for nontrivial migrations, create a dated backup;
 - write valid JSON through a temporary file when supported, replace the canonical file, and read it back;
 - refresh `reports/DASHBOARD.md` after successful persistence.
+
+The user may add or edit job records, change job status, and export a CSV through the interactive dashboard. Treat dashboard writes as explicit human input. When a dashboard status transition first reaches `Interview`, record the transition time in an empty `interview_at` field; preserve an interview date/time already entered by the user or agent. Re-read the tracker immediately before agent writes, preserve dashboard-created jobs, contacts, dates, classifications, and activity records, and reconcile/retry if the state changed during the operation. Never replace a newer tracker with a stale in-memory copy.
+
+The dashboard presents four connected views over that state: Kanban overview, evidence-grounded analytics, a searchable tracker table, and activity logs. Missing analytics classifications must remain visibly unclassified rather than being inferred by the interface.
 
 If it cannot:
 - never claim the file was updated;

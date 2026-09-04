@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dashboard lokal AI Job Search OS. Data dibaca dan ditulis langsung di Personal Workspace yang dipilih pengguna.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
+  <title>Job Desk — AI Job Search OS</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="../">AI Job Search OS</a>
+    <nav class="app-nav" id="appNav" aria-label="Menu dashboard" hidden>
+      <button class="nav-button active" data-section="dashboard" type="button"><span>⌂</span>Dashboard</button>
+      <button class="nav-button" data-section="analytics" type="button"><span>◫</span>Analytics</button>
+      <button class="nav-button" data-section="tracker" type="button"><span>≡</span>Tracker</button>
+      <button class="nav-button" data-section="logs" type="button"><span>↻</span>Logs</button>
+    </nav>
+    <div class="connection" aria-live="polite">
+      <span class="pulse" id="pulse"></span>
+      <span id="connectionLabel">Belum terhubung</span>
+      <button class="text-button" id="disconnectButton" type="button" hidden>Pilih folder lain</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="gate" id="gate">
+      <div class="gate-copy">
+        <p class="kicker">Dashboard pekerjaan kamu</p>
+        <h1>Hubungkan dashboard ke folder AI Job Search.</h1>
+        <p class="intro">Pilih <strong>folder utama</strong> yang sudah kamu buka di Codex, Antigravity, Cursor, atau Claude Code. Folder tersebut berisi <code>data</code>, <code>profile</code>, <code>applications</code>, dan <code>reports</code>.</p>
+        <div class="folder-tip">
+          <strong>Pilih folder utamanya.</strong>
+          <span>Jangan masuk lalu memilih folder <code>data</code>.</span>
+        </div>
+        <button class="primary-button" id="connectButton" type="button">Pilih folder workspace</button>
+        <div class="privacy-note">
+          <strong>Data tetap di perangkat kamu.</strong>
+          <span>Dashboard tidak mengunggah CV, tracker, atau riwayat lamaran. Browser hanya membuka folder yang kamu izinkan.</span>
+        </div>
+      </div>
+      <aside class="gate-proof" aria-label="Langkah menghubungkan dashboard">
+        <p class="aside-title">Cara menghubungkannya</p>
+        <div><span>1</span><strong>Klik tombol pilih folder</strong><small>Browser akan membuka pemilih folder di laptop kamu.</small></div>
+        <div><span>2</span><strong>Pilih folder AI Job Search</strong><small>Pilih folder utama yang dipakai oleh agent kamu.</small></div>
+        <div><span>3</span><strong>Izinkan akses folder</strong><small>Lowongan akan langsung muncul dan diperbarui otomatis selama dashboard terbuka.</small></div>
+      </aside>
+    </section>
+
+    <section class="unsupported" id="unsupported" hidden>
+      <p class="kicker">Browser belum didukung</p>
+      <h1>Dashboard belum bisa dibuka di browser ini.</h1>
+      <p>Salin alamat halaman ini, lalu buka menggunakan Chrome atau Edge terbaru di laptop atau PC kamu.</p>
+    </section>
+
+    <section class="workspace" id="workspace" hidden>
+      <section class="app-panel" id="dashboardPanel" data-section-panel="dashboard">
+        <div class="workspace-head">
+          <div>
+            <p class="kicker" id="workspaceName">Personal Workspace</p>
+            <h1>Dashboard</h1>
+            <p class="page-description">Ringkasan proses lamaran dan posisi setiap lowongan.</p>
+          </div>
+          <div class="sync-box">
+            <span>Terakhir diperiksa</span>
+            <strong id="lastSync">—</strong>
+            <small id="syncDetail">Menunggu data tracker</small>
+          </div>
+        </div>
+        <div class="ledger" id="ledger" aria-label="Ringkasan pipeline"></div>
+        <div class="section-heading">
+          <div><h2>Kanban lamaran</h2><p>Ubah status langsung dari setiap kartu.</p></div>
+          <button class="secondary-button" id="refreshButton" type="button">Periksa sekarang</button>
+        </div>
+        <div class="notice" id="notice" role="status" hidden></div>
+        <div class="board" id="board" aria-label="Kanban job tracker"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <strong>Belum ada lowongan.</strong>
+          <span>Minta agent mencari lowongan. Hasilnya akan muncul otomatis di halaman ini.</span>
+        </div>
+      </section>
+
+      <section class="app-panel" id="analyticsPanel" data-section-panel="analytics" hidden>
+        <div class="page-head"><p class="kicker">Analisis tracker</p><h1>Analytics</h1><p class="page-description">Pahami komposisi pencarian kerja dari data yang sudah tercatat.</p></div>
+        <div class="analytics-metrics" id="analyticsMetrics"></div>
+        <div class="sample-note" id="analyticsSampleNote"></div>
+        <div class="analytics-grid">
+          <article class="chart-card"><h2>Fase pipeline</h2><p>Proporsi lowongan dari tahap review sampai selesai.</p><div class="donut-chart" id="statusChart"></div></article>
+          <article class="chart-card"><h2>Sistem kerja</h2><p>Komposisi remote, hybrid, onsite, dan kategori lain.</p><div class="donut-chart" id="workChart"></div></article>
+          <article class="chart-card"><h2>Klasifikasi posisi</h2><p>Kelompok role yang dicatat oleh agent.</p><div class="bar-chart" id="roleChart"></div></article>
+          <article class="chart-card"><h2>Industri perusahaan</h2><p>Industri berdasarkan informasi lowongan atau perusahaan.</p><div class="bar-chart" id="industryChart"></div></article>
+          <article class="chart-card"><h2>Lokasi</h2><p>Lokasi yang paling sering muncul.</p><div class="bar-chart" id="locationChart"></div></article>
+          <article class="chart-card"><h2>Sumber lowongan</h2><p>Situs tempat lowongan ditemukan.</p><div class="bar-chart" id="sourceChart"></div></article>
+          <article class="chart-card"><h2>Umur lowongan aktif</h2><p>Lama waktu sejak ditemukan; membantu melihat lowongan yang mulai tertunda.</p><div class="bar-chart" id="ageChart"></div></article>
+        </div>
+        <p class="analytics-note">Dashboard tidak menebak klasifikasi. Data yang belum dicatat oleh agent ditampilkan sebagai “Belum diklasifikasikan”.</p>
+      </section>
+
+      <section class="app-panel" id="trackerPanel" data-section-panel="tracker" hidden>
+        <div class="page-head page-head-action"><div><p class="kicker">Semua lowongan</p><h1>Tracker</h1><p class="page-description">Cari, bandingkan, atau perbarui lowongan dari satu tabel.</p></div><div class="page-actions"><button class="secondary-button" id="exportCsvButton" type="button">Export CSV</button><button class="primary-button" id="addJobButton" type="button">+ Tambah lowongan</button></div></div>
+        <div class="toolbar">
+          <label class="search-field"><span class="sr-only">Cari lowongan</span><input id="searchInput" type="search" placeholder="Cari perusahaan, posisi, atau lokasi…" autocomplete="off"></label>
+          <label class="filter-field"><span>Tampilkan</span><select id="statusFilter"><option value="all">Semua lowongan</option><option value="active">Masih aktif</option><option value="closed">Sudah selesai</option></select></label>
+        </div>
+        <div class="table-summary" id="tableSummary"></div>
+        <div class="table-view" id="tableView">
+          <table><thead><tr><th>Perusahaan</th><th>Posisi</th><th>Status</th><th>Lokasi</th><th>Ditemukan</th><th>Dilamar</th><th>Interview</th><th>Recruiter</th><th>Lowongan</th><th></th></tr></thead><tbody id="jobTableBody"></tbody></table>
+        </div>
+      </section>
+
+      <section class="app-panel" id="logsPanel" data-section-panel="logs" hidden>
+        <div class="page-head"><p class="kicker">Riwayat aktivitas</p><h1>Logs</h1><p class="page-description">Catatan perubahan dan milestone yang dibuat user maupun agent.</p></div>
+        <label class="log-search"><span class="sr-only">Cari logs</span><input id="logSearch" type="search" placeholder="Cari aktivitas atau Job ID…" autocomplete="off"></label>
+        <div class="log-list" id="logList"></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog class="job-dialog" id="jobDialog">
+    <form id="jobForm">
+      <div class="dialog-head"><div><p class="kicker">Tracker</p><h2 id="jobDialogTitle">Tambah lowongan</h2></div><button class="icon-button" id="closeJobDialog" type="button" aria-label="Tutup">×</button></div>
+      <input id="jobId" type="hidden">
+      <div class="form-grid">
+        <label><span>Perusahaan *</span><input id="jobCompany" required autocomplete="organization"></label>
+        <label><span>Posisi *</span><input id="jobRole" required></label>
+        <label><span>Status</span><select id="jobStatus"></select></label>
+        <label><span>Lokasi</span><input id="jobLocation" placeholder="Contoh: Jakarta atau Remote"></label>
+        <label class="form-wide"><span>Link lowongan</span><input id="jobUrl" type="url" placeholder="https://..."></label>
+        <label><span>Ditemukan</span><input id="jobDiscovered" type="date"></label>
+        <label><span>Dilamar</span><input id="jobApplied" type="date"></label>
+        <label><span>Jadwal interview</span><input id="jobInterview" type="datetime-local"></label>
+        <label><span>Nama recruiter</span><input id="recruiterName" placeholder="Opsional"></label>
+        <label class="form-wide"><span>LinkedIn recruiter</span><input id="recruiterUrl" type="url" placeholder="https://linkedin.com/in/..."></label>
+        <label class="form-wide"><span>Langkah berikutnya</span><input id="jobNextAction" placeholder="Contoh: Follow up Jumat"></label>
+      </div>
+      <details class="analytics-details">
+        <summary>Detail untuk Analytics (opsional)</summary>
+        <div class="form-grid">
+          <label><span>Klasifikasi posisi</span><input id="jobRoleCategory" placeholder="Contoh: Business Intelligence"></label>
+          <label><span>Industri</span><input id="jobIndustry" placeholder="Contoh: Financial Services"></label>
+          <label><span>Sistem kerja</span><input id="jobWorkArrangement" placeholder="Remote, Hybrid, atau Onsite"></label>
+          <label><span>Jenis pekerjaan</span><input id="jobEmploymentType" placeholder="Full-time, Contract, atau lainnya"></label>
+        </div>
+      </details>
+      <div class="form-error" id="jobFormError" role="alert" hidden></div>
+      <div class="dialog-actions"><button class="secondary-button" id="cancelJobButton" type="button">Batal</button><button class="primary-button" id="saveJobButton" type="submit">Simpan lowongan</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="dashboard.js"></script>
+</body>
+</html>

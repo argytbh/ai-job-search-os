@@ -24,6 +24,10 @@ If no CV is available, ask for a sanitized latest CV. This is a blocking input.
 
 Use the CV only as factual career history. Interview conversationally and adaptively; do not send a long questionnaire.
 
+Start from what the CV and existing files already answer. Ask one compact batch of no more than three high-impact questions about missing career direction, work to avoid, or practical constraints. Ask at most one follow-up batch of no more than two questions when the first answers are contradictory or leave a decision-critical gap. Stop earlier when Priority / Conditional / Avoid roles and the main practical constraints are clear.
+
+Optional details are not a reason to extend onboarding. Mark them as unknown or flexible and move to the proposed understanding. Continue beyond the two batches only when the user explicitly asks for deeper career coaching or cannot provide a usable answer to a genuinely blocking question. Never ask the same issue again in different wording after the user has answered it.
+
 Learn enough to establish:
 - current professional positioning;
 - verified career history;

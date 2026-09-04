@@ -39,7 +39,7 @@ Do not request an email address, password, OTP, account screenshot, payment info
 
 ## 3. Select a folder-capable agent
 
-The runtime must be an agent that can open and edit a folder on the user's computer. Supported routes include **Codex**, **Claude Code**, **Antigravity IDE**, **Cursor**, and equivalent local agents. ChatGPT Work, Claude Cowork, ordinary AI chats, cloud Projects, Sources, and file attachments are not setup routes for v1.6.
+The runtime must be an agent that can open and edit a folder on the user's computer. Supported routes include **Codex**, **Claude Code**, **Antigravity IDE**, **Cursor**, and equivalent local agents. ChatGPT Work, Claude Cowork, ordinary AI chats, cloud Projects, Sources, and file attachments are not setup routes for v1.7.
 
 Prefer a graphical app and the provider the user already understands. Ask which AI account they personally own, then guide only the matching route. Check the actual interface and plan availability; do not assume a feature exists or recommend an upgrade before checking.
 
@@ -102,6 +102,10 @@ Give the user exactly this message to send in the local agent:
 The local agent must create and read back `data/SETUP_STATUS.json`. Ask the user to paste only the agent's short setup result, never their CV or tracker. Setup is complete only when the agent reports that the file was written and read back inside the selected folder.
 
 Then tell the user to continue in the local agent. Do not run onboarding or request their CV in this web-chat migration conversation.
+
+After the local agent confirms setup, explain one optional action:
+
+> Kalau mau melihat tracker tanpa membuka chat, double-click `BUKA_DASHBOARD.html`, buka di Chrome atau Edge, lalu pilih folder AI Job Search ini. Data tetap dibaca langsung dari foldermu.
 
 ## Failure behavior
 

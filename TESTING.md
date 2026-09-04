@@ -1,10 +1,10 @@
-> v1.6: Start with [setup acceptance tests](tests/SETUP_TESTS.md), then [runtime tests](tests/BEHAVIOR_TESTS.md). Record observed results in [VALIDATION.md](VALIDATION.md). The checklist below remains historical v1.5 regression coverage.
+> v1.7: Start with [setup acceptance tests](tests/SETUP_TESTS.md), including S19 for the local dashboard, then [runtime tests](tests/BEHAVIOR_TESTS.md), including T22 for live tracker reconciliation. Record observed results in [VALIDATION.md](VALIDATION.md). The checklist below remains historical v1.5 regression coverage.
 
 # AI Job Search OS — Behavioral Regression Tests
 
 This file is for maintainers/testers. It is **not** a required Project Source.
 
-For v1.6, start with `starter/MULAI_DI_SINI.md` in a fresh web chat, then test the generated Personal Workspace in a clean local-agent folder using fictional data. Use `starter/SYSTEM.md` only for the chat-only compatibility path.
+For v1.7, start with `starter/MULAI_DI_SINI.md` in a fresh web chat, then test the generated Personal Workspace in a clean local-agent folder using fictional data. Open `BUKA_DASHBOARD.html` in current Chrome or Edge, grant the selected workspace read/write access, and keep the dashboard open while the agent changes `data/tracker.json`. Use `starter/SYSTEM.md` only for the chat-only compatibility path.
 
 The goal is to test behavior, not a specific model's prose style.
 
