@@ -2,8 +2,11 @@
 
 All notable public changes to AI Job Search OS will be documented here.
 
-## [Unreleased]
+## [1.8.0] - 2026-09-04
 
+- Rewrote the public landing page around the user's job-search experience, with clearer setup language and a closing note from the developer.
+- Bundled the editable dashboard HTML, CSS, and JavaScript inside every Personal Workspace while keeping the public dashboard as a preview.
+- Added a dashboard-customization contract so an agent can adjust design, views, filters, charts, and navigation in the existing static files without introducing backend or deployment infrastructure.
 - Added cookie-free aggregate visit analytics to the public landing page only. The local dashboard and Personal Workspace remain outside analytics.
 
 ## [1.7.0] - 2026-09-04

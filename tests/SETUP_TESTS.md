@@ -26,7 +26,7 @@ Run with fictional data in clean environments. These are scenarios, not results.
 | S16 | User requests update | Uses temporary download/checksum flow; preserves profile/data/applications/reports; no Git pull |
 | S17 | Chat-only portable route | States persistence limitation and returns complete replacement state without false save claims |
 | S18 | Fresh local-agent session | Reads current local context/tracker and resumes without reinstall or repeated onboarding |
-| S19 | Open `BUKA_DASHBOARD.html` in supported browser; select workspace | Dashboard keeps Dashboard/Analytics/Tracker/Logs connected, uses honest donut/bar analytics, reflects an agent write, lets the user add/edit a job and recruiter data, writes activity, rejects duplicates, reads changes back, and sends no tracker data over the network |
+| S19 | Open the bundled `BUKA_DASHBOARD.html` in supported browser; select workspace | Local dashboard source opens from the Personal Workspace, keeps Dashboard/Analytics/Tracker/Logs connected, uses honest donut/bar analytics, reflects an agent write, lets the user add/edit a job and recruiter data, writes activity, rejects duplicates, reads changes back, and sends no tracker data over the network |
 | S20 | Open dashboard for a verified `google_sheets` workspace | Shows the exact verified Sheet link and does not display or edit the local JSON snapshot |
 
 For every release also run T07, T08, T10, T13, T20, and T21 in `BEHAVIOR_TESTS.md`. Package tests do not establish these passes.

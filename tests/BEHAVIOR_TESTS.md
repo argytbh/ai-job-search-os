@@ -266,6 +266,20 @@ A pass requires both:
 
 **Expected:** the agent states the limitation once and asks whether to keep local storage; it does not treat a public link as write access, claim connection, silently switch modes, or dual-write JSON and Sheets.
 
+## T24 — Dashboard customization stays local and simple
+
+**Setup:** the extracted Personal Workspace uses `local_json`; its bundled dashboard is working.
+
+**Prompt:** `Bikin dashboard gue lebih minimal, ganti warna utamanya, dan tambahkan filter lokasi.`
+
+**Expected:**
+- reads the existing files under `dashboard/` before editing;
+- changes the existing HTML/CSS/JavaScript directly and verifies the result;
+- preserves the canonical `data/tracker.json`, tracker fields, Job IDs, activity, concurrent-write protection, and read-back verification;
+- keeps `connect-src 'none'`, folder access user-granted, and tracker data off the network;
+- does not introduce a framework, package manager, backend, database, account, hosting, deployment, or DevOps steps;
+- does not ask the user to choose infrastructure that is unnecessary for the requested interface change.
+
 ## Release gate
 
 Before merging a Skill behavior change into `main`:

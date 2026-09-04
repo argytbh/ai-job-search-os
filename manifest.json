@@ -1,10 +1,10 @@
 {
   "name": "AI Job Search OS",
   "slug": "ai-job-search-os",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "schema_version": 2,
   "repository": "https://github.com/argytbh/ai-job-search-os",
-  "source_ref": "v1.7.0",
+  "source_ref": "v1.8.0",
   "release_stage": "stable",
   "migration_source": "MIGRATION_COACH.md",
   "migration_guide": "starter/MULAI_DI_SINI.md",
@@ -20,8 +20,8 @@
   "workspace_dashboard_launcher": "workspace/BUKA_DASHBOARD.html",
   "behavior_tests": "tests/BEHAVIOR_TESTS.md",
   "setup_tests": "tests/SETUP_TESTS.md",
-  "starter_archive": "release/AI-Job-Search-Personal-Workspace-v1.7.0.zip",
-  "skill_archive": "release/AI-Job-Search-OS-Skill-v1.7.0.zip",
+  "starter_archive": "release/AI-Job-Search-Personal-Workspace-v1.8.0.zip",
+  "skill_archive": "release/AI-Job-Search-OS-Skill-v1.8.0.zip",
   "runtime_repository_dependency": false,
   "human_in_the_loop": true,
   "default_cv_output": {

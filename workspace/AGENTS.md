@@ -26,4 +26,6 @@ For local JSON migrations, create a timestamped backup in `data/backups/`. Prese
 
 `BUKA_DASHBOARD.html` opens the optional interactive dashboard for `local_json` mode. It is a view/editor over the same canonical tracker, not a second database. In `google_sheets` mode it must direct the user to the configured Sheet instead of showing or editing a stale JSON snapshot. Users may add or edit jobs, contacts, dates, classifications, and status in their selected tracker. Re-read canonical state immediately before every write; reconcile or retry instead of overwriting newer state.
 
+The editable local dashboard source lives under `dashboard/`. When the user asks to change its appearance, views, filters, charts, or navigation, read the bundled Skill's persistence reference and edit the existing HTML/CSS/JavaScript directly. Preserve the canonical tracker, offline boundary, CSP, core behavior, and user data. Do not introduce a backend, database, account, framework, build system, hosting, or deployment workflow for an ordinary dashboard customization.
+
 Store generated application files under `applications/<JOB_ID>/`. Store summaries and pipeline reports under `reports/`. Never overwrite user data with blank release templates.

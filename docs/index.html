@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AI Job Search OS — human-in-the-loop AI workflow for job discovery, ATS-safe application preparation, tracking, recruiter enrichment, and career context." />
+  <meta name="description" content="AI Job Search OS membantu merapikan pencarian kerja, CV, tracker, recruiter research, dan persiapan lamaran dalam satu Personal Workspace yang tetap dikendalikan pengguna." />
   <title>AI Job Search OS</title>
   <link rel="stylesheet" href="style.css" />
   <script type="application/ld+json">
@@ -39,28 +39,29 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Human-in-the-loop job search · v1.7.0</div><p data-lang="id">Sekarang dengan dashboard lokal interaktif dan pilihan tracker Google Sheets.</p><p data-lang="en" hidden>Now with an interactive local dashboard and an optional Google Sheets tracker.</p>
+          <div class="eyebrow">Job search yang tetap lo kendalikan · v1.8.0</div>
           <div data-lang="id">
-            <h1>Bikin AI jadi partner job search, bukan pengganti keputusan lo.</h1>
-            <p class="lead">AI bantu search, verification, tracking, recruiter discovery, dan application prep. Lo tetap menentukan role mana yang dikejar, di-drop, dan akhirnya di-submit.</p>
+            <h1>Job search sudah cukup melelahkan. Biar AI bantu bagian repetitifnya.</h1>
+            <p class="lead">Kalau lo capek buka banyak tab, menyesuaikan CV berulang kali, dan lupa sudah apply ke mana, workspace ini membantu merapikannya. AI mengerjakan riset, verifikasi, tracking, dan persiapan dokumen. Keputusan karier tetap ada di tangan lo.</p>
           </div>
           <div data-lang="en" hidden>
-            <h1>Make AI your job-search partner, not your decision-maker.</h1>
-            <p class="lead">AI helps with search, verification, tracking, recruiter discovery, and application prep. You still decide which roles to pursue, drop, and submit.</p>
+            <h1>Job searching is already exhausting. Let AI handle the repetitive parts.</h1>
+            <p class="lead">If you are tired of juggling tabs, rewriting your CV, and forgetting where you applied, this workspace keeps everything organized. AI handles research, verification, tracking, and document preparation. Your career decisions remain yours.</p>
           </div>
           <div class="cta-row">
-            <a class="primary" href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.7.0/MULAI_DI_SINI.md">Download MULAI_DI_SINI.md</a>
+            <a class="primary" href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md">Download MULAI_DI_SINI.md</a>
           </div>
-          <div class="trust-row"><span>Editable DOCX output</span><span>ATS-safe defaults</span><span>Portable fallback</span><span>No ad tracking</span></div>
+          <div class="trust-row" data-lang="id"><span>Satu workspace</span><span>Tanpa coding</span><span>CV tetap editable</span><span>Keputusan tetap milik lo</span></div>
+          <div class="trust-row" data-lang="en" hidden><span>One workspace</span><span>No coding</span><span>Editable CV</span><span>Your decisions stay yours</span></div>
         </div>
 
         <div class="flow-card">
-          <div class="flow-title">Human-in-the-loop</div>
+          <div class="flow-title" data-lang="id">Pembagian kerjanya jelas</div><div class="flow-title" data-lang="en" hidden>A clear division of work</div>
           <div class="flow">
-            <div class="node">AI searches & analyzes</div><div class="arrow">↓</div>
-            <div class="node human">YOU review & decide</div><div class="arrow">↓</div>
-            <div class="node">AI prepares & tracks</div><div class="arrow">↓</div>
-            <div class="node human">YOU apply & report back</div>
+            <div class="node"><span data-lang="id">AI mencari dan memeriksa lowongan</span><span data-lang="en" hidden>AI finds and checks jobs</span></div><div class="arrow">↓</div>
+            <div class="node human"><span data-lang="id">LO memilih yang layak dikejar</span><span data-lang="en" hidden>YOU choose what to pursue</span></div><div class="arrow">↓</div>
+            <div class="node"><span data-lang="id">AI menyiapkan dokumen dan tracker</span><span data-lang="en" hidden>AI prepares documents and tracking</span></div><div class="arrow">↓</div>
+            <div class="node human"><span data-lang="id">LO review dan mengirim lamaran</span><span data-lang="en" hidden>YOU review and submit</span></div>
           </div>
         </div>
       </div>
@@ -68,8 +69,8 @@
 
     <section class="section">
       <div class="wrap">
-        <div data-lang="id"><div class="eyebrow">Mulai dalam 3 langkah</div><h2>Setup-nya sengaja dibuat sesingkat mungkin.</h2></div>
-        <div data-lang="en" hidden><div class="eyebrow">Start in 3 steps</div><h2>The setup is intentionally minimal.</h2></div>
+        <div data-lang="id"><div class="eyebrow">Mulai dalam 3 langkah</div><h2>Cukup mulai dari satu file. AI yang memandu sisanya.</h2><p class="body narrow">Lo tidak perlu memahami GitHub, terminal, atau cara memasang Skill. Panduan awal akan menjelaskan semuanya dengan urutan yang jelas.</p></div>
+        <div data-lang="en" hidden><div class="eyebrow">Start in 3 steps</div><h2>Begin with one file. AI guides the rest.</h2><p class="body narrow">You do not need to understand GitHub, terminals, or Skill installation. The starter guide explains everything in a clear order.</p></div>
         <div class="steps">
           <article class="card"><div class="step-num">1</div><h3 data-lang="id">Upload panduan ke chat</h3><h3 data-lang="en" hidden>Upload the guide to chat</h3><p data-lang="id">Upload MULAI_DI_SINI.md ke AI yang sudah lo pakai. Bilang: Bantu saya mulai.</p><p data-lang="en" hidden>Upload MULAI_DI_SINI.md to the AI you already use. Say: Help me get started.</p></article>
           <article class="card"><div class="step-num">2</div><h3 data-lang="id">Pilih tempat tracker</h3><h3 data-lang="en" hidden>Choose tracker storage</h3><p data-lang="id">Simpan lokal tanpa Google, atau pilih Google Sheets kalau ingin akses lintas perangkat. AI menjelaskan proses lengkap dalam tahapan yang jelas.</p><p data-lang="en" hidden>Keep it local without Google, or choose Google Sheets for cross-device access. The AI explains the complete process in clear stages.</p></article>
@@ -91,7 +92,7 @@
               <p>Tidak perlu coding, terminal, atau akun GitHub.</p>
             </aside>
             <ol class="howto-list">
-              <li><div><strong>Download file awal</strong><p>Klik <a href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.7.0/MULAI_DI_SINI.md"><code>MULAI_DI_SINI.md</code></a>. Ini satu-satunya file yang perlu lo cari sendiri.</p></div></li>
+              <li><div><strong>Download file awal</strong><p>Klik <a href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md"><code>MULAI_DI_SINI.md</code></a>. Ini satu-satunya file yang perlu lo cari sendiri.</p></div></li>
               <li><div><strong>Upload ke AI chat</strong><p>Upload ke ChatGPT, Claude, atau Gemini yang sudah lo pakai, lalu ketik: <code>Bantu saya mulai.</code></p></div></li>
               <li><div><strong>Pilih tempat tracker</strong><p>Pilih lokal untuk dashboard tanpa Google, atau Google Sheets kalau ingin akses dari HP dan perangkat lain.</p></div></li>
               <li><div><strong>Ikuti panduan setup</strong><p>AI memberi link resmi dan langkah lengkap untuk Codex, Claude Code, Cursor, Antigravity, atau agent lokal yang sesuai.</p></div></li>
@@ -112,7 +113,7 @@
               <p>No coding, terminal, or GitHub account required.</p>
             </aside>
             <ol class="howto-list">
-              <li><div><strong>Download the starter file</strong><p>Get <a href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.7.0/MULAI_DI_SINI.md"><code>MULAI_DI_SINI.md</code></a>. This is the only file you need to find yourself.</p></div></li>
+              <li><div><strong>Download the starter file</strong><p>Get <a href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md"><code>MULAI_DI_SINI.md</code></a>. This is the only file you need to find yourself.</p></div></li>
               <li><div><strong>Upload it to your AI chat</strong><p>Upload it to ChatGPT, Claude, or Gemini, then say: <code>Help me get started.</code></p></div></li>
               <li><div><strong>Choose tracker storage</strong><p>Choose local for the no-Google dashboard, or Google Sheets for access across devices.</p></div></li>
               <li><div><strong>Follow the setup guide</strong><p>The AI supplies official links and complete steps for Codex, Claude Code, Cursor, Antigravity, or a suitable local agent.</p></div></li>
@@ -136,7 +137,7 @@
             <div class="process-num">01</div><div class="process-stage"><strong>Setup & onboarding</strong><span>one time</span></div>
             <div class="lane human-lane"><strong data-lang="id">Buka folder + jawab onboarding</strong><strong data-lang="en" hidden>Open folder + answer onboarding</strong><p data-lang="id">Koreksi interpretasi AI dan approve kalau sudah akurat.</p><p data-lang="en" hidden>Correct the AI's interpretation and approve when accurate.</p></div>
             <div class="connector">→</div>
-            <div class="lane ai-lane"><strong data-lang="id">Bangun konteks yang approved</strong><strong data-lang="en" hidden>Build approved context</strong><p>CV = factual evidence, bukan otomatis arah karier. Setelah approval AI membuat <code>USER_CONTEXT.md</code>.</p></div>
+            <div class="lane ai-lane"><strong data-lang="id">Bangun konteks yang approved</strong><strong data-lang="en" hidden>Build approved context</strong><p data-lang="id">CV adalah bukti faktual, bukan penentu otomatis arah karier. Setelah lo setuju, AI membuat <code>USER_CONTEXT.md</code>.</p><p data-lang="en" hidden>The CV is factual evidence, not an automatic career direction. After your approval, AI creates <code>USER_CONTEXT.md</code>.</p></div>
           </article>
 
           <article class="process-row">
@@ -196,8 +197,8 @@
     <section class="section muted">
       <div class="wrap two-col">
         <div>
-          <div data-lang="id"><div class="eyebrow">Daily use</div><h2>Cukup ngobrol natural.</h2><p class="body">AI harus paham workflow, bukan terus-terusan nanya lo mau langkah A atau B.</p></div>
-          <div data-lang="en" hidden><div class="eyebrow">Daily use</div><h2>Just talk naturally.</h2><p class="body">The AI should understand the workflow instead of repeatedly asking you to choose the next obvious step.</p></div>
+          <div data-lang="id"><div class="eyebrow">Pemakaian sehari-hari</div><h2>Nggak perlu belajar “bahasa prompt”.</h2><p class="body">Ngomong saja seperti biasa. Agent sudah membaca alurnya dan hanya bertanya kalau memang ada informasi atau keputusan penting yang kurang.</p></div>
+          <div data-lang="en" hidden><div class="eyebrow">Daily use</div><h2>No need to learn “prompt language”.</h2><p class="body">Speak naturally. The agent already understands the workflow and asks only when essential information or a real decision is missing.</p></div>
           <div class="commands">
             <code data-lang="id">Cari 20 lowongan yang cocok buat gue.</code><code data-lang="en" hidden>Find 20 jobs that fit me.</code>
             <code data-lang="id">A, C, F gue pursue. Sisanya drop.</code><code data-lang="en" hidden>Pursue A, C, F. Drop the rest.</code>
@@ -217,30 +218,56 @@
 
     <section class="section">
       <div class="wrap">
-        <div data-lang="id"><div class="eyebrow">Tracker pilihan lo</div><h2>Lokal tanpa Google, atau Google Sheets kalau lo mau.</h2><p class="body narrow">Mode lokal memakai JSON dan dashboard interaktif di folder lo. Mode Google memakai satu Sheet milik lo untuk akses lintas perangkat. Sistem tidak menulis keduanya sekaligus.</p></div>
-        <div data-lang="en" hidden><div class="eyebrow">Your tracker choice</div><h2>Local without Google, or Google Sheets if you want it.</h2><p class="body narrow">Local mode uses JSON and the interactive folder dashboard. Google mode uses one user-owned Sheet for cross-device access. The system never writes both at once.</p></div>
-        <div class="small-links"><a href="dashboard/">Preview dashboard lokal</a><span>·</span><a href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.7.0/MULAI_DI_SINI.md">Mulai setup</a></div>
+        <div data-lang="id"><div class="eyebrow">Tracker pilihan lo</div><h2>Buka progres kapan saja, tanpa harus terus bertanya ke AI.</h2><p class="body narrow">Pilih dashboard lokal kalau ingin data tetap di komputer, atau Google Sheets kalau ingin akses dari HP dan perangkat lain. Keduanya memberi tempat yang jelas untuk melihat lowongan, status, jadwal interview, recruiter, dan riwayat aktivitas.</p></div>
+        <div data-lang="en" hidden><div class="eyebrow">Your tracker choice</div><h2>Check your progress anytime without repeatedly asking AI.</h2><p class="body narrow">Choose the local dashboard to keep data on your computer, or Google Sheets for access across devices. Both give you a clear place to review jobs, statuses, interviews, recruiters, and activity history.</p></div>
+        <div class="small-links" data-lang="id"><a href="dashboard/">Preview dashboard lokal</a><span>·</span><a href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md">Mulai setup</a></div>
+        <div class="small-links" data-lang="en" hidden><a href="dashboard/">Preview local dashboard</a><span>·</span><a href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md">Start setup</a></div>
+      </div>
+    </section>
+
+    <section class="section customize-section">
+      <div class="wrap customize-grid">
+        <div data-lang="id">
+          <div class="eyebrow">Dashboard yang ikut berkembang</div>
+          <h2>Dashboard ini bisa lo ubah sesuai cara kerja lo.</h2>
+          <p class="body">Kalau memakai tracker lokal, file pembentuk dashboard ikut tersimpan di Personal Workspace lo. Minta agent mengganti warna, merapikan tampilan, menambah filter atau chart, sampai mengatur ulang menu. Agent akan mengubah HTML, CSS, dan JavaScript yang sudah ada—tanpa membuat server, akun, atau proses deployment baru.</p>
+          <div class="custom-boundary"><strong>Struktur dasarnya tetap aman.</strong><span>Tracker yang sama, data yang sama, dan tetap berjalan lokal. Agent menjaga koneksi ke <code>data/tracker.json</code> serta fitur inti saat mengubah tampilannya.</span></div>
+        </div>
+        <div data-lang="en" hidden>
+          <div class="eyebrow">A dashboard that grows with you</div>
+          <h2>Shape the dashboard around the way you work.</h2>
+          <p class="body">With local tracking, the files that make up your dashboard live inside the Personal Workspace. Ask your agent to change colors, simplify the layout, add a filter or chart, or reorganize the menu. It edits the existing HTML, CSS, and JavaScript—without creating a server, account, or deployment process.</p>
+          <div class="custom-boundary"><strong>The foundation stays protected.</strong><span>The same tracker, the same data, and local operation. The agent preserves the connection to <code>data/tracker.json</code> and core features while changing the interface.</span></div>
+        </div>
+        <aside class="custom-prompts" aria-label="Contoh permintaan kustomisasi dashboard">
+          <span class="prompt-label" data-lang="id">Coba bilang ke agent:</span><span class="prompt-label" data-lang="en" hidden>Try asking your agent:</span>
+          <code data-lang="id">“Bikin dashboard gue lebih minimal dan ganti warna utamanya.”</code><code data-lang="en" hidden>“Make my dashboard more minimal and change its main color.”</code>
+          <code data-lang="id">“Tambahkan filter lokasi di Tracker.”</code><code data-lang="en" hidden>“Add a location filter to the Tracker.”</code>
+          <code data-lang="id">“Di Analytics, tambahkan chart sumber lowongan.”</code><code data-lang="en" hidden>“Add a job-source chart to Analytics.”</code>
+          <p data-lang="id">Agent membaca dashboard existing dulu, mengubah bagian yang diminta, lalu memeriksa hasilnya.</p><p data-lang="en" hidden>The agent reads the existing dashboard, changes only what you asked for, and verifies the result.</p>
+        </aside>
       </div>
     </section>
 
     <section class="section security">
       <div class="wrap">
-        <div data-lang="id"><div class="eyebrow">Privacy & trust</div><h2>Inspect dulu sebelum percaya.</h2><p class="body narrow">File bisa diperiksa. Instalasi Skill memakai mekanisme resmi aplikasi dan mungkin memerlukan konfirmasi. Portable Mode tersedia tanpa instalasi native. Landing page ini menghitung kunjungan agregat tanpa cookie melalui Cloudflare Web Analytics. Dashboard lokal dan data pencarian kerja lo tidak dikirim ke analytics.</p></div>
-        <div data-lang="en" hidden><div class="eyebrow">Privacy & trust</div><h2>Inspect before you trust.</h2><p class="body narrow">Inspectable files. Skill import uses the host’s supported mechanism and may require confirmation. Portable Mode works without native installation. This landing page counts aggregate visits without cookies through Cloudflare Web Analytics. Your local dashboard and job-search data are not sent to analytics.</p></div>
+        <div data-lang="id"><div class="eyebrow">Privasi & kendali</div><h2>Workspace pribadi tetap jadi milik lo.</h2><p class="body narrow">File pribadi tetap berada di tempat yang lo pilih. Personal Workspace tidak punya jalur untuk mengirim data kembali ke project ini. Dashboard lokal hanya membaca folder setelah lo memberi izin dan tidak mengunggah CV, tracker, atau riwayat lamaran. Landing page ini hanya menghitung kunjungan agregat tanpa cookie melalui Cloudflare Web Analytics.</p></div>
+        <div data-lang="en" hidden><div class="eyebrow">Privacy & control</div><h2>Your Personal Workspace remains yours.</h2><p class="body narrow">Your private files stay where you choose. The Personal Workspace has no path for sending data back to this project. The local dashboard reads a folder only after you authorize it and does not upload your CV, tracker, or application history. This landing page only counts aggregate visits without cookies through Cloudflare Web Analytics.</p></div>
         <div class="security-grid">
-          <div class="security-item"><strong>No Git remote</strong><span>Workspace ZIP has no .git metadata or push destination.</span></div>
-          <div class="security-item"><strong>One tracker</strong><span>Local JSON by default; verified user-owned Google Sheet only when chosen.</span></div>
-          <div class="security-item"><strong>Sanitized CV</strong><span data-lang="id">Hapus identifier yang tidak dibutuhkan.</span><span data-lang="en" hidden>Remove unnecessary identifiers.</span></div>
+          <div class="security-item"><strong data-lang="id">Data tetap milik lo</strong><strong data-lang="en" hidden>Your data stays yours</strong><span data-lang="id">Tidak ada tujuan push atau upload kembali ke repository.</span><span data-lang="en" hidden>No push or upload destination back to the repository.</span></div>
+          <div class="security-item"><strong data-lang="id">Satu tracker aktif</strong><strong data-lang="en" hidden>One active tracker</strong><span data-lang="id">Lokal secara default; Google Sheet milik lo hanya saat dipilih.</span><span data-lang="en" hidden>Local by default; your own Google Sheet only when chosen.</span></div>
+          <div class="security-item"><strong data-lang="id">CV yang disanitasi</strong><strong data-lang="en" hidden>Sanitized CV</strong><span data-lang="id">Hapus identifier yang tidak dibutuhkan sebelum onboarding.</span><span data-lang="en" hidden>Remove unnecessary identifiers before onboarding.</span></div>
         </div>
       </div>
     </section>
 
     <section class="section final-cta">
       <div class="wrap">
-        <div data-lang="id"><h2>AI memperbesar kapasitas lo. Judgment tetap milik lo.</h2><p class="body">Mulai dari chat yang sudah lo kenal; AI akan memberi panduan lengkap dan terstruktur menuju workspace lokal.</p></div>
-        <div data-lang="en" hidden><h2>AI expands your capacity. Judgment stays yours.</h2><p class="body">Start in the chat you already know; the AI gives you a complete, clearly structured guide into a local workspace.</p></div>
+        <div class="maker-note" data-lang="id"><div class="eyebrow">Catatan dari pembuatnya</div><h2>Semoga project ini membantu lo memakai AI dengan lebih sadar, kreatif, dan sistematis.</h2><p class="body">Gue membuat AI Job Search OS agar lebih banyak orang bisa merasakan AI sebagai alat untuk memperbesar kapasitas berpikir dan bekerja. Harapannya, setelah memakai sistem ini lo bukan hanya punya proses job search yang lebih rapi, tetapi juga makin paham cara memberi konteks, menilai hasil, memperbaiki workflow, dan membangun alat yang sesuai kebutuhan lo sendiri.</p><p class="maker-signature">— ARGYTBH</p></div>
+        <div class="maker-note" data-lang="en" hidden><div class="eyebrow">A note from the maker</div><h2>I hope this project helps you use AI with more awareness, creativity, and structure.</h2><p class="body">I built AI Job Search OS so more people can experience AI as a tool that expands how they think and work. I hope it gives you a clearer job-search process while helping you learn how to provide context, judge results, improve a workflow, and shape tools around your own needs.</p><p class="maker-signature">— ARGYTBH</p></div>
         <div class="cta-row centered">
-          <a class="primary" href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.7.0/MULAI_DI_SINI.md">Download MULAI_DI_SINI.md</a>
+          <a class="primary" data-lang="id" href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md">Mulai dari satu file</a>
+          <a class="primary" data-lang="en" hidden href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md">Start with one file</a>
         </div>
       </div>
     </section>

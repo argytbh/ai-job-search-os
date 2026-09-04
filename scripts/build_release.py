@@ -110,6 +110,11 @@ def build_artifacts(root: Path = ROOT) -> dict[str, bytes]:
         p.relative_to(workspace_source).as_posix(): p.read_bytes()
         for p in sorted(workspace_source.rglob("*")) if p.is_file()
     }
+    dashboard_source = root / "docs" / "dashboard"
+    workspace_files.update({
+        "dashboard/" + p.relative_to(dashboard_source).as_posix(): p.read_bytes()
+        for p in sorted(dashboard_source.rglob("*")) if p.is_file()
+    })
     workspace_files.update({
         "VERSION": (version + "\n").encode(),
         "LICENSE": (root / "LICENSE").read_bytes(),

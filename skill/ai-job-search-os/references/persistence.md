@@ -53,6 +53,20 @@ The user may add or edit job records, change job status, and export a CSV throug
 
 In `local_json` mode, the dashboard presents four connected views over that state: Kanban overview, evidence-grounded analytics, a searchable tracker table, and activity logs. Missing analytics classifications must remain visibly unclassified rather than being inferred by the interface. In `google_sheets` mode, the HTML dashboard directs the user to the verified Sheet and must not edit a stale JSON snapshot.
 
+## Local dashboard customization
+
+The local dashboard source is bundled inside the Personal Workspace under `dashboard/`. Treat a request such as changing colors, simplifying the layout, adding a filter or evidence-grounded chart, or reorganizing views as a direct request to edit that existing HTML/CSS/JavaScript. Inspect the current dashboard first, make the smallest coherent change, and verify the result. Do not ask the user to choose a framework or infrastructure when the requested result can be implemented in the existing files.
+
+Preserve these product boundaries during customization:
+- `data/tracker.json` remains the only canonical state in `local_json` mode;
+- keep folder access explicitly user-granted and keep tracker data off the network;
+- retain `connect-src 'none'` and do not add analytics, remote scripts, APIs, accounts, databases, servers, build systems, package managers, hosting, or deployment steps merely to change the dashboard;
+- preserve current tracker fields, Job IDs, activity history, concurrent-write protection, and read-back verification;
+- keep Dashboard, Analytics, Tracker, and Logs consistent with the same current state unless the user explicitly requests a different information architecture;
+- do not remove accessibility, responsive behavior, or browser compatibility guards as a cosmetic shortcut.
+
+The user may explicitly request a larger architectural change. Explain a material new dependency before introducing it, but do not turn ordinary interface customization into a DevOps project.
+
 If it cannot:
 - never claim the file was updated;
 - maintain the latest working state available in the conversation/project;

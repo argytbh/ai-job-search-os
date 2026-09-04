@@ -4,7 +4,7 @@ Kamu tidak perlu paham Git, database, coding, atau terminal. Setup dimulai lewat
 
 ## Yang perlu kamu download
 
-Versi publik saat ini adalah v1.7.0 dengan dashboard lokal interaktif dan pilihan tracker Google Sheets. [Hasil pengujian](../VALIDATION.md) membedakan validasi paket dari pengujian aplikasi nyata.
+Versi publik saat ini adalah v1.8.0 dengan source dashboard yang bisa dikustomisasi di Personal Workspace dan pilihan tracker Google Sheets. [Hasil pengujian](../VALIDATION.md) membedakan validasi paket dari pengujian aplikasi nyata.
 
 1. `MULAI_DI_SINI.md` untuk di-upload ke AI chat yang sekarang kamu pakai.
 2. `AI-Job-Search-Personal-Workspace.zip` ketika AI chat memintanya.
@@ -168,6 +168,8 @@ Untuk melihat tracker lokal tanpa membuka chat:
 Dashboard membaca `data/tracker.json` langsung dari perangkat. Panel kiri menyediakan Dashboard/Kanban, Analytics, Tracker berbentuk tabel, dan Logs aktivitas. Analytics menggabungkan KPI, donut chart untuk komposisi sederhana, dan ranked bar untuk klasifikasi, industri, lokasi, sumber, serta umur lowongan aktif. Analytics hanya memakai data yang tercatat dan menandai data yang belum tersedia.
 
 Di Tracker, kamu dapat mencari dan memfilter lowongan, mengubah status, menambahkan lowongan sendiri, mengedit data inti, atau export seluruh tracker ke CSV yang bisa dibuka di Excel. Data inti mencakup perusahaan, posisi, link, lokasi, tanggal ditemukan/dilamar/interview, dan LinkedIn recruiter. Saat status pertama kali diubah menjadi Interview, waktu perubahan otomatis dicatat jika jadwal interview masih kosong. Detail klasifikasi ditempatkan di bagian opsional agar tabel utama tetap mudah dibaca. Perubahan user dan agent masuk ke tracker dan Logs yang sama secara otomatis. Data tidak di-upload ke server dashboard.
+
+File dashboard lokal ikut tersimpan di folder `dashboard/` dalam Personal Workspace. Kamu bisa meminta agent mengganti warna, merapikan layout, menambah filter atau chart, dan mengatur ulang menu. Agent harus mengubah HTML/CSS/JavaScript existing secara langsung, menjaga tracker serta fitur inti, dan tidak membuat backend, hosting, atau alur DevOps untuk kustomisasi tampilan biasa.
 
 Kamu tetap dapat meminta analisis lewat agent dengan mengatakan:
 

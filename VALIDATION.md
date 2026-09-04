@@ -1,5 +1,15 @@
 # Validation
 
+## v1.8.0 release
+
+v1.8.0 bundles the dashboard source inside the Personal Workspace and changes the launcher to open that local copy. The dashboard remains static HTML/CSS/JavaScript over the same user-selected `data/tracker.json`; ordinary visual and feature customization must preserve its no-network CSP, persistence safeguards, and single-tracker model.
+
+- **PASS:** reproducible build/check includes the complete dashboard source in the Personal Workspace.
+- **PASS:** automated distribution checks verify the local launcher, dashboard source parity, no-network CSP, customization instructions, and the existing tracker behavior contract.
+- **PASS:** JavaScript syntax check for the bundled dashboard source.
+- **PENDING:** fresh manual Chrome and Edge acceptance runs from the extracted v1.8.0 Personal Workspace.
+- **PENDING:** live customization scenarios on Codex, Claude Code, Cursor, and Antigravity; static instructions do not establish host behavior.
+
 ## v1.7.0 release
 
 v1.7.0 adds an optional browser dashboard over the Personal Workspace's existing `data/tracker.json`. The dashboard has no cloud database and no network-write path: the user explicitly selects a local workspace folder in Chrome or Edge, the board checks that tracker about every 1.5 seconds while visible, and user status changes are written back to that same file with a `status_changed` activity record.

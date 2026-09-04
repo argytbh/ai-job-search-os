@@ -30,7 +30,7 @@ class DistributionTests(unittest.TestCase):
 
     def test_personal_workspace_contains_runtime_and_local_state(self):
         with self.workspace() as zf:
-            for name in ("MULAI_DI_SINI.md", "BUKA_DASHBOARD.html", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "VERSION", "data/tracker.json", "data/tracker.config.json", "system/tracker-config.schema.json", "reports/DASHBOARD.md"):
+            for name in ("MULAI_DI_SINI.md", "BUKA_DASHBOARD.html", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "VERSION", "data/tracker.json", "data/tracker.config.json", "system/tracker-config.schema.json", "reports/DASHBOARD.md", "dashboard/index.html", "dashboard/dashboard.css", "dashboard/dashboard.js"):
                 self.assertIn(name, zf.namelist())
             tracker = json.loads(zf.read("data/tracker.json"))
             self.assertEqual(tracker["jobs"], [])
@@ -138,10 +138,9 @@ class DistributionTests(unittest.TestCase):
 
     def test_pages_has_one_public_setup_entrypoint(self):
         page = (ROOT / "docs/index.html").read_text(encoding="utf-8")
-        starter_url = "https://github.com/argytbh/ai-job-search-os/releases/download/v1.7.0/MULAI_DI_SINI.md"
-        self.assertEqual(page.count(f'class="primary" href="{starter_url}"'), 2)
-        self.assertEqual(page.count(starter_url), 5)
-        self.assertNotIn('href="downloads/AI-Job-Search-Personal-Workspace-v1.7.0.zip"', page)
+        starter_url = "https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.0/MULAI_DI_SINI.md"
+        self.assertEqual(page.count(starter_url), 7)
+        self.assertNotIn('href="downloads/AI-Job-Search-Personal-Workspace-v1.8.0.zip"', page)
         self.assertIn("Preview dashboard lokal", page)
         self.assertIn('type="application/ld+json"', page)
         self.assertIn('id="cara-pakai"', page)
@@ -155,6 +154,9 @@ class DistributionTests(unittest.TestCase):
             "Buka Personal Workspace",
             "Lo tidak perlu clone repository",
             "Masukkan CV dan mulai",
+            "Job search sudah cukup melelahkan",
+            "Dashboard ini bisa lo ubah sesuai cara kerja lo",
+            "Catatan dari pembuatnya",
         ):
             self.assertIn(expected, page)
 
@@ -166,8 +168,8 @@ class DistributionTests(unittest.TestCase):
         token = "b274b7740bde42ee89db20fa1330ac4f"
         self.assertEqual(landing.count(beacon), 1)
         self.assertEqual(landing.count(token), 1)
-        self.assertIn("Landing page ini menghitung kunjungan agregat tanpa cookie", landing)
-        self.assertIn("Dashboard lokal dan data pencarian kerja lo tidak dikirim ke analytics", landing)
+        self.assertIn("Landing page ini hanya menghitung kunjungan agregat tanpa cookie", landing)
+        self.assertIn("Dashboard lokal hanya membaca folder setelah lo memberi izin dan tidak mengunggah CV, tracker, atau riwayat lamaran", landing)
         self.assertNotIn(beacon, dashboard)
         self.assertNotIn(beacon, dashboard_script)
         self.assertNotIn(token, dashboard)
@@ -199,7 +201,26 @@ class DistributionTests(unittest.TestCase):
             self.assertNotIn(network_api, script)
         with self.workspace() as zf:
             launcher = zf.read("BUKA_DASHBOARD.html").decode()
-            self.assertIn("https://argytbh.github.io/ai-job-search-os/dashboard/", launcher)
+            self.assertIn("dashboard/index.html", launcher)
+            self.assertNotIn("argytbh.github.io", launcher)
+            self.assertEqual(zf.read("dashboard/index.html"), (ROOT / "docs/dashboard/index.html").read_bytes())
+            self.assertEqual(zf.read("dashboard/dashboard.css"), (ROOT / "docs/dashboard/dashboard.css").read_bytes())
+            self.assertEqual(zf.read("dashboard/dashboard.js"), (ROOT / "docs/dashboard/dashboard.js").read_bytes())
+
+    def test_dashboard_customization_preserves_simple_local_architecture(self):
+        router = (ROOT / "skill/ai-job-search-os/SKILL.md").read_text(encoding="utf-8")
+        persistence = (ROOT / "skill/ai-job-search-os/references/persistence.md").read_text(encoding="utf-8")
+        workspace = (ROOT / "workspace/AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("customize the local dashboard", router)
+        for expected in (
+            "The local dashboard source is bundled inside the Personal Workspace",
+            "make the smallest coherent change",
+            "connect-src 'none'",
+            "do not add analytics, remote scripts, APIs, accounts, databases, servers, build systems, package managers, hosting, or deployment steps",
+            "do not turn ordinary interface customization into a DevOps project",
+        ):
+            self.assertIn(expected, persistence)
+        self.assertIn("editable local dashboard source lives under `dashboard/`", workspace)
 
     def fixture(self, directory):
         root = Path(directory)

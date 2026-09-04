@@ -1,8 +1,8 @@
-# Building and publishing v1.7
+# Building and publishing v1.8
 
 ## Current status
 
-Version 1.7.0 is the current release source. Building locally still does not publish a tag, release, or Pages site. Exact release-asset URLs work only after the matching immutable tag and GitHub Release are published.
+Version 1.8.0 is the current release source. Building locally still does not publish a tag, release, or Pages site. Exact release-asset URLs work only after the matching immutable tag and GitHub Release are published.
 
 ## Edit and build
 
