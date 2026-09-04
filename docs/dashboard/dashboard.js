@@ -14,7 +14,7 @@ const STATUS_COLORS = {
 };
 
 const els = Object.fromEntries([
-  "gate", "unsupported", "workspace", "connectButton", "disconnectButton", "connectionLabel", "pulse",
+  "gate", "unsupported", "cloudMode", "googleSheetLink", "workspace", "connectButton", "disconnectButton", "connectionLabel", "pulse",
   "workspaceName", "lastSync", "syncDetail", "ledger", "searchInput", "statusFilter", "refreshButton",
   "appNav", "notice", "board", "tableView", "jobTableBody", "tableSummary", "emptyState", "toast",
   "analyticsMetrics", "analyticsSampleNote", "statusChart", "roleChart", "industryChart", "workChart", "locationChart", "sourceChart", "ageChart",
@@ -99,6 +99,32 @@ function validateTracker(value) {
     seen.add(job.job_id);
   });
   return value;
+}
+
+function safeGoogleSheetUrl(value) {
+  const safeUrl = safeExternalUrl(value);
+  if (!safeUrl) return null;
+  const parsed = new URL(safeUrl);
+  return parsed.hostname === "docs.google.com" && parsed.pathname.startsWith("/spreadsheets/") ? safeUrl : null;
+}
+
+async function readTrackerConfig() {
+  const dataDir = await workspaceHandle.getDirectoryHandle("data");
+  let handle;
+  try {
+    handle = await dataDir.getFileHandle("tracker.config.json");
+  } catch (error) {
+    if (error.name === "NotFoundError") return { schema_version: 1, mode: "local_json", google_sheet_url: null, verified_at: null };
+    throw error;
+  }
+  const parsed = JSON.parse(await (await handle.getFile()).text());
+  if (!parsed || parsed.schema_version !== 1 || !["local_json", "google_sheets"].includes(parsed.mode)) {
+    throw new Error("Konfigurasi tracker tidak valid.");
+  }
+  if (parsed.mode === "google_sheets" && (!safeGoogleSheetUrl(parsed.google_sheet_url) || !parsed.verified_at)) {
+    throw new Error("Konfigurasi Google Sheets belum selesai diverifikasi oleh agent.");
+  }
+  return parsed;
 }
 
 async function resolveTrackerHandle() {
@@ -722,28 +748,41 @@ async function saveJob(event) {
 async function activate(handle, requestPermission) {
   if (!(await hasPermission(handle, requestPermission))) return false;
   workspaceHandle = handle;
-  let snapshot;
+  let config;
+  let snapshot = null;
   try {
-    snapshot = await readSnapshot();
+    config = await readTrackerConfig();
+    if (config.mode === "local_json") snapshot = await readSnapshot();
   } catch (error) {
     workspaceHandle = null;
     throw new Error(`Folder ini bukan Personal Workspace yang valid. ${error.message}`);
   }
   await dbSet("workspace", handle);
+  els.gate.hidden = true;
+  els.unsupported.hidden = true;
+  els.disconnectButton.hidden = false;
+  document.body.classList.add("connected");
+  clearInterval(pollTimer);
+  if (config.mode === "google_sheets") {
+    tracker = null;
+    lastSignature = null;
+    els.workspace.hidden = true;
+    els.cloudMode.hidden = false;
+    els.appNav.hidden = true;
+    els.googleSheetLink.href = safeGoogleSheetUrl(config.google_sheet_url);
+    setConnection("live", "Tracker · Google Sheets");
+    return true;
+  }
   tracker = snapshot.parsed;
   lastSignature = snapshot.signature;
   els.workspaceName.textContent = handle.name || "Personal Workspace";
-  els.gate.hidden = true;
-  els.unsupported.hidden = true;
+  els.cloudMode.hidden = true;
   els.workspace.hidden = false;
-  els.disconnectButton.hidden = false;
   els.appNav.hidden = false;
-  document.body.classList.add("connected");
   render();
   showSection(currentSection);
   setConnection("live", "Terhubung · diperbarui otomatis");
   showNotice("");
-  clearInterval(pollTimer);
   pollTimer = setInterval(() => refresh(false), 1500);
   return true;
 }
@@ -768,6 +807,7 @@ async function disconnect() {
   lastSignature = null;
   await dbDelete("workspace");
   els.workspace.hidden = true;
+  els.cloudMode.hidden = true;
   els.gate.hidden = false;
   els.disconnectButton.hidden = true;
   els.appNav.hidden = true;

@@ -26,11 +26,11 @@ The user always owns **PURSUE / HOLD / DROP, submission, outreach, and offer dec
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
 2. Upload it to the AI chat you already use and say **Help me get started**.
-3. The chat guides you through an official desktop app, a personal account, and local-folder access in plain language.
+3. The chat asks whether the tracker should stay local without Google or use Google Sheets, then guides the official desktop app in plain language.
 4. Download and extract the [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.7.0.zip).
 5. Open that folder in Codex, Claude Code, Antigravity IDE, Cursor, or another compatible local agent.
-6. The agent verifies local read/write access before onboarding, then keeps context, tracker state, and outputs in that folder.
-7. Open `BUKA_DASHBOARD.html` in Chrome or Edge to view live changes and update job status directly.
+6. The agent verifies folder write access and one tracker mode before onboarding. Context and application outputs remain in that folder.
+7. In local mode, open `BUKA_DASHBOARD.html`; in Google mode, open your verified Sheet.
 
 Users do not need a GitHub account, clone, branch, or command line. The Personal Workspace contains no `.git` metadata and prohibits pushing or publishing personal data. Portable chat mode remains a limited-persistence fallback.
 
@@ -139,7 +139,7 @@ Never store passwords, OTPs, banking information, or employer-portal credentials
 
 ## File safety
 
-The Personal Workspace contains instructions, the workflow, and empty JSON state. It contains no Git metadata, executable, API key, or telemetry. CVs, context, tracker state, and application files remain in the user-selected folder unless the user moves or shares them.
+The Personal Workspace contains instructions, the workflow, and empty JSON state. It contains no Git metadata, executable, API key, or telemetry. CVs, context, and application files remain in the user-selected folder unless the user moves or shares them. Tracker state also stays local by default; only users who choose Google Sheets store it in their own Google Drive.
 
 ## Architecture
 
@@ -153,7 +153,10 @@ Personal Workspace / system/ai-job-search-os
 profile/USER_CONTEXT.md
     = WHO + WHY — user-approved durable career context
 
-data/tracker.json
+data/tracker.config.json
+    = TRACKER CHOICE — local JSON or Google Sheets
+
+data/tracker.json or a verified Google Sheet
     = WHAT / NOW — jobs, contacts, activity
 
 Sanitized CV
@@ -162,7 +165,7 @@ Sanitized CV
 
 ## File persistence
 
-The local agent updates `data/tracker.json`, verifies the write, and refreshes `reports/DASHBOARD.md`. A chat-only fallback must never claim local persistence.
+During setup, the user chooses a local tracker or Google Sheets. Local mode needs no Google account and uses `data/tracker.json` plus the HTML dashboard. Google mode begins only after the user authorizes through Google's official UI and the agent proves read/write access to the user-owned Sheet. One workspace always has one canonical tracker; the two stores are never silently dual-written. A chat-only fallback must never claim unverified persistence.
 
 ## License
 

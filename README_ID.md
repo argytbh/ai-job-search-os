@@ -26,11 +26,11 @@ Keputusan akhir **PURSUE / HOLD / DROP, submission, outreach, dan offer tetap mi
 
 1. Download [`MULAI_DI_SINI.md`](starter/MULAI_DI_SINI.md).
 2. Upload file itu ke AI chat yang sekarang kamu pakai dan bilang **Bantu saya mulai**.
-3. AI menjelaskan cara memasang aplikasi desktop resmi, memakai akun pribadi, dan membuka folder lokal tanpa istilah teknis.
+3. AI menanyakan apakah tracker ingin disimpan lokal tanpa Google atau memakai Google Sheets, lalu menjelaskan aplikasi desktop resmi tanpa istilah teknis.
 4. Download dan ekstrak [Personal Workspace ZIP](release/AI-Job-Search-Personal-Workspace-v1.7.0.zip).
 5. Buka folder tersebut melalui Codex, Claude Code, Antigravity IDE, Cursor, atau agent lokal yang kompatibel.
-6. Agent memverifikasi baca-tulis lokal sebelum onboarding. Context, tracker, dan output selanjutnya disimpan di folder itu.
-7. Buka `BUKA_DASHBOARD.html` di Chrome atau Edge untuk melihat perubahan langsung dan mengubah status lowongan.
+6. Agent memverifikasi baca-tulis folder dan satu mode tracker sebelum onboarding. Context dan output lamaran tetap disimpan di folder itu.
+7. Untuk mode lokal, buka `BUKA_DASHBOARD.html`; untuk mode Google, buka Sheet terverifikasi milik kamu.
 
 Pengguna tidak perlu akun GitHub, `git clone`, branch, atau command line. Paket Personal Workspace tidak mengandung `.git` dan melarang push/publish data pribadi. Portable chat mode tetap tersedia sebagai fallback dengan persistence terbatas.
 
@@ -139,7 +139,7 @@ Jangan simpan password, OTP, bank information, atau employer-portal credentials 
 
 ## Keamanan file
 
-Personal Workspace berisi instruksi, workflow, dan state JSON kosong. Paket tidak memiliki Git metadata, executable, API key, atau telemetry. CV, context, tracker, dan application files tetap berada di folder yang dipilih pengguna kecuali pengguna sendiri memindahkan atau membagikannya.
+Personal Workspace berisi instruksi, workflow, dan state JSON kosong. Paket tidak memiliki Git metadata, executable, API key, atau telemetry. CV, context, dan application files tetap berada di folder yang dipilih pengguna kecuali pengguna sendiri memindahkan atau membagikannya. Tracker juga tetap lokal secara default; hanya user yang memilih mode Google Sheets yang menyimpannya di Google Drive milik sendiri.
 
 ## Arsitektur
 
@@ -153,7 +153,10 @@ Personal Workspace / system/ai-job-search-os
 profile/USER_CONTEXT.md
     = WHO + WHY — konteks karier durable yang sudah di-approve user
 
-data/tracker.json
+data/tracker.config.json
+    = PILIHAN TRACKER — local JSON atau Google Sheets
+
+data/tracker.json atau Google Sheet terverifikasi
     = WHAT / NOW — jobs, contacts, activity
 
 Sanitized CV
@@ -162,7 +165,7 @@ Sanitized CV
 
 ## File persistence
 
-Agent lokal membaca dan memperbarui `data/tracker.json`, memverifikasi hasil tulis, lalu menyegarkan `reports/DASHBOARD.md`. Chat-only fallback tidak boleh mengaku memiliki persistence lokal.
+Saat setup, user memilih tracker lokal atau Google Sheets. Mode lokal tidak membutuhkan akun Google dan memakai `data/tracker.json` plus dashboard HTML. Mode Google hanya digunakan setelah user mengizinkan koneksi melalui layar resmi Google dan agent membuktikan akses baca-tulis ke Sheet milik user. Satu workspace selalu memiliki satu tracker canonical; kedua mode tidak ditulis bersamaan. Chat-only fallback tidak boleh mengaku memiliki persistence yang belum terbukti.
 
 ## Lisensi
 

@@ -50,6 +50,7 @@ code { background: #e5ebf0; border-radius: 6px; padding: 2px 6px; font-family: C
 .primary-button, .secondary-button { border-radius: 12px; min-height: 46px; padding: 0 18px; font-weight: 800; border: 1px solid transparent; }
 .primary-button { color: white; background: var(--navy); box-shadow: 0 10px 26px rgba(23, 58, 94, .2); }
 .primary-button:hover { background: #102e4c; }
+.button-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 .secondary-button { color: var(--navy); background: white; border-color: var(--line); }
 .folder-tip { display: grid; gap: 3px; margin: 0 0 22px; padding: 12px 14px; border-left: 3px solid var(--cyan); background: #eff8f8; color: var(--muted); font-size: .86rem; line-height: 1.5; }
 .folder-tip strong { color: var(--ink); }
@@ -66,6 +67,10 @@ code { background: #e5ebf0; border-radius: 6px; padding: 2px 6px; font-family: C
 .unsupported { max-width: 760px; padding-top: 15vh; }
 .unsupported h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
 .unsupported p:last-child { color: var(--muted); font-size: 1.1rem; }
+.cloud-mode { max-width: 720px; margin: 10vh auto 0; padding: clamp(28px, 5vw, 48px); border: 1px solid var(--line); border-radius: 20px; background: white; box-shadow: var(--shadow); }
+.cloud-mode h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+.cloud-mode p:not(.kicker) { margin: 18px 0 24px; color: var(--muted); line-height: 1.65; }
+.cloud-mode small { display: block; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); line-height: 1.55; }
 .workspace-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
 .workspace-head h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
 .page-head { margin-bottom: 28px; }

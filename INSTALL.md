@@ -1,12 +1,12 @@
 # AI Job Search OS — compatibility setup for chat-only hosts
 
-The recommended v1.6 runtime is the **Personal Workspace** opened in a local AI agent. New users should start by uploading `MULAI_DI_SINI.md` to their current AI chat; its Migration Coach guides them to Codex, Claude Code, Antigravity IDE, Cursor, or another folder-capable agent.
+The recommended v1.7 runtime is the **Personal Workspace** opened in a local AI agent. New users should start by uploading `MULAI_DI_SINI.md` to their current AI chat; its Migration Coach guides them to a no-Google local tracker or an optional verified Google Sheet, then to Codex, Claude Code, Antigravity IDE, Cursor, or another folder-capable agent.
 
 This file remains the compatibility bootstrap behind `SYSTEM.md` for users who cannot use a local agent. Reply in the user's language and do not require GitHub or command-line knowledge.
 
 ## 1. Prefer an existing Personal Workspace
 
-If the AI can access a folder containing `AGENTS.md`, `VERSION`, `system/ai-job-search-os/`, and `data/tracker.json`:
+If the AI can access a folder containing `AGENTS.md`, `VERSION`, `system/ai-job-search-os/`, `data/tracker.config.json`, and `data/tracker.json`:
 
 1. follow the workspace `AGENTS.md`;
 2. read the bundled Skill and startup reference;

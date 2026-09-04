@@ -30,12 +30,15 @@ class DistributionTests(unittest.TestCase):
 
     def test_personal_workspace_contains_runtime_and_local_state(self):
         with self.workspace() as zf:
-            for name in ("MULAI_DI_SINI.md", "BUKA_DASHBOARD.html", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "VERSION", "data/tracker.json", "reports/DASHBOARD.md"):
+            for name in ("MULAI_DI_SINI.md", "BUKA_DASHBOARD.html", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "VERSION", "data/tracker.json", "data/tracker.config.json", "system/tracker-config.schema.json", "reports/DASHBOARD.md"):
                 self.assertIn(name, zf.namelist())
             tracker = json.loads(zf.read("data/tracker.json"))
             self.assertEqual(tracker["jobs"], [])
             self.assertEqual(tracker["contacts"], [])
             self.assertEqual(tracker["activity"], [])
+            tracker_config = json.loads(zf.read("data/tracker.config.json"))
+            self.assertEqual(tracker_config["mode"], "local_json")
+            self.assertIsNone(tracker_config["google_sheet_url"])
             for name in REFERENCE_ORDER:
                 expected = (ROOT / "skill/ai-job-search-os/references" / name).read_text(encoding="utf-8").strip()
                 self.assertEqual(expected, zf.read("system/ai-job-search-os/references/" + name).decode().strip())
@@ -70,8 +73,12 @@ class DistributionTests(unittest.TestCase):
     def test_migration_guide_enforces_safe_nontechnical_handoff(self):
         guide = self.artifacts["starter/MULAI_DI_SINI.md"].decode()
         for expected in (
-            "give one concrete action per response",
+            "Give a complete, detailed setup guide in one response",
+            "Do not scatter these questions across many messages",
+            "provide its complete steps together under clear sections",
             "hanya kamu yang bisa mengaksesnya",
+            "Kamu mau tracker disimpan di komputer saja, atau di Google Sheets?",
+            "The two modes are alternatives, not simultaneous databases",
             "https://chatgpt.com/download/",
             "ChatGPT Work, Claude Cowork, ordinary AI chats",
             "Ask them to select **Codex** from the product menu",
@@ -80,8 +87,10 @@ class DistributionTests(unittest.TestCase):
             "https://code.claude.com/docs/en/getting-started",
             "kamu tidak perlu akun GitHub",
             "data/SETUP_STATUS.json",
+            "data/tracker.config.json",
         ):
             self.assertIn(expected, guide)
+        self.assertNotIn("satu langkah per pesan", guide.lower())
         self.assertNotIn("git clone https://", guide.lower())
 
     def test_workspace_tracker_seed_matches_declared_schema_shape(self):
@@ -92,6 +101,11 @@ class DistributionTests(unittest.TestCase):
             self.assertEqual(seed["schema_version"], schema["properties"]["schema_version"]["const"])
             statuses = schema["properties"]["jobs"]["items"]["properties"]["status"]["enum"]
             self.assertTrue({"Review", "Hold", "Applied", "Rejected", "Closed"}.issubset(statuses))
+            tracker_config = json.loads(zf.read("data/tracker.config.json"))
+            config_schema = json.loads(zf.read("system/tracker-config.schema.json"))
+            self.assertEqual(set(config_schema["required"]), set(tracker_config))
+            self.assertEqual(tracker_config["schema_version"], config_schema["properties"]["schema_version"]["const"])
+            self.assertIn(tracker_config["mode"], config_schema["properties"]["mode"]["enum"])
 
     def test_workspace_has_no_git_or_private_user_data(self):
         with self.workspace() as zf:
@@ -124,6 +138,9 @@ class DistributionTests(unittest.TestCase):
         script = (ROOT / "docs/dashboard/dashboard.js").read_text(encoding="utf-8")
         self.assertIn("connect-src 'none'", page)
         self.assertIn("showDirectoryPicker", script)
+        self.assertIn('getFileHandle("tracker.config.json")', script)
+        self.assertIn('config.mode === "google_sheets"', script)
+        self.assertIn('id="cloudMode"', page)
         self.assertIn('getDirectoryHandle("data")', script)
         self.assertIn("createWritable", script)
         self.assertIn("status_changed", script)

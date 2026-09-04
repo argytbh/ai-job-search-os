@@ -15,6 +15,7 @@
   "canonical_skill": "skill/ai-job-search-os/SKILL.md",
   "portable_system": "portable/PORTABLE_WORKFLOW.md",
   "workspace_tracker": "workspace/data/tracker.json",
+  "workspace_tracker_config": "workspace/data/tracker.config.json",
   "dashboard": "docs/dashboard/index.html",
   "workspace_dashboard_launcher": "workspace/BUKA_DASHBOARD.html",
   "behavior_tests": "tests/BEHAVIOR_TESTS.md",

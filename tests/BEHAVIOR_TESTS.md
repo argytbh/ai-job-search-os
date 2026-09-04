@@ -252,6 +252,20 @@ A pass requires both:
 - the agent re-reads the tracker and preserves the user's dashboard change and activity;
 - neither component creates a second canonical database or uploads tracker data.
 
+## T23 — Tracker mode remains singular
+
+**Case A:** `data/tracker.config.json` says `local_json`.
+
+**Expected:** the agent reads/writes `data/tracker.json`, the HTML dashboard remains available, and no Google account or Sheet is requested.
+
+**Case B:** the user chose Google Sheets and the current agent exposes an authenticated Sheets connector.
+
+**Expected:** the user completes provider authorization, the agent creates or verifies the Jobs/Contacts/Activity structure, proves write/read-back, records the exact Sheet URL in config, and then uses that Sheet as canonical state.
+
+**Case C:** Google Sheets was chosen but authenticated write access is unavailable.
+
+**Expected:** the agent states the limitation once and asks whether to keep local storage; it does not treat a public link as write access, claim connection, silently switch modes, or dual-write JSON and Sheets.
+
 ## Release gate
 
 Before merging a Skill behavior change into `main`:

@@ -7,7 +7,7 @@ Workflow version: 1.7.0
 
 ## Portable Runtime Note
 
-Treat all workflow references named below as embedded sections of this document. Do not attempt to fetch GitHub during normal runtime. The user should provide a sanitized CV, a current tracker state and USER_CONTEXT.md after approved onboarding. Prefer data/tracker.json in a Personal Workspace.
+Treat all workflow references named below as embedded sections of this document. Do not attempt to fetch GitHub during normal runtime. The user should provide a sanitized CV, a current tracker state and USER_CONTEXT.md after approved onboarding. In a Personal Workspace, honor data/tracker.config.json and use exactly one verified tracker mode.
 
 # AI Job Search OS
 
@@ -39,7 +39,7 @@ Human-in-the-loop does not mean human-in-every-micro-step.
 
 Expected persistent user/project sources:
 - sanitized CV;
-- `data/tracker.json` in a local Personal Workspace, or equivalent current tracker state;
+- `data/tracker.config.json` plus its selected local JSON or verified Google Sheets tracker, or equivalent current tracker state;
 - `USER_CONTEXT.md` after onboarding.
 
 GitHub is not a normal runtime dependency after this Skill is installed.
@@ -168,9 +168,9 @@ Use after setup and at the start of a new session. In Portable Mode every workfl
 ## Inspect before resuming
 
 1. Identify the usable runtime: the Skill bundled in a verified Personal Workspace, a host-discoverable installed Skill, or a complete readable portable workflow. Loading a document does not prove native installation or local-folder access.
-2. Locate accessible `profile/USER_CONTEXT.md`, sanitized CV, and `data/tracker.json` or equivalent latest tracker. Check the selected workspace before asking for uploads. Never treat a known but inaccessible file as permanently missing.
+2. Locate accessible `profile/USER_CONTEXT.md`, sanitized CV, `data/tracker.config.json`, and the configured tracker. Check the selected workspace before asking for uploads. Never treat a known but inaccessible file as permanently missing.
 3. Use approved context immediately. Do not repeat onboarding because the chat or runtime mode changed. If approval is unclear, confirm the existing profile rather than rebuilding it.
-4. Prefer the latest user-confirmed tracker. If copies conflict and authority is unclear, ask which is current before writing. Never choose a blank template over history.
+4. Honor the configured `local_json` or `google_sheets` tracker mode. Prefer the latest user-confirmed canonical tracker. If copies conflict and authority is unclear, ask which is current before writing. Never choose a blank template over history or dual-write conflicting stores.
 5. Establish actual web, document, spreadsheet, and persistence capabilities. Recheck only when a task needs a capability that remains uncertain.
 
 If no readable runtime is available, return to setup; do not invent missing procedures. If a requested file is inaccessible, ask for it once and continue independent work where possible.
@@ -903,7 +903,14 @@ A recruitment-stage workflow is complete when:
 
 ## Tracker role
 
-`data/tracker.json` in the Personal Workspace is the preferred operational WHAT/NOW database. An existing XLSX/CSV tracker remains valid input and may be preserved or migrated with user approval.
+The Personal Workspace supports exactly one configured operational tracker:
+
+- `local_json` (default): `data/tracker.json` is canonical and the local HTML dashboard reads/writes it;
+- `google_sheets` (optional): one verified Google Sheet owned by the user is canonical and acts as the cross-device tracker UI.
+
+Read `data/tracker.config.json` when present. Never maintain JSON and Google Sheets as simultaneous canonical databases. A mode switch requires explicit user choice, a backup/export of the source, one-time reconciliation into the destination, destination read/write verification, and only then a config update. Preserve Job IDs and Activity history.
+
+An existing XLSX/CSV tracker remains valid input and may be preserved or migrated with user approval.
 
 Expected logical collections:
 - `jobs`: one record per viable opportunity;
@@ -913,6 +920,20 @@ Expected logical collections:
 - interactive local dashboard: optional user interface over `data/tracker.json`, never a second database.
 
 The JSON state is transparent infrastructure, not homework for the user. The AI maintains it and generates human-readable reports or optional XLSX/CSV exports.
+
+## Optional Google Sheets mode
+
+Use Google Sheets only when the user chose it and the current agent has a real authenticated connector that can create, read, and write the Sheet. The user completes Google authorization in the provider's official UI. Never request credentials, treat a public/edit link as authenticated write access, or claim success from opening a URL.
+
+Create or verify three tabs with one header row and stable IDs:
+
+- `Jobs`: Job ID, Company, Role, Status, Location, Job URL, Discovered At, Applied At, Interview At, Recruiter Name, Recruiter LinkedIn, Role Category, Industry, Work Arrangement, Employment Type, Next Action, Notes, Updated At;
+- `Contacts`: Contact ID, Job ID, Name, Role, Profile URL, Confidence, Notes;
+- `Activity`: Activity ID, Job ID, At, Type, Summary.
+
+Freeze headers and add status validation when supported, but do not block setup on cosmetic formatting. Prove persistence by creating/reading the required structure and performing a harmless write/read-back in the user-owned Sheet. Record the exact `https://docs.google.com/spreadsheets/...` URL and verification timestamp in `data/tracker.config.json` only after success.
+
+If authenticated Sheet access is unavailable, state that limitation once. Keep or return to `local_json` only with the user's choice; never fall back silently or instruct repeated public-link workarounds.
 
 ## File persistence
 
@@ -931,7 +952,7 @@ If the platform can genuinely persist tracker changes:
 
 The user may add or edit job records, change job status, and export a CSV through the interactive dashboard. Treat dashboard writes as explicit human input. When a dashboard status transition first reaches `Interview`, record the transition time in an empty `interview_at` field; preserve an interview date/time already entered by the user or agent. Re-read the tracker immediately before agent writes, preserve dashboard-created jobs, contacts, dates, classifications, and activity records, and reconcile/retry if the state changed during the operation. Never replace a newer tracker with a stale in-memory copy.
 
-The dashboard presents four connected views over that state: Kanban overview, evidence-grounded analytics, a searchable tracker table, and activity logs. Missing analytics classifications must remain visibly unclassified rather than being inferred by the interface.
+In `local_json` mode, the dashboard presents four connected views over that state: Kanban overview, evidence-grounded analytics, a searchable tracker table, and activity logs. Missing analytics classifications must remain visibly unclassified rather than being inferred by the interface. In `google_sheets` mode, the HTML dashboard directs the user to the verified Sheet and must not edit a stale JSON snapshot.
 
 If it cannot:
 - never claim the file was updated;

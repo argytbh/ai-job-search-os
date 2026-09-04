@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Dashboard lokal AI Job Search OS. Data dibaca dan ditulis langsung di Personal Workspace yang dipilih pengguna.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
+  <link rel="icon" href="data:,">
   <title>Job Desk — AI Job Search OS</title>
   <link rel="stylesheet" href="dashboard.css">
 </head>
@@ -52,6 +53,14 @@
       <p class="kicker">Browser belum didukung</p>
       <h1>Dashboard belum bisa dibuka di browser ini.</h1>
       <p>Salin alamat halaman ini, lalu buka menggunakan Chrome atau Edge terbaru di laptop atau PC kamu.</p>
+    </section>
+
+    <section class="cloud-mode" id="cloudMode" hidden>
+      <p class="kicker">Tracker Google Sheets</p>
+      <h1>Tracker kamu tersimpan di Google Sheets.</h1>
+      <p>Workspace ini memakai Google Sheets sebagai data utama. Buka Sheet yang sudah diverifikasi agar kamu selalu melihat data terbaru.</p>
+      <a class="primary-button button-link" id="googleSheetLink" target="_blank" rel="noreferrer">Buka Google Sheets ↗</a>
+      <small>Folder lokal tetap menyimpan profil dan dokumen lamaran. Dashboard JSON tidak mengedit salinan lokal agar data kamu tidak bercabang.</small>
     </section>
 
     <section class="workspace" id="workspace" hidden>

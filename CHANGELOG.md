@@ -11,6 +11,8 @@ All notable public changes to AI Job Search OS will be documented here.
 - Added a one-click dashboard launcher to the Personal Workspace; no job-search data is uploaded to the dashboard host.
 - Limited direct folder access to supporting HTTPS browsers, with a clear Chrome/Edge fallback message.
 - Bounded onboarding to focused question batches and strengthened application delivery with per-job persistence, read-back/visual QA, and tracker activity without premature Applied status.
+- Added an optional verified Google Sheets tracker mode while preserving local JSON + HTML dashboard as the no-Google default; each workspace records exactly one canonical tracker to prevent conflicting dual writes.
+- Changed the Migration Coach to present the complete matching setup route in clear sections and stages, pausing only for a required choice, external authorization, or an unverified interface.
 
 ## [1.6.0] - 2026-09-04
 

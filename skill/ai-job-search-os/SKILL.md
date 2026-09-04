@@ -37,7 +37,7 @@ Human-in-the-loop does not mean human-in-every-micro-step.
 
 Expected persistent user/project sources:
 - sanitized CV;
-- `data/tracker.json` in a local Personal Workspace, or equivalent current tracker state;
+- `data/tracker.config.json` plus its selected local JSON or verified Google Sheets tracker, or equivalent current tracker state;
 - `USER_CONTEXT.md` after onboarding.
 
 GitHub is not a normal runtime dependency after this Skill is installed.

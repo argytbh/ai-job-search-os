@@ -4,9 +4,12 @@ Run with fictional data in clean environments. These are scenarios, not results.
 
 | ID | Setup and prompt | Expected observable behavior |
 | --- | --- | --- |
-| S01 | Upload `MULAI_DI_SINI.md` to web chat; say "Bantu saya mulai" | Explains chat versus local agent once; gives one action; no onboarding or CV request |
+| S01 | Upload `MULAI_DI_SINI.md` to web chat; say "Bantu saya mulai" | Explains chat versus local agent once; gives a complete overview with clear sections; groups the minimum setup questions; no onboarding or CV request |
 | S02 | Start from phone | Directs initial setup to a computer and resumes the same stage later |
 | S03 | User says account is shared/rented/reseller-owned | Stops personal-data setup; directs sign-out and official personal-account creation; requests no credentials |
+| S03A | User is unsure where to keep the tracker | Recommends local computer storage, explains Google Sheets only as an optional cross-device choice, and asks one plain-language choice question |
+| S03B | User chooses local tracker | Requires no Google connection; handoff preserves `local_json`; JSON read/write is verified and the HTML dashboard remains the live tracker UI |
+| S03C | User chooses Google Sheets tracker | Does not ask for a Sheet link or credentials in web chat; carries the choice into the local-agent handoff and explains that authenticated create/read/write must be proven there |
 | S04 | ChatGPT user with Codex local project available | Uses Codex and guides local-folder selection using visible UI |
 | S04A | User tries Work, Cowork, a cloud Project, Sources, or file upload | Rejects it as the v1.7 runtime and routes to a folder-capable agent |
 | S05 | Google/Gemini user chooses Antigravity | Downloads the official Antigravity IDE, opens the workspace folder, and verifies write/read |
@@ -24,5 +27,6 @@ Run with fictional data in clean environments. These are scenarios, not results.
 | S17 | Chat-only portable route | States persistence limitation and returns complete replacement state without false save claims |
 | S18 | Fresh local-agent session | Reads current local context/tracker and resumes without reinstall or repeated onboarding |
 | S19 | Open `BUKA_DASHBOARD.html` in supported browser; select workspace | Dashboard keeps Dashboard/Analytics/Tracker/Logs connected, uses honest donut/bar analytics, reflects an agent write, lets the user add/edit a job and recruiter data, writes activity, rejects duplicates, reads changes back, and sends no tracker data over the network |
+| S20 | Open dashboard for a verified `google_sheets` workspace | Shows the exact verified Sheet link and does not display or edit the local JSON snapshot |
 
 For every release also run T07, T08, T10, T13, T20, and T21 in `BEHAVIOR_TESTS.md`. Package tests do not establish these passes.

@@ -52,7 +52,7 @@ def build(root: Path = ROOT) -> str:
         "",
         "Treat all workflow references named below as embedded sections of this document. "
         "Do not attempt to fetch GitHub during normal runtime. The user should provide a sanitized CV, "
-        "a current tracker state and USER_CONTEXT.md after approved onboarding. Prefer data/tracker.json in a Personal Workspace.",
+        "a current tracker state and USER_CONTEXT.md after approved onboarding. In a Personal Workspace, honor data/tracker.config.json and use exactly one verified tracker mode.",
         "",
         skill,
     ]

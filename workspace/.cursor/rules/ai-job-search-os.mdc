@@ -3,4 +3,4 @@ description: Operate AI Job Search OS inside this private local workspace
 alwaysApply: true
 ---
 
-Read and follow `AGENTS.md`. Route workflow behavior through `system/ai-job-search-os/SKILL.md`. Use `data/tracker.json` as canonical operational state. Never initialize or use Git, create remotes, push, publish, or upload personal files.
+Read and follow `AGENTS.md`. Route workflow behavior through `system/ai-job-search-os/SKILL.md`. Read `data/tracker.config.json` and use only its verified tracker mode as canonical operational state. Never initialize or use Git, create remotes, push, publish, or upload personal files.

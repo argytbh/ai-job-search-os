@@ -2,7 +2,14 @@
 
 ## Tracker role
 
-`data/tracker.json` in the Personal Workspace is the preferred operational WHAT/NOW database. An existing XLSX/CSV tracker remains valid input and may be preserved or migrated with user approval.
+The Personal Workspace supports exactly one configured operational tracker:
+
+- `local_json` (default): `data/tracker.json` is canonical and the local HTML dashboard reads/writes it;
+- `google_sheets` (optional): one verified Google Sheet owned by the user is canonical and acts as the cross-device tracker UI.
+
+Read `data/tracker.config.json` when present. Never maintain JSON and Google Sheets as simultaneous canonical databases. A mode switch requires explicit user choice, a backup/export of the source, one-time reconciliation into the destination, destination read/write verification, and only then a config update. Preserve Job IDs and Activity history.
+
+An existing XLSX/CSV tracker remains valid input and may be preserved or migrated with user approval.
 
 Expected logical collections:
 - `jobs`: one record per viable opportunity;
@@ -12,6 +19,20 @@ Expected logical collections:
 - interactive local dashboard: optional user interface over `data/tracker.json`, never a second database.
 
 The JSON state is transparent infrastructure, not homework for the user. The AI maintains it and generates human-readable reports or optional XLSX/CSV exports.
+
+## Optional Google Sheets mode
+
+Use Google Sheets only when the user chose it and the current agent has a real authenticated connector that can create, read, and write the Sheet. The user completes Google authorization in the provider's official UI. Never request credentials, treat a public/edit link as authenticated write access, or claim success from opening a URL.
+
+Create or verify three tabs with one header row and stable IDs:
+
+- `Jobs`: Job ID, Company, Role, Status, Location, Job URL, Discovered At, Applied At, Interview At, Recruiter Name, Recruiter LinkedIn, Role Category, Industry, Work Arrangement, Employment Type, Next Action, Notes, Updated At;
+- `Contacts`: Contact ID, Job ID, Name, Role, Profile URL, Confidence, Notes;
+- `Activity`: Activity ID, Job ID, At, Type, Summary.
+
+Freeze headers and add status validation when supported, but do not block setup on cosmetic formatting. Prove persistence by creating/reading the required structure and performing a harmless write/read-back in the user-owned Sheet. Record the exact `https://docs.google.com/spreadsheets/...` URL and verification timestamp in `data/tracker.config.json` only after success.
+
+If authenticated Sheet access is unavailable, state that limitation once. Keep or return to `local_json` only with the user's choice; never fall back silently or instruct repeated public-link workarounds.
 
 ## File persistence
 
@@ -30,7 +51,7 @@ If the platform can genuinely persist tracker changes:
 
 The user may add or edit job records, change job status, and export a CSV through the interactive dashboard. Treat dashboard writes as explicit human input. When a dashboard status transition first reaches `Interview`, record the transition time in an empty `interview_at` field; preserve an interview date/time already entered by the user or agent. Re-read the tracker immediately before agent writes, preserve dashboard-created jobs, contacts, dates, classifications, and activity records, and reconcile/retry if the state changed during the operation. Never replace a newer tracker with a stale in-memory copy.
 
-The dashboard presents four connected views over that state: Kanban overview, evidence-grounded analytics, a searchable tracker table, and activity logs. Missing analytics classifications must remain visibly unclassified rather than being inferred by the interface.
+In `local_json` mode, the dashboard presents four connected views over that state: Kanban overview, evidence-grounded analytics, a searchable tracker table, and activity logs. Missing analytics classifications must remain visibly unclassified rather than being inferred by the interface. In `google_sheets` mode, the HTML dashboard directs the user to the verified Sheet and must not edit a stale JSON snapshot.
 
 If it cannot:
 - never claim the file was updated;

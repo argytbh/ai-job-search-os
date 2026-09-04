@@ -2,6 +2,10 @@
 
 v1.7.0 adds a local-first interactive Job Desk for people who want to see and update their pipeline without repeatedly prompting the agent.
 
+During the friendly chat-led setup, users can keep the default local JSON + HTML dashboard without connecting Google, or optionally choose a user-owned Google Sheet for cross-device access. Google authorization happens only in a capable local agent through the provider's official UI. The modes are alternatives, and the workspace records one verified canonical tracker.
+
+The setup chat presents the complete matching route in clearly labeled sections. It groups the minimum questions and pauses only when the user must choose, authorize an external account, or confirm an interface result.
+
 ## What changes
 
 - Open `BUKA_DASHBOARD.html` from the Personal Workspace.
@@ -10,7 +14,7 @@ v1.7.0 adds a local-first interactive Job Desk for people who want to see and up
 - Use the left navigation to open Dashboard/Kanban, Analytics, Tracker/table, or activity Logs.
 - Search and filter the Tracker, inspect job/recruiter links, change status inline, add or edit a lowongan manually, and export all jobs to an Excel-readable CSV.
 - Review pipeline and work-arrangement composition in donut charts plus role, industry, location, source, and active-job age comparisons in ranked bars.
-- Dashboard status changes update the canonical `data/tracker.json` and append an activity record, so the agent sees the same state. The first change to Interview also timestamps an empty interview field without overwriting a date/time that is already known.
+- In local mode, dashboard status changes update the canonical `data/tracker.json` and append an activity record, so the agent sees the same state. The first change to Interview also timestamps an empty interview field without overwriting a date/time that is already known.
 - Onboarding uses a bounded set of focused questions, while application preparation saves truthful tailored documents per Job ID, verifies the files, and records preparation without claiming submission.
 
 ## Data boundary

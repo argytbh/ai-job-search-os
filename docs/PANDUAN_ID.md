@@ -14,7 +14,7 @@ Gunakan akun AI yang kamu buat sendiri dan hanya kamu yang bisa akses. Jangan gu
 
 ## 1. Setup sekali
 
-Upload `MULAI_DI_SINI.md` ke AI chat dan bilang **Bantu saya mulai**. AI memberi satu langkah setiap kali: gunakan komputer, konfirmasi akun pribadi, install aplikasi resmi, download Personal Workspace, lalu buka foldernya di Codex, Claude Code, Antigravity IDE, Cursor, atau agent lokal yang tersedia.
+Upload `MULAI_DI_SINI.md` ke AI chat dan bilang **Bantu saya mulai**. AI menjelaskan proses lengkap dengan section dan tahapan yang jelas: persiapan komputer, konfirmasi akun pribadi, pilihan tracker, instalasi aplikasi resmi, download Personal Workspace, membuka folder, dan verifikasi. AI berhenti hanya ketika kamu perlu memilih, melakukan login sendiri, atau memastikan hasil yang terlihat di layar.
 
 Kamu tidak perlu akun GitHub, clone repository, branch, atau command line. Pilih agent yang dapat membuka folder di komputermu: Codex untuk akun ChatGPT, Antigravity IDE untuk akun Google/Gemini, Cursor, atau Claude Code untuk akun Claude. Work, Cowork, ChatGPT Projects, Add files, dan Project Sources bukan koneksi database lokal. Setelah folder terbuka di agent lokal, agent harus membuat dan membaca kembali `data/SETUP_STATUS.json` sebelum mengatakan setup berhasil.
 
@@ -151,7 +151,14 @@ Kalau safe default sudah ada di Skill atau `PORTABLE_WORKFLOW.md`, AI harus paka
 
 ## Cara lihat database kamu
 
-Untuk melihat tracker tanpa membuka chat:
+Saat setup, AI chat awal akan menanyakan satu pilihan sederhana:
+
+- **Simpan di komputer:** pilihan default, tanpa koneksi Google. Data utama berada di `data/tracker.json` dan dashboard HTML menjadi tampilan interaktifnya.
+- **Google Sheets:** pilihan opsional untuk akses lintas perangkat. User menghubungkan Google sendiri lewat layar resmi provider; agent tidak pernah meminta password atau kode login.
+
+Kedua pilihan tidak berjalan sebagai dua database sekaligus. `data/tracker.config.json` menyimpan mode yang sudah diverifikasi agar agent berikutnya selalu membuka sumber data yang benar. Berpindah mode memerlukan persetujuan user dan satu kali migrasi data.
+
+Untuk melihat tracker lokal tanpa membuka chat:
 
 1. double-click `BUKA_DASHBOARD.html` di folder Personal Workspace;
 2. buka dengan Chrome atau Edge;
@@ -174,7 +181,7 @@ Atau:
 
 > Analisis pipeline job search gue.
 
-`data/tracker.json` menjadi database transparan yang dijaga agent. Ringkasan yang mudah dibaca tersedia di `reports/DASHBOARD.md`; XLSX/CSV dapat dibuat sebagai ekspor bila dibutuhkan.
+Dalam mode lokal, `data/tracker.json` menjadi database transparan yang dijaga agent. Dalam mode Google Sheets, Sheet terverifikasi milik user menjadi database sekaligus tampilan tracker lintas perangkat; dashboard HTML tidak mengedit snapshot JSON yang mungkin tertinggal. Ringkasan yang mudah dibaca tersedia di `reports/DASHBOARD.md`; XLSX/CSV dapat dibuat sebagai ekspor bila dibutuhkan.
 
 ## Contoh perintah yang cukup
 

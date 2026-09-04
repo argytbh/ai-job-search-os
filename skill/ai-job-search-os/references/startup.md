@@ -5,9 +5,9 @@ Use after setup and at the start of a new session. In Portable Mode every workfl
 ## Inspect before resuming
 
 1. Identify the usable runtime: the Skill bundled in a verified Personal Workspace, a host-discoverable installed Skill, or a complete readable portable workflow. Loading a document does not prove native installation or local-folder access.
-2. Locate accessible `profile/USER_CONTEXT.md`, sanitized CV, and `data/tracker.json` or equivalent latest tracker. Check the selected workspace before asking for uploads. Never treat a known but inaccessible file as permanently missing.
+2. Locate accessible `profile/USER_CONTEXT.md`, sanitized CV, `data/tracker.config.json`, and the configured tracker. Check the selected workspace before asking for uploads. Never treat a known but inaccessible file as permanently missing.
 3. Use approved context immediately. Do not repeat onboarding because the chat or runtime mode changed. If approval is unclear, confirm the existing profile rather than rebuilding it.
-4. Prefer the latest user-confirmed tracker. If copies conflict and authority is unclear, ask which is current before writing. Never choose a blank template over history.
+4. Honor the configured `local_json` or `google_sheets` tracker mode. Prefer the latest user-confirmed canonical tracker. If copies conflict and authority is unclear, ask which is current before writing. Never choose a blank template over history or dual-write conflicting stores.
 5. Establish actual web, document, spreadsheet, and persistence capabilities. Recheck only when a task needs a capability that remains uncertain.
 
 If no readable runtime is available, return to setup; do not invent missing procedures. If a requested file is inaccessible, ask for it once and continue independent work where possible.
