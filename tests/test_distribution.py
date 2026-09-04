@@ -163,7 +163,7 @@ class DistributionTests(unittest.TestCase):
         dashboard = (ROOT / "docs/dashboard/index.html").read_text(encoding="utf-8")
         dashboard_script = (ROOT / "docs/dashboard/dashboard.js").read_text(encoding="utf-8")
         beacon = "https://static.cloudflareinsights.com/beacon.min.js"
-        token = "426ed44ac3744f98b8e2690b17e2d9b2"
+        token = "b274b7740bde42ee89db20fa1330ac4f"
         self.assertEqual(landing.count(beacon), 1)
         self.assertEqual(landing.count(token), 1)
         self.assertIn("Landing page ini menghitung kunjungan agregat tanpa cookie", landing)
