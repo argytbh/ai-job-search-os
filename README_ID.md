@@ -4,6 +4,8 @@
 
 [English version](README.md)
 
+**Baru pertama kali? Mulai dari panduan publik untuk pengguna nonteknis: [AI Job Search OS](https://argytbh.github.io/ai-job-search-os/).**
+
 ## Sistem ini bisa apa?
 
 AI Job Search OS mengubah folder lokal menjadi workspace yang bisa dikerjakan AI agent dan tetap dimiliki pengguna. AI dapat:

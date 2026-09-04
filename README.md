@@ -4,6 +4,8 @@
 
 [Versi Bahasa Indonesia](README_ID.md)
 
+**New here? Start with the public, nontechnical guide: [AI Job Search OS](https://argytbh.github.io/ai-job-search-os/).**
+
 ## What it does
 
 AI Job Search OS turns a user-owned local folder into a structured workspace for a local AI agent. It can:

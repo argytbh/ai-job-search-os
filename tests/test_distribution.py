@@ -5,6 +5,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import shutil
+import struct
 import sys
 import tempfile
 import unittest
@@ -151,7 +152,11 @@ class DistributionTests(unittest.TestCase):
         self.assertIn("Preview dashboard lokal", page)
         self.assertIn('type="application/ld+json"', page)
         self.assertIn('id="cara-pakai"', page)
-        howto = json.loads(page.split('<script type="application/ld+json">', 1)[1].split("</script>", 1)[0])
+        structured_data = [
+            json.loads(block.split("</script>", 1)[0])
+            for block in page.split('<script type="application/ld+json">')[1:]
+        ]
+        howto = next(item for item in structured_data if item.get("@type") == "HowTo")
         self.assertEqual(howto["@type"], "HowTo")
         self.assertEqual(len(howto["step"]), 6)
         for expected in (
@@ -161,7 +166,7 @@ class DistributionTests(unittest.TestCase):
             "Buka Personal Workspace",
             "Lo tidak perlu clone repository",
             "Masukkan CV dan mulai",
-            "Job search sudah cukup melelahkan",
+            "AI untuk cari kerja yang tetap bikin lo pegang kendali.",
             "Mulai Setup — Download 1 File",
             "Kenapa pindah ke aplikasi agent?",
             "Tetap ngobrol dengan AI. Sekarang AI juga punya meja kerja.",
@@ -187,6 +192,34 @@ class DistributionTests(unittest.TestCase):
         self.assertNotIn(beacon, dashboard_script)
         self.assertNotIn(token, dashboard)
         self.assertNotIn(token, dashboard_script)
+
+    def test_public_page_has_search_and_social_metadata(self):
+        page = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        for expected in (
+            "AI untuk Cari Kerja, Job Tracker &amp; CV ATS | AI Job Search OS",
+            'rel="canonical" href="https://argytbh.github.io/ai-job-search-os/"',
+            'property="og:title"',
+            'property="og:description"',
+            'property="og:image" content="https://argytbh.github.io/ai-job-search-os/social-preview.png"',
+            'name="twitter:card" content="summary_large_image"',
+            '"@type": "WebSite"',
+            "AI untuk cari kerja yang tetap bikin lo pegang kendali.",
+        ):
+            self.assertIn(expected, page)
+
+        sitemap = (ROOT / "docs/sitemap.xml").read_text(encoding="utf-8")
+        self.assertEqual(sitemap.count("<loc>"), 1)
+        self.assertIn("<loc>https://argytbh.github.io/ai-job-search-os/</loc>", sitemap)
+        robots = (ROOT / "docs/robots.txt").read_text(encoding="utf-8")
+        self.assertIn("Allow: /", robots)
+        self.assertIn("Sitemap: https://argytbh.github.io/ai-job-search-os/sitemap.xml", robots)
+        verification = (ROOT / "docs/googlea04e7a88243eaaa3.html").read_text(encoding="utf-8").strip()
+        self.assertEqual(verification, "google-site-verification: googlea04e7a88243eaaa3.html")
+
+        preview = (ROOT / "docs/social-preview.png").read_bytes()
+        self.assertEqual(preview[:8], b"\x89PNG\r\n\x1a\n")
+        self.assertEqual(struct.unpack(">II", preview[16:24]), (1280, 640))
+        self.assertLess(len(preview), 1_000_000)
 
     def test_dashboard_is_local_only_and_packaged(self):
         page = (ROOT / "docs/dashboard/index.html").read_text(encoding="utf-8")
