@@ -208,8 +208,9 @@ class DistributionTests(unittest.TestCase):
             self.assertIn(expected, page)
 
         sitemap = (ROOT / "docs/sitemap.xml").read_text(encoding="utf-8")
-        self.assertEqual(sitemap.count("<loc>"), 1)
+        self.assertEqual(sitemap.count("<loc>"), 2)
         self.assertIn("<loc>https://argytbh.github.io/ai-job-search-os/</loc>", sitemap)
+        self.assertIn("<loc>https://argytbh.github.io/ai-job-search-os/community/</loc>", sitemap)
         robots = (ROOT / "docs/robots.txt").read_text(encoding="utf-8")
         self.assertIn("Allow: /", robots)
         self.assertIn("Sitemap: https://argytbh.github.io/ai-job-search-os/sitemap.xml", robots)
@@ -220,6 +221,29 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual(preview[:8], b"\x89PNG\r\n\x1a\n")
         self.assertEqual(struct.unpack(">II", preview[16:24]), (1280, 640))
         self.assertLess(len(preview), 1_000_000)
+
+    def test_public_community_separates_anonymous_feedback_from_github_discussions(self):
+        landing = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        community = (ROOT / "docs/community/index.html").read_text(encoding="utf-8")
+        config = (ROOT / "docs/community/config.js").read_text(encoding="utf-8")
+        feedback = (ROOT / "docs/community/feedback.js").read_text(encoding="utf-8")
+
+        self.assertIn('href="community/"', landing)
+        self.assertIn('id="community-feedback"', landing)
+        self.assertIn("Tidak ada review buatan", landing)
+        self.assertIn("Feedback bisa anonim. Percakapannya tetap terbuka.", community)
+        self.assertIn("Nama dan email boleh dikosongkan", community)
+        self.assertIn("Dimoderasi sebelum tayang", community)
+        self.assertIn("Tanpa centang izin publik", community)
+        self.assertIn("Akun GitHub tidak diperlukan", community)
+        self.assertIn("Memerlukan akun GitHub", community)
+        self.assertIn("https://github.com/argytbh/ai-job-search-os/discussions", config)
+        self.assertIn("discussions/categories/q-a", config)
+        self.assertIn("discussions/categories/ideas", config)
+        self.assertIn("https://tally.so/embed/KYElZk", config)
+        self.assertIn("https://tally.so/widgets/embed.js", community)
+        self.assertIn("window.AI_JOB_SEARCH_FEEDBACK = [];", feedback)
+        self.assertNotIn("v1.8.2", landing + community + config + feedback)
 
     def test_dashboard_is_local_only_and_packaged(self):
         page = (ROOT / "docs/dashboard/index.html").read_text(encoding="utf-8")

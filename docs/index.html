@@ -24,6 +24,7 @@
   <meta name="twitter:image" content="https://argytbh.github.io/ai-job-search-os/social-preview.png" />
   <title>AI untuk Cari Kerja, Job Tracker &amp; CV ATS | AI Job Search OS</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="community/community.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,6 +59,7 @@
     <div class="wrap nav-inner">
       <a class="brand" href="#top">AI Job Search OS <span>by ARGYTBH</span></a>
       <div class="nav-actions">
+        <a class="ghost community-nav" href="community/"><span data-lang="id">Komunitas</span><span data-lang="en" hidden>Community</span></a>
         <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language">EN</button>
         <a class="ghost" id="repoLink" href="#" rel="noreferrer">GitHub</a>
       </div>
@@ -79,6 +81,7 @@
           </div>
           <div class="cta-row">
             <a class="primary starter-cta" href="https://github.com/argytbh/ai-job-search-os/releases/download/v1.8.1/MULAI_DI_SINI.md"><span data-lang="id">Mulai Setup — Download 1 File</span><span data-lang="en" hidden>Start Setup — Download 1 File</span><small>MULAI_DI_SINI.md</small></a>
+            <a class="secondary hero-feedback-link" href="#community-feedback"><span data-lang="id">Lihat feedback</span><span data-lang="en" hidden>See feedback</span><span aria-hidden="true">↓</span></a>
           </div>
           <div class="trust-row" data-lang="id"><span>Satu workspace</span><span>Tanpa coding</span><span>CV tetap editable</span><span>Keputusan tetap milik lo</span></div>
           <div class="trust-row" data-lang="en" hidden><span>One workspace</span><span>No coding</span><span>Editable CV</span><span>Your decisions stay yours</span></div>
@@ -93,6 +96,37 @@
             <div class="node human"><span data-lang="id">LO review dan mengirim lamaran</span><span data-lang="en" hidden>YOU review and submit</span></div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section community-proof" id="community-feedback">
+      <div class="wrap">
+        <div class="community-proof-head">
+          <div data-lang="id">
+            <div class="eyebrow">Catatan dari komunitas</div>
+            <h2 id="community-feedback-title">Project ini ikut berkembang dari pengalaman penggunanya.</h2>
+            <p class="body narrow">Feedback yang mendapat izin publik ditampilkan setelah moderasi. Nama boleh dikosongkan—pengalaman lo tetap bisa membantu orang lain.</p>
+          </div>
+          <div data-lang="en" hidden>
+            <div class="eyebrow">Notes from the community</div>
+            <h2>This project grows from the experiences of its users.</h2>
+            <p class="body narrow">Feedback approved for public display appears after moderation. Your name is optional—your experience can still help someone else.</p>
+          </div>
+          <div class="community-proof-actions">
+            <a class="primary" href="community/#feedback"><span data-lang="id">Kirim feedback anonim</span><span data-lang="en" hidden>Send anonymous feedback</span></a>
+            <a class="secondary" href="community/"><span data-lang="id">Buka komunitas</span><span data-lang="en" hidden>Open community</span></a>
+          </div>
+        </div>
+
+        <div class="feedback-grid" id="featuredFeedback" aria-live="polite"></div>
+        <div class="feedback-empty" id="feedbackEmpty">
+          <div class="feedback-empty-mark" aria-hidden="true">“</div>
+          <div data-lang="id"><strong>Belum ada feedback publik yang ditampilkan.</strong><p>Jadi salah satu pengguna pertama yang berbagi pengalaman—tanpa akun GitHub dan boleh anonim.</p></div>
+          <div data-lang="en" hidden><strong>No public feedback has been featured yet.</strong><p>Be one of the first users to share an experience—no GitHub account required, and you may stay anonymous.</p></div>
+          <a href="community/#feedback"><span data-lang="id">Bagikan pengalaman →</span><span data-lang="en" hidden>Share your experience →</span></a>
+        </div>
+        <p class="feedback-policy" data-lang="id">Tidak ada review buatan. Setiap kutipan yang tampil berasal dari submission nyata yang sudah memberi izin publik.</p>
+        <p class="feedback-policy" data-lang="en" hidden>No fabricated reviews. Every displayed quote comes from a real submission that granted permission for public display.</p>
       </div>
     </section>
 
@@ -326,8 +360,9 @@
     </section>
   </main>
 
-  <footer><div class="wrap footer-inner"><span>AI Job Search OS by ARGYTBH · MIT License</span><span>Cookie-free aggregate visit analytics · No ad tracking</span></div></footer>
+  <footer><div class="wrap footer-inner"><span>AI Job Search OS by ARGYTBH · MIT License</span><span><a href="community/">Community</a> · Cookie-free aggregate visit analytics · No ad tracking</span></div></footer>
 
+  <script src="community/feedback.js"></script>
   <script>
     (function () {
       const toggle = document.getElementById('langToggle');
@@ -348,6 +383,43 @@
       }
       const repo = document.getElementById('repoLink');
       if (repoUrl !== '#') repo.href = repoUrl; else repo.style.display = 'none';
+
+      const feedbackRoot = document.getElementById('featuredFeedback');
+      const feedbackEmpty = document.getElementById('feedbackEmpty');
+      const feedbackItems = Array.isArray(window.AI_JOB_SEARCH_FEEDBACK) ? window.AI_JOB_SEARCH_FEEDBACK.slice(0, 3) : [];
+      feedbackItems.forEach(function (item) {
+        const card = document.createElement('article');
+        card.className = 'feedback-card';
+        const quote = document.createElement('blockquote');
+        quote.textContent = item.quote || '';
+        const meta = document.createElement('div');
+        meta.className = 'feedback-meta';
+        const author = document.createElement('strong');
+        author.textContent = item.author || (lang === 'id' ? 'Anonim' : 'Anonymous');
+        const context = document.createElement('span');
+        context.textContent = item.context || '';
+        meta.appendChild(author);
+        if (context.textContent) meta.appendChild(context);
+        card.appendChild(quote);
+        card.appendChild(meta);
+        if (typeof item.sourceUrl === 'string' && /^https:\/\//.test(item.sourceUrl)) {
+          const source = document.createElement('a');
+          source.href = item.sourceUrl;
+          source.target = '_blank';
+          source.rel = 'noreferrer';
+          const sourceId = document.createElement('span');
+          sourceId.setAttribute('data-lang', 'id');
+          sourceId.textContent = 'Lihat sumber publik ↗';
+          const sourceEn = document.createElement('span');
+          sourceEn.setAttribute('data-lang', 'en');
+          sourceEn.textContent = 'View public source ↗';
+          source.appendChild(sourceId);
+          source.appendChild(sourceEn);
+          card.appendChild(source);
+        }
+        feedbackRoot.appendChild(card);
+      });
+      if (feedbackItems.length) feedbackEmpty.hidden = true;
       applyLanguage();
     })();
   </script>
